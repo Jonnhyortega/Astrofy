@@ -18,7 +18,6 @@ const cartSlice = createSlice({
       state.shippingCost = SHIPPING_COST;
     },
     removeFromCart: (state, action) => {
-      // Aquí el action.payload debe ser el id del ítem a eliminar
       state.cartItems = removeItemFromCart(state.cartItems, { id: action.payload });
       state.shippingCost = resetShippingCost(state.cartItems, SHIPPING_COST);
     },

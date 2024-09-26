@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
-// Slice
 const mensClothingSlice = createSlice({
   name: 'mensClothing',
   initialState: {

@@ -86,9 +86,11 @@ export const HeroButton = styled(NavLink)`
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   text-decoration: none;
+  
   &:hover {
     background-color: #fff;
     color: #000;
+    box-shadow: 1px 1px 5px 1px black;
   }
 
   @media (max-width: 768px) {

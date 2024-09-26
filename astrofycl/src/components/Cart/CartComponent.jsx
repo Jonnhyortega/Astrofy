@@ -13,9 +13,11 @@ import {
 } from "./CartComponentStyles";
 import { CardItem } from "./CardItem";
 import { CiTrash } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { cartItems, hidden, shippingCost } = useSelector(
     (state) => state.cart
   );
@@ -42,6 +44,10 @@ const Cart = () => {
     dispatch(toggleHiddenCart());
   };
 
+  const reDirectCheckout = () => {
+    navigate('/checkout')
+  }
+
   const cartTotal = Math.ceil(
     cartItems.reduce((total, item) => total + item.quantity * item.price, 0) +
       shippingCost
@@ -61,7 +67,7 @@ const Cart = () => {
       {cartItems.length > 0 && (
         <CheckoutBox>
           <CartTotal>Total: ${cartTotal}</CartTotal>
-          <CheckoutButton>Comprar</CheckoutButton>
+          <CheckoutButton onClick={reDirectCheckout}>Comprar</CheckoutButton>
           <EmptyButton onClick={() => dispatch(clearCart())}>
             <CiTrash />
           </EmptyButton>

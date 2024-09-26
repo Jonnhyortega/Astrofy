@@ -41,7 +41,7 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;

@@ -152,7 +152,7 @@ const ContainerProducts = () => {
             products
               .slice(0, productosVisibles)
               .map((product) => (
-                <CardProduct key={product.id} product={product} />
+                <CardProduct key={product.id} product={product} status={status} />
               ))
           ) : (
             <ErrorComponent message="No products available." />

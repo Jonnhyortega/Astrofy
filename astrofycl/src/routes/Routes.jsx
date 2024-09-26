@@ -6,6 +6,7 @@ import Contact from "../pages/Contact/Contact";
 import { MissionVision } from "../components/ContainerAboutUs/MissionVision";
 import { OurStory } from "../components/ContainerAboutUs/OurStory";
 import { AboutUsText } from "../components/ContainerAboutUs/AboutUsText";
+import CheckoutPage from "../pages/Checkout/CheckoutPage";
 const Routes = () => {
   return (
     <ReactDomRoutes>
@@ -17,6 +18,7 @@ const Routes = () => {
       </Route>
       <Route path="/contact" element={<Contact />} />
       <Route path="/products" element={<Products />} />
+      <Route path="/checkout" element={<CheckoutPage />}></Route>
     </ReactDomRoutes>
   );
 };

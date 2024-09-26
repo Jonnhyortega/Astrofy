@@ -5,14 +5,17 @@ const ContainerLogoAstro = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: black;
   padding: 10px;
   position: relative;
   width: 100%;
-  box-shadow: 1px 1px 20px 1px black;
+  box-shadow: 1px 1px 5px 1px black;
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(4px) saturate(200%);
+  background: rgb(0, 0, 0, 0.800);
+
   small {
     color: red;
-    letter-spacing: 5px;
+    letter-spacing: 10px;
     font-size: 1em;
     font-weight: 900;
     background: linear-gradient(135deg, #007bff, #00d084);
