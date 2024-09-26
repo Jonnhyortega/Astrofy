@@ -33,10 +33,9 @@ const PurchaseFormModal = ({ onClose, total }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí se puede agregar la lógica para crear la factura
     alert('Compra realizada con éxito!');
     console.log('Datos de la compra:', formData);
-    onClose(); // Cerrar el modal después de la compra
+    onClose(); 
   };
 
   return (
@@ -110,7 +109,7 @@ const PurchaseFormModal = ({ onClose, total }) => {
               checked={formData.termsAccepted}
               onChange={handleChange}
               required
-            />
+            /> 
             Acepto los términos y condiciones
             <SubmitButton type="submit">Pagar</SubmitButton>
           </Form>

@@ -10,7 +10,7 @@ import {
 } from "../../redux/allproducts/allProductsSlice";
 import LoaderAstro from "../Loader/LoaderAstro";
 import CardProduct from "../CardProduct/CardProduct";
-
+import {HeroButton} from "../Hero/HeroStyles"
 const FeaturedProducts = () => {
   const dispatch = useDispatch();
   const { products, status, error } = useSelector((state) => state.products);
@@ -51,6 +51,7 @@ const FeaturedProducts = () => {
           })}
         </Container>
       )}
+      <HeroButton to={"/products"}>Productos</HeroButton>
     </FeaturedProductsContainer>
   );
 };

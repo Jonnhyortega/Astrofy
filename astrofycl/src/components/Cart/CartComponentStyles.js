@@ -193,9 +193,9 @@ export const Card = styled.div`
 `;
 
 export const CloseButton = styled.button`
-  position: absolute;
-  top: 5px;
-  right: 5px;
+  position: fixed;
+  top: 12%;
+  right: 1%;
   background: none;
   border: none;
   font-size: 2em;
@@ -211,5 +211,49 @@ export const CloseButton = styled.button`
     font-size: 2em;
     top: -5px;
     right: 0px;
+  }
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+export const ModalContent = styled.div`
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+`;
+
+export const ModalButton = styled.button`
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ff5f5f;
+  color: #fff;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #ff3f3f;
+  }
+
+  &:first-of-type {
+    background-color: #4caf50;
+    &:hover {
+      background-color: #45a049;
+    }
   }
 `;

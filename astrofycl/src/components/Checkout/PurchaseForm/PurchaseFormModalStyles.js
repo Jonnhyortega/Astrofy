@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -20,6 +20,9 @@ export const ModalContent = styled.div`
   width: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ModalHeader = styled.div`
@@ -52,7 +55,7 @@ export const Input = styled.input`
 `;
 
 export const Checkbox = styled.input`
-  margin: 10px 0;
+  
 `;
 
 export const SubmitButton = styled.button`

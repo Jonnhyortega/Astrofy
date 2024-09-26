@@ -8,14 +8,21 @@ export const ItemCard = styled.div`
   padding: 15px;
   margin: 0 auto 10px auto;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0);
+  width: 400px;
   border: 2px solid #007bff;
   background: white;
+  
   @media (max-width: 568px) {
-    width: 80%;
     justify-content: center;
     gap: 10px;
+    width: 350px;
+    height: 100px;
+  }
+
+  @media(max-width: 468px){
+  width: 268px;
+  height: auto;
   }
 
   @media (max-width: 368px) {
@@ -54,6 +61,12 @@ export const ItemControls = styled.div`
     position: absolute;
     top: 1px;
     left: 34px;
+  }
+
+  @media(max-width: 468px){
+  span{
+  // top: 40px;
+  }
   }
 `;
 

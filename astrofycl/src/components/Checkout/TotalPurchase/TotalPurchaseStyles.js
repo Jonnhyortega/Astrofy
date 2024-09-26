@@ -1,37 +1,22 @@
 import styled from "styled-components";
-export const Border = styled.div`
-  //   // position: absolute;
-  //   left: 42%;
-  //   border: 4px solid #007bff;
-  //   border-radius: 5px;
-  //   width: 200px;
-  //   height: 150px;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   box-shadow: 1px 1px 5px 1px black;
-  //   background: linear-gradient(135deg, #ff9900, #ff6600);
-  //   background: white;
-
-  //
-`;
 
 export const PurchaseContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  // border: 1px solid gold;
   width: 200px;
-  margin: 0 auto;
-  // backdrop-filter: blur(16px) saturate(180%);
-  //   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  //   background-color: rgba(17, 25, 40, 0.75);
+  margin: 20px auto;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  background-color:white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0);
+
   }
 `;
 
 export const TotalText = styled.h3`
-  font-size: 3rem;
+  font-size: 2rem;
   color: #333;
   margin: 0 auto;
   font-weight: bold;
@@ -41,7 +26,7 @@ export const TotalText = styled.h3`
 `;
 
 export const TotalAmount = styled.p`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: white;
   margin: 0 auto;
