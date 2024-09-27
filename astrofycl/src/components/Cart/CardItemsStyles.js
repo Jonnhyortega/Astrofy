@@ -108,6 +108,7 @@ export const Button = styled.button`
   }
 `;
 
+// MODAL DE CONFIRMACION
 
 export const ModalBackground = styled.div`
   position: fixed;
@@ -150,14 +151,14 @@ export const ModalActions = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  button {
+  Button {
     margin-left: 10px;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    transition: background-color .7s ease;
 
     &:first-child {
       background-color: #ff4d4d; 
@@ -169,7 +170,7 @@ export const ModalActions = styled.div`
     }
 
     &:last-child {
-      background-color: #ddd; 
+      background-color: green; 
     }
 
     &:last-child:hover {

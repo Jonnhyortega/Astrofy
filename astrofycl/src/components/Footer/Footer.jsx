@@ -12,7 +12,6 @@ import {
 } from './FooterStyles';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
-// imgs: payment methods
 import Visa from '../../imgs/payments/visa.jpg';
 import MasterCard from '../../imgs/payments/mastercard.jpg';
 import Amex from '../../imgs/payments/amex.jpg';
@@ -31,7 +30,7 @@ const Footer = () => {
         <FooterTitle>Atención al Cliente</FooterTitle>
         <FooterLink href="#">FAQs</FooterLink>
         <FooterLink href="#">Envíos & Devoluciones</FooterLink>
-        <FooterLink href="#">Contáctanos</FooterLink>
+        <FooterLink to={"/contact"}>Contáctanos</FooterLink>
         <FooterLink href="#">Política de Privacidad</FooterLink>
       </FooterSection>
 

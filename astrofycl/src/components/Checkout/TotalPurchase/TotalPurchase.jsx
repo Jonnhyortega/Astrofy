@@ -9,13 +9,13 @@ import {
   CancelButton
 } from "./TotalPurchaseStyles";
 import PurchaseFormModal from "../PurchaseForm/PurchaseFormModal";
-import ConfirmationModal from "./ConfirmationModal/ConfirmationModal"; // Nuevo Modal para Cancelar
+import ConfirmationModal from "./ConfirmationModal/ConfirmationModal";
 import { useSelector } from "react-redux";
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai"; // Íconos
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai"; 
 
 const TotalPurchase = () => {
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
-  const [showCancelModal, setShowCancelModal] = useState(false); // Para el modal de cancelar
+  const [showCancelModal, setShowCancelModal] = useState(false); 
   const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.cart);

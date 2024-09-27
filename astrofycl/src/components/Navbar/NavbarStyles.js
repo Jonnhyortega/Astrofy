@@ -72,10 +72,11 @@ export const CartIcon = styled.div`
   position: absolute;
   right: 50px;
   cursor: pointer;
+  transition: 0.6s ease;
   &:hover {
-    color: #ff9900;
-    filter: drop-shadow(2px 2px 10px red);
-    transition: color 0.3s ease, filter 0.3s ease;
+    transition:  0.6s ease;
+    transform: scale(1.4);
+
   }
 `;
 

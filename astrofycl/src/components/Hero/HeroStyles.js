@@ -79,7 +79,6 @@ export const HeroButton = styled(NavLink)`
   font-size: 1rem;
   font-weight: 900;
   color: #000;
-  width: 100px;
   background-color: #ff9900;
   border: none;
   border-radius: 5px;

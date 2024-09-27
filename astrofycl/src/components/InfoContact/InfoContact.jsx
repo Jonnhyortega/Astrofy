@@ -11,10 +11,12 @@ const InfoContact = () => {
   return (
     <Container>
       <Title>Contacto</Title>
+      
       <InfoSection>
         <Label>Teléfono</Label>
         <Info>(+54) 123 456 789</Info>
       </InfoSection>
+
       <InfoSection>
         <Label>Dirección</Label>
         <Info>Calle Falsa 123, Ciudad, País</Info>

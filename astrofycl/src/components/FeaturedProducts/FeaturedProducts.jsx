@@ -51,7 +51,7 @@ const FeaturedProducts = () => {
           })}
         </Container>
       )}
-      <HeroButton to={"/products"}>Productos</HeroButton>
+      <HeroButton to={"/products"}>Ver mas</HeroButton>
     </FeaturedProductsContainer>
   );
 };

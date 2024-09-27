@@ -7,6 +7,7 @@ import { MissionVision } from "../components/ContainerAboutUs/MissionVision";
 import { OurStory } from "../components/ContainerAboutUs/OurStory";
 import { AboutUsText } from "../components/ContainerAboutUs/AboutUsText";
 import CheckoutPage from "../pages/Checkout/CheckoutPage";
+import { Purchase } from "../components/Purchase/Purchase";
 const Routes = () => {
   return (
     <ReactDomRoutes>
@@ -18,7 +19,9 @@ const Routes = () => {
       </Route>
       <Route path="/contact" element={<Contact />} />
       <Route path="/products" element={<Products />} />
-      <Route path="/checkout" element={<CheckoutPage />}></Route>
+      <Route path="/checkout" element={<CheckoutPage />} />
+
+      <Route path="/purchase" element={<Purchase />} />
     </ReactDomRoutes>
   );
 };

@@ -45,13 +45,13 @@ export const ButtonSubmitStyled = styled.button`
   border: none;
   border-radius: 8px;
   color: black;
-  font-weight: 400;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   margin: 0 auto;
 
   &:hover {
-    background: #2f298f;
+    background: white;
     transition: all 0.3s ease-in-out;
   }
 `;

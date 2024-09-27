@@ -1,5 +1,14 @@
-import styled from "styled-components";
-
+import styled, { keyframes } from "styled-components";
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 export const ContainerOfProducts = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,20 +63,21 @@ export const CategoriesButton = styled.button.attrs((props) => ({
     color: props.isActive ? "black" : "#fff",
     transform: props.isActive ? "scale(1.1)" : null,
     fontWeight: props.isActive ? 800 : 400,
+    // border: props.isActive ? "none" : "1px solid white",
   },
 }))`
   display: block;
   width: 110px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
   padding: 7px 10px;
   transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease,
     transform 0.3s ease;
+  border: 1px solid transparent;
 
   &:hover {
-    background-color: grey;
+    box-shadow: 1px 1px 5px black;
   }
 `;
 
@@ -83,6 +93,7 @@ export const Title = styled.h2`
   background: linear-gradient(135deg, #ff9900, #ff6600);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: ${fadeIn} 0.8s ease-out;
 `;
 
 export const LoadMoreButton = styled.button`

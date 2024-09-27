@@ -7,6 +7,8 @@ import womensClothingReducer from "./womensClothing/womensClothingSlice";
 import electronicsReducer from "./electronics/electronicsSlice";
 import allProductsReducer from "./allproducts/allProductsSlice";
 import cartReducer from "./cart/cartSlice";
+import purchaseFormReducer from "./purchaseFormSlice/purchaseFormSlice"; 
+
 const persistConfig = {
   key: "root",
   storage,
@@ -19,6 +21,7 @@ const reducers = combineReducers({
   electronics: electronicsReducer,
   products: allProductsReducer,
   cart: cartReducer,
+  purchaseForm: purchaseFormReducer, 
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

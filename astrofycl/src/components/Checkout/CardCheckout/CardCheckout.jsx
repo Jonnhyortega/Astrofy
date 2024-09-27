@@ -43,7 +43,7 @@ export const CardCheckout = ({ cartItem }) => {
           ? cartItem.title.substring(0, maxLengthTitle) + "..."
           : cartItem.title}
       </ItemTitle>
-      <ItemPrice>${cartItem.price}</ItemPrice>
+      <ItemPrice>${Math.ceil(cartItem.price)}</ItemPrice>
       <ItemControls>
         <ItemButton onClick={handleDecrease}>
           <CiCircleMinus />

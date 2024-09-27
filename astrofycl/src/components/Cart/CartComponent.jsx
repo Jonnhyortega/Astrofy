@@ -10,10 +10,14 @@ import {
   CloseButton,
   CheckoutBox,
   EmptyButton,
-  ModalOverlay,
-  ModalContent,
-  ModalButton,
 } from "./CartComponentStyles";
+import {
+  ModalBackground,
+  ModalContainer,
+  ModalContent,
+  ModalActions,
+  Button,
+} from "./CardItemsStyles";
 import { CardItem } from "./CardItem";
 import { CiTrash } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
@@ -26,8 +30,7 @@ const Cart = () => {
   );
   const cartRef = useRef(null);
 
-  // Estado para controlar la visibilidad del modal
-  const [showModal, setShowModal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,15 +57,20 @@ const Cart = () => {
     navigate("/checkout");
     dispatch(toggleHiddenCart());
   };
-
+  
   const cartTotal = Math.ceil(
     cartItems.reduce((total, item) => total + item.quantity * item.price, 0) +
-      shippingCost
+    shippingCost
   );
-
+  
   const handleClearCart = () => {
     dispatch(clearCart());
-    setShowModal(false); // Cerrar el modal después de confirmar
+    setIsModal(false); 
+  };
+  
+  const handleCancel = () => {
+    setIsModal(false); 
+    dispatch(toggleHiddenCart());
   };
 
   return (
@@ -81,8 +89,7 @@ const Cart = () => {
           <CheckoutBox>
             <CartTotal>Total: ${cartTotal}</CartTotal>
             <CheckoutButton onClick={reDirectCheckout}>Comprar</CheckoutButton>
-            {/* Mostrar el modal cuando se haga clic en el botón */}
-            <EmptyButton onClick={() => setShowModal(true)}>
+            <EmptyButton onClick={() => setIsModal(true)}>
               <CiTrash />
             </EmptyButton>
           </CheckoutBox>
@@ -90,18 +97,24 @@ const Cart = () => {
       </CartContainer>
 
       {/* Modal de Confirmación */}
-      {showModal && (
-        <ModalOverlay>
-          <ModalContent>
-            <h2>¿Estás seguro de que deseas vaciar el carrito?</h2>
-            <div>
-              <ModalButton onClick={handleClearCart}>Confirmar</ModalButton>
-              <ModalButton onClick={() => setShowModal(false)}>
-                Cancelar
-              </ModalButton>
-            </div>
-          </ModalContent>
-        </ModalOverlay>
+      {isModal && (
+        <ModalBackground>
+          <ModalContainer>
+            <ModalContent>
+              <h2>Confirmar Eliminación</h2>
+              <p>¿Estás seguro que deseas eliminar este artículo?</p>
+            </ModalContent>
+            <ModalActions>
+              <Button
+                onClick={handleClearCart}
+                style={{ backgroundColor: "red" }}
+              >
+                Eliminar
+              </Button>
+              <Button onClick={handleCancel}>Cancelar</Button>
+            </ModalActions>
+          </ModalContainer>
+        </ModalBackground>
       )}
     </>
   );

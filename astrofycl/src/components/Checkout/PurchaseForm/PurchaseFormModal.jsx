@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   ModalOverlay,
   ModalContent,
@@ -9,33 +9,46 @@ import {
   Input,
   Checkbox,
   SubmitButton,
-} from './PurchaseFormModalStyles';
+} from "./PurchaseFormModalStyles";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../../redux/cart/cartSlice";
+import { savePurchaseFormData } from "../../../redux/purchaseFormSlice/purchaseFormSlice";
+import { useNavigate } from "react-router-dom";
 
-const PurchaseFormModal = ({ onClose, total }) => {
+const PurchaseFormModal = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { cartItems } = useSelector((state) => state.cart);
   const [formData, setFormData] = useState({
-    name: '',
-    lastName: '',
-    address: '',
-    dni: '',
-    cardNumber: '',
-    cardName: '',
-    cardCode: '',
+    name: "",
+    lastName: "",
+    address: "",
+    dni: "",
+    cardNumber: "",
+    cardName: "",
+    cardCode: "",
     termsAccepted: false,
+    products: [],
   });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Compra realizada con éxito!');
-    console.log('Datos de la compra:', formData);
-    onClose(); 
+    const updatedFormData = {
+      ...formData,
+      products: cartItems.map((i) => i.name),
+    };
+    dispatch(savePurchaseFormData(updatedFormData));
+    dispatch(clearCart());
+    navigate("/purchase");
+    onClose();
   };
 
   return (
@@ -68,6 +81,14 @@ const PurchaseFormModal = ({ onClose, total }) => {
               name="address"
               placeholder="Dirección"
               value={formData.address}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="text"
+              name="email"
+              placeholder="Correo electronico"
+              value={formData.email}
               onChange={handleChange}
               required
             />
@@ -109,7 +130,7 @@ const PurchaseFormModal = ({ onClose, total }) => {
               checked={formData.termsAccepted}
               onChange={handleChange}
               required
-            /> 
+            />
             Acepto los términos y condiciones
             <SubmitButton type="submit">Pagar</SubmitButton>
           </Form>

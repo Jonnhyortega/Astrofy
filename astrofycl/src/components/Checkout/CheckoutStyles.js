@@ -9,10 +9,11 @@ export const CheckoutContainer = styled.div`
 export const ContainerItems = styled.div`
   width: 80%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr ;
   flex-wrap: wrap;
   gap: 5px;
   justify-content: center;
+  align-items: center;
   margin: 0 auto;
 
   @media (max-width: 900px) {
