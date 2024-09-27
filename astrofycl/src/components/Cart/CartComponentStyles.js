@@ -13,6 +13,8 @@ export const CartContainer = styled.div`
   box-shadow: 1px 1px 5px black;
   animation: slideIn 0.3s ease-out;
 
+    background: #131415; 
+
   ::-webkit-scrollbar {
     width: 8px;
   }

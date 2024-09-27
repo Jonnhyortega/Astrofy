@@ -7,11 +7,13 @@ export const Form = styled(FormStyled)`
   gap: 10px;
   margin: 0 auto;
   width: 50%;
+    color: white;
+
 `;
 
 export const FormBox = styled.div`
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   padding: 70px;
   margin: 0 auto;
@@ -31,6 +33,7 @@ export const FormTitle = styled.h2`
   text-align: center;
   font-size: 2rem;
   margin: 0 0 1em 0;
+  color: white;
 `;
 
 export const FormSubtitle = styled.p`
@@ -65,8 +68,10 @@ export const TextArea = styled.textarea`
   height: 150px;
   resize: none;
   background: transparent;
-  color: var(--white);
+  color: white;
   outline: none;
+  font-weight: bold;
+  font-size: 1.4em;
 `;
 
 export const ErrorStyled = styled.span`
@@ -106,7 +111,7 @@ export const InputSt = styled.input`
   border-radius: 5px;
   padding: 10px;
   background: transparent;
-  color: var(--white);
+  color: white;
   outline: none;
 `;
 

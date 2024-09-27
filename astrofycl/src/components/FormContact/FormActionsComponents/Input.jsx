@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputSt, BoxInputSt, ErrorSt, LabelSt } from './FormContactStyles'
+import { InputSt, BoxInputSt, ErrorSt, LabelSt } from '../FormContactStyles'
 import { ErrorMessage, Field } from "formik";
 
 const Input = ({ name, label, type, isError }) => {

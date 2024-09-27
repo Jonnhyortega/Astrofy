@@ -14,7 +14,7 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  background: white;
+  background: black;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -24,6 +24,7 @@ export const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  border: 2px solid #ff9900;
   @media (max-width: 568px) {
     width: 60%;
   }
@@ -32,6 +33,7 @@ export const ModalContainer = styled.div`
 export const ModalMessage = styled.p`
   font-size: 18px;
   margin-bottom: 20px;
+  color: white;
 `;
 
 export const ModalButtons = styled.div`
@@ -47,20 +49,29 @@ export const ModalButtons = styled.div`
 `;
 
 export const ConfirmButton = styled.button`
-  background-color: #007bff;
-  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
+
+  background-color: #ff4d4d;
+  color: white;
+
+  &:hover {
+    background-color: #cc0000;
+  }
 `;
 
 export const CloseButton = styled.button`
-  background-color: #dc3545;
+  background-color: green;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover {
+    background: grey;
+  }
 `;

@@ -73,11 +73,11 @@ export const CategoriesButton = styled.button.attrs((props) => ({
   font-size: 14px;
   padding: 7px 10px;
   transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease,
-    transform 0.3s ease;
-  border: 1px solid transparent;
-
+  transform 0.3s ease;
+  border: 3px solid transparent;
+  
   &:hover {
-    box-shadow: 1px 1px 5px black;
+    border: 3px solid white;
   }
 `;
 
@@ -86,7 +86,7 @@ export const Title = styled.h2`
   text-align: center;
   color: #333;
   margin-top: 80px;
-  filter: drop-shadow(2px 2px 3px grey);
+  filter: drop-shadow(1px 1px 1px grey);
   font-size: 2.5rem;
   font-weight: 900;
   text-transform: uppercase;

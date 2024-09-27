@@ -1,7 +1,6 @@
 import React from "react";
 import { AboutUsContainer, NavLinks, StyledLink } from "./AboutUsFirstStyles";
 import { Outlet } from "react-router-dom";
-import portadaAstrofyCl from '../../imgs/portada-about-us.jpeg'
 export const AboutUsFirst = () => {
   return (
     <AboutUsContainer>

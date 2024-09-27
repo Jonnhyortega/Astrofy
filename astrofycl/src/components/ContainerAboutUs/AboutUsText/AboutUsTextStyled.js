@@ -120,7 +120,7 @@ export const ShopButton = styled.button`
     background: linear-gradient(135deg, #007bff, #00d084);
     color: white;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    transform: translateY(-5px); /* Levantar el botón al hacer hover */
+    transform: translateY(-4px); 
   }
 
   @media (max-width: 768px) {

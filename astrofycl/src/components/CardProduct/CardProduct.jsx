@@ -1,6 +1,6 @@
 // CardProduct.js
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"; // Importa useDispatch para despachar acciones
+import { useDispatch } from "react-redux";
 import {
   Card,
   Image,

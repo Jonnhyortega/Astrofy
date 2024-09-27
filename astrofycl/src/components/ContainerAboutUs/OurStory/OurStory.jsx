@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryContainer, StoryContent, FadeInSection } from "./OurStoryStyles";
-import { Title } from "./AboutUsTextStyled";
+import { Title } from "../AboutUsText/AboutUsTextStyled";
 
 export const OurStory = () => {
   return (

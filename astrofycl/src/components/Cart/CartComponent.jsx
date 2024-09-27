@@ -57,20 +57,19 @@ const Cart = () => {
     navigate("/checkout");
     dispatch(toggleHiddenCart());
   };
-  
+
   const cartTotal = Math.ceil(
     cartItems.reduce((total, item) => total + item.quantity * item.price, 0) +
-    shippingCost
+      shippingCost
   );
-  
+
   const handleClearCart = () => {
     dispatch(clearCart());
-    setIsModal(false); 
+    setIsModal(false);
   };
-  
+
   const handleCancel = () => {
-    setIsModal(false); 
-    dispatch(toggleHiddenCart());
+    setIsModal(false);
   };
 
   return (
@@ -96,13 +95,12 @@ const Cart = () => {
         )}
       </CartContainer>
 
-      {/* Modal de Confirmación */}
       {isModal && (
         <ModalBackground>
           <ModalContainer>
             <ModalContent>
               <h2>Confirmar Eliminación</h2>
-              <p>¿Estás seguro que deseas eliminar este artículo?</p>
+              <p>¿Estás seguro que deseas vaciar el carrito?</p>
             </ModalContent>
             <ModalActions>
               <Button

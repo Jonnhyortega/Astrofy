@@ -15,7 +15,7 @@ import {
   ModalBackground,
   ModalContainer,
   ModalContent,
-  ModalActions
+  ModalActions,
 } from "./CardItemsStyles";
 import { CiCirclePlus, CiCircleMinus, CiTrash } from "react-icons/ci";
 
@@ -31,7 +31,7 @@ export const CardItem = ({ cartItem }) => {
 
   const handleDecrease = () => {
     if (cartItem.quantity === 1) {
-      setIsModalOpen(true); // Abre el modal si la cantidad es 1
+      setIsModalOpen(true);
     } else if (cartItem.quantity > 1) {
       dispatch(decreaseQuantity(cartItem.id));
     }
@@ -39,11 +39,11 @@ export const CardItem = ({ cartItem }) => {
 
   const handleDeleteItem = () => {
     dispatch(removeFromCart(cartItem.id));
-    setIsModalOpen(false); // Cierra el modal
+    setIsModalOpen(false);
   };
 
   const handleCancel = () => {
-    setIsModalOpen(false); // Cierra el modal sin eliminar
+    setIsModalOpen(false);
   };
 
   return (
@@ -70,7 +70,6 @@ export const CardItem = ({ cartItem }) => {
         </Controls>
       </Card>
 
-      {/* Modal de confirmación */}
       {isModalOpen && (
         <ModalBackground>
           <ModalContainer>
@@ -79,7 +78,10 @@ export const CardItem = ({ cartItem }) => {
               <p>¿Estás seguro que deseas eliminar este artículo?</p>
             </ModalContent>
             <ModalActions>
-              <Button onClick={handleDeleteItem} style={{ backgroundColor: "red" }}>
+              <Button
+                onClick={handleDeleteItem}
+                style={{ backgroundColor: "red" }}
+              >
                 Eliminar
               </Button>
               <Button onClick={handleCancel}>Cancelar</Button>

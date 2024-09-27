@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
-import Input from "../FormContact/Input";
-import Submit from "./Sumbit";
-import TextAreaInput from "./TextAreaInput";
+import Input from "../FormContact/FormActionsComponents/Input";
+import Submit from "./FormActionsComponents/Sumbit";
+import TextAreaInput from "./FormActionsComponents/TextAreaInput";
 import { Form, FormBox, FormTitle, FormBoxInputs } from "./FormContactStyles";
 
 const phoneRegex = /\d{10}$/;

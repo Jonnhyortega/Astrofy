@@ -3,9 +3,9 @@ import Home from "../pages/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Products from "../pages/Products/Products";
 import Contact from "../pages/Contact/Contact";
-import { MissionVision } from "../components/ContainerAboutUs/MissionVision";
-import { OurStory } from "../components/ContainerAboutUs/OurStory";
-import { AboutUsText } from "../components/ContainerAboutUs/AboutUsText";
+import { MissionVision } from "../components/ContainerAboutUs/Mission&Vission/MissionVision";
+import { OurStory } from "../components/ContainerAboutUs/OurStory/OurStory";
+import { AboutUsText } from "../components/ContainerAboutUs/AboutUsText/AboutUsText";
 import CheckoutPage from "../pages/Checkout/CheckoutPage";
 import { Purchase } from "../components/Purchase/Purchase";
 const Routes = () => {

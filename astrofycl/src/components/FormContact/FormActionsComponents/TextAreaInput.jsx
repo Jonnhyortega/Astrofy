@@ -1,7 +1,7 @@
 import { ErrorMessage, Field } from "formik";
 import React from "react";
-import { InputBoxStyled, InputLabelStyled } from "./FormContactStyles";
-import { TextArea, ErrorStyled } from "./FormContactStyles";
+import { InputBoxStyled, InputLabelStyled } from "../FormContactStyles";
+import { TextArea, ErrorStyled } from "../FormContactStyles";
 
 const TextAreaInput = ({ name, label, isError }) => {
   return (

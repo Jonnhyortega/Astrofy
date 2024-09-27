@@ -25,20 +25,24 @@ export const Container = styled.div`
 
 export const InfoSection = styled.div`
   animation: ${fadeIn} 0.6s ease-in-out;
+  // border:1px solid gold;
 `;
 
 export const Label = styled.h3`
+  width: 100%;
+  color: #333;
+  filter: drop-shadow(1px 1px 1px grey);
   font-size: 1.5rem;
-  color: #34495e;
-  margin-bottom: 0.5rem;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ff9900, #ff6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const Info = styled.p`
   font-size: 1.125rem;
-  color: black;
-  margin: 0;
+  color: white;
   line-height: 1.6;
 `;
 

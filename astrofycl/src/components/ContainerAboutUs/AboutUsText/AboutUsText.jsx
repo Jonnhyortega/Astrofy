@@ -6,7 +6,7 @@ import {
   Description,
   ShopButton,
 } from "./AboutUsTextStyled";
-import astrofyOficceImg from "../../imgs/astrofy-office.jpeg";
+import astrofyOficceImg from "../../../imgs/astrofy-office.jpeg";
 
 export const AboutUsText = () => {
   const hookTo = useNavigate();
