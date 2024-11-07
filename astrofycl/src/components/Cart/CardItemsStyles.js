@@ -2,21 +2,14 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   display: flex;
-  margin-top: 10px;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 1px 1px 5px 1px black;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: transparent;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 500px;
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -35,17 +28,22 @@ export const Card = styled.div`
 `;
 
 export const Thumbnail = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 5px;
-  margin-right: 15px;
+  margin: 0 15px;
 `;
 
-export const Title = styled.div`
+export const Info = styled.div`
   flex-grow: 1;
-  font-weight: 500;
-  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  font-weight: 0;
+  color: var(--greenFull1);
+  font-size: 0.8em;
 
   @media (max-width: 768px) {
     font-size: 1em;
@@ -53,10 +51,15 @@ export const Title = styled.div`
   }
 `;
 
+export const Name = styled.div`
+  color: white;
+  margin: 0;
+  font-size: 1em;
+`;
+
 export const Price = styled.div`
-  margin: 0 10px;
   font-weight: 500;
-  color: #333;
+  color: white;
 
   @media (max-width: 768px) {
     font-size: 1em;
@@ -65,19 +68,29 @@ export const Price = styled.div`
 
 export const Controls = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 6px;
+  margin: 0 1em 0 0;
+`;
 
-  span {
-    font-weight: bold;
-    font-size: 1.1em;
-
-    @media (max-width: 768px) {
-      font-size: 1em;
-    }
-  }
-
+export const QuantityControls = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ff9900;
+  border-radius: 50px;
+  height: 30px;
+  padding-top: 6px;
+  color: white;
+`;
+export const Quantity = styled.p`
+  font-size: 1.1em;
+  color: white;
+  font-family: Roboto;
+  align-self: center;
   @media (max-width: 768px) {
-    margin-top: 10px;
+    font-size: 1em;
   }
 `;
 
@@ -85,26 +98,15 @@ export const Button = styled.button`
   margin: 0 5px;
   font-size: 1.5rem;
   font-weight: 900;
-  padding: 4px;
   border: none;
-  border-radius: 3px;
   cursor: pointer;
-  background-color: #007bff;
-  color: white;
+  color: #ff9900;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  background: transparent;
 
   &:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 1px 1px 5px grey;
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
-
-  @media (max-width: 768px) {
+    color: grey;
   }
 `;
 
@@ -114,7 +116,9 @@ export const ModalBackground = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  background-color: rgba(255, 255, 255, 0);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -6,16 +6,16 @@ import {
   TotalAmount,
   ButtonGroup,
   FinalizeButton,
-  CancelButton
+  CancelButton,
 } from "./TotalPurchaseStyles";
 import PurchaseFormModal from "../PurchaseForm/PurchaseFormModal";
 import ConfirmationModal from "./ConfirmationModal/ConfirmationModal";
 import { useSelector } from "react-redux";
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai"; 
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 
 const TotalPurchase = () => {
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
-  const [showCancelModal, setShowCancelModal] = useState(false); 
+  const [showCancelModal, setShowCancelModal] = useState(false);
   const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.cart);
@@ -51,12 +51,8 @@ const TotalPurchase = () => {
         <TotalText>TOTAL</TotalText>
         <TotalAmount>${cartTotal.toLocaleString("es-AR")}</TotalAmount>
         <ButtonGroup>
-          <FinalizeButton onClick={handleFinalize}>
-            <AiOutlineCheckCircle size={24} />
-          </FinalizeButton>
-          <CancelButton onClick={handleCancel}>
-            <AiOutlineCloseCircle size={24} />
-          </CancelButton>
+          <FinalizeButton onClick={handleFinalize}>Comprar</FinalizeButton>
+          <CancelButton onClick={handleCancel}>Cancelar </CancelButton>
         </ButtonGroup>
       </PurchaseContainer>
 

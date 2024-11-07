@@ -5,10 +5,11 @@ import {
   CartContainer,
   Title,
   CartItemsContainer,
-  CartTotal,
   CheckoutButton,
   CloseButton,
   CheckoutBox,
+  CartSubTotal,
+  CartTotal,
   EmptyButton,
 } from "./CartComponentStyles";
 import {
@@ -23,13 +24,12 @@ import { CiTrash } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartItems, hidden, shippingCost } = useSelector(
     (state) => state.cart
   );
+  const dispatch = useDispatch();
   const cartRef = useRef(null);
-
   const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
@@ -70,29 +70,90 @@ const Cart = () => {
 
   const handleCancel = () => {
     setIsModal(false);
+    dispatch(toggleHiddenCart());
   };
 
   return (
     <>
       <CartContainer hidden={hidden} ref={cartRef} onClick={handleCartClick}>
         <CloseButton onClick={handleCloseCart}>&times;</CloseButton>
+
         <CartItemsContainer>
-          <Title>Productos</Title>
+          <Title>Carrito de compras</Title>
           {cartItems.length ? (
             cartItems.map((item) => <CardItem key={item.id} cartItem={item} />)
           ) : (
             <span>Tu carrito está vacío</span>
           )}
         </CartItemsContainer>
+
         {cartItems.length > 0 && (
           <CheckoutBox>
-            <CartTotal>Total: ${cartTotal}</CartTotal>
-            <CheckoutButton onClick={reDirectCheckout}>Comprar</CheckoutButton>
-            <EmptyButton onClick={() => setIsModal(true)}>
-              <CiTrash />
-            </EmptyButton>
+            <CartSubTotal>
+              <p>Sub total sin envío: </p>
+              <p>
+                {cartTotal.toLocaleString("es-Ar", {
+                  style: "currency",
+                  currency: "ARS",
+                })}
+              </p>
+            </CartSubTotal>
+
+            {/* <ShippingBox>
+            <ShippBox1 onClick={handleShipping}>
+              <p>Medios de envío</p>
+              <p>{shippingModalOpen ? "-" : "+"}</p>
+            </ShippBox1>
+
+            {shippingModalOpen && (
+              <ControlsInfoShipping>
+                <ControlsA>
+                  <input type="number" placeholder="Código postal" />
+                  <button>OK</button>
+                </ControlsA>
+                <a
+                  target="blank"
+                  href="https://www.correoargentino.com.ar/formularios/cpa"
+                >
+                  No sé mi código postal
+                </a>
+              </ControlsInfoShipping>
+            )}
+          </ShippingBox> */}
+
+            <CartTotal>
+              <div className="total">
+                <p>Total:</p>
+                <p>
+                  {cartTotal.toLocaleString("es-Ar", {
+                    style: "currency",
+                    currency: "ARS",
+                  })}
+                </p>
+              </div>
+              <div className="discount">
+                <small>
+                  O{" "}
+                  <strong>
+                    $
+                    {Math.ceil(
+                      cartTotal - (cartTotal * 15) / 100
+                    ).toLocaleString("es-Ar", {
+                      style: "currency",
+                      currency: "ARS",
+                    })}
+                  </strong>{" "}
+                  por transferencia bancaria
+                </small>
+                <a>Contactar por whatsapp</a>
+              </div>
+            </CartTotal>
+             <CheckoutButton onClick={reDirectCheckout}>Iniciar compra</CheckoutButton>           
+            
           </CheckoutBox>
         )}
+
+        
       </CartContainer>
 
       {isModal && (

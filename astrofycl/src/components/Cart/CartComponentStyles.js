@@ -5,32 +5,30 @@ export const CartContainer = styled.div`
   top: 68px;
   right: 0;
   height: 70vh;
-  width: 600px;
-  padding: 90px 50px 0 50px;
+  width: 400px;
+  padding: 3em 1em;
   background-color: grey;
   overflow-y: scroll;
   z-index: 1000;
   box-shadow: 1px 1px 5px black;
   animation: slideIn 0.3s ease-out;
-
-    background: #131415; 
-
+  background: rgb(75, 75, 75);
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #007bff;
+    background-color:  #ff9900;
     border-radius: 4px;
     transition: background-color 0.3s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #0056b3;
+    background-color:  #ff9900;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
+    background-color:  #ff9900;
     border-radius: 4px;
   }
 
@@ -58,73 +56,123 @@ export const CartContainer = styled.div`
   }
 `;
 
-export const Title = styled.h4`
+export const Title = styled.div`
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 100;
+  color: white;
   position: absolute;
-  top: -20px;
-  text-align: center;
-  filter: drop-shadow(2px 2px 3px black);
-  font-size: 2rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #ff9900, #ff6600);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  top: 10px;
+  left: 10px;
 `;
 
 export const CartItemsContainer = styled.div`
   margin: 0 auto;
-  @media (max-width: 768px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 20%;
-    gap: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 `;
 
 export const CheckoutBox = styled.div`
-  width: 50%;
-  height: 100px;
+  width: 90%;
+  height: auto;
   margin: 10% auto;
   padding: 10px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
   gap: 5px;
-  box-shadow: 1px 1px 5px 1px black;
   position: relative;
+  margin-top: 20px;
 `;
+
+export const CartSubTotal = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  padding: 5px;
+
+  p {
+    font-size: 1em;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+  }
+`;
+
 export const CartTotal = styled.div`
-  font-size: 2em;
-  font-weight: bold;
-  // border: 1px solid #ff6600;
-  background: linear-gradient(135deg, #ff9900, #ff6600);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  width: 250;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  padding: 5px;
+
+  .total {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    text-align: right;
+  }
+
+  small {
+    color: #007bff;
+    font-weight: 100;
+  }
+
+  a {
+    font-weight: 100;
+    margin-left: 10px;
+    font-size: 0.8em;
+    color: white;
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+      color: grey;
+    }
+  }
 `;
 
 export const CheckoutButton = styled.button`
+  margin-top: 10px;
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  font-size: 1em;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.5em;
   font-weight: bold;
+  text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 150px;
   &:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color:  #ff9900;
   }
 
   &:active {
-    transform: translateY(1px);
+    transform: translateY(0.1em);
+  }
+
+  p {
+    font-size: 2rem;
+    font-family: "Dancing Script", cursive;
+    background: black;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: opacity 0.8s ease-in-out;
   }
 `;
 export const EmptyButton = styled.button`
@@ -152,51 +200,9 @@ export const EmptyButton = styled.button`
   }
 `;
 
-export const Card = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border: 1px solid #ddd;
-  margin: 10px 0;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-
-  div {
-    margin: 0 10px;
-    font-size: 1rem;
-    color: #333;
-  }
-
-  span {
-    display: flex;
-  }
-
-  button {
-    margin: 0 5px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-
-    &:hover {
-      background-color: #0056b3;
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(1px);
-    }
-  }
-`;
-
 export const CloseButton = styled.button`
   position: fixed;
-  top: 12%;
+  top: 11%;
   right: 1%;
   background: none;
   border: none;

@@ -8,9 +8,12 @@ import {
 import {
   Card,
   Thumbnail,
-  Title,
+  Info,
+  Name,
   Price,
   Controls,
+  QuantityControls,
+  Quantity,
   Button,
   ModalBackground,
   ModalContainer,
@@ -50,20 +53,23 @@ export const CardItem = ({ cartItem }) => {
     <>
       <Card>
         <Thumbnail src={cartItem.image} alt={cartItem.title} />
-        <Title>
-          {cartItem.title.length > maxLengthTitle
-            ? cartItem.title.substring(0, maxLengthTitle) + "..."
-            : cartItem.title}
-        </Title>
-        <Price>${cartItem.price}</Price>
+
+        <Info>
+          <Name>{cartItem.title.substring(0, 10)}</Name>
+          <Price>${cartItem.price.toLocaleString()}</Price>
+        </Info>
+
+
         <Controls>
-          <Button onClick={handleDecrease}>
-            <CiCircleMinus />
-          </Button>
-          <span>{cartItem.quantity}</span>
-          <Button onClick={handleIncrease}>
-            <CiCirclePlus />
-          </Button>
+          <QuantityControls>
+            <Button onClick={handleDecrease}>
+              <CiCircleMinus />
+            </Button>
+            <Quantity>{cartItem.quantity}</Quantity>
+            <Button onClick={handleIncrease}>
+              <CiCirclePlus />
+            </Button>
+          </QuantityControls>
           <Button onClick={() => setIsModalOpen(true)}>
             <CiTrash />
           </Button>
