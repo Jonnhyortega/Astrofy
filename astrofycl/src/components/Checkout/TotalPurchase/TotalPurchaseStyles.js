@@ -16,9 +16,6 @@ export const TotalText = styled.h3`
   color: white;
   margin: 0 auto;
   font-weight: bold;
-  background: linear-gradient(135deg, #ff9900, #ff6600);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 `;
 
 export const TotalAmount = styled.p`

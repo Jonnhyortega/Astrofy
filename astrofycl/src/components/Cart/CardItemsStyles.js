@@ -11,7 +11,7 @@ export const Card = styled.div`
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   @media (max-width: 768px) {
-    flex-direction: column;
+    margin-top: 30px;
     align-items: center;
     padding: 10px;
 
@@ -21,10 +21,7 @@ export const Card = styled.div`
     }
   }
 
-  @media (max-width: 568px) {
-    width: 150px;
-    height: 150px;
-  }
+
 `;
 
 export const Thumbnail = styled.img`

@@ -49,7 +49,12 @@ const TotalPurchase = () => {
     <>
       <PurchaseContainer>
         <TotalText>TOTAL</TotalText>
-        <TotalAmount>${cartTotal.toLocaleString("es-AR")}</TotalAmount>
+        <TotalAmount>
+          {cartTotal.toLocaleString("es-Ar", {
+            style: "currency",
+            currency: "ARS",
+          })}
+        </TotalAmount>
         <ButtonGroup>
           <FinalizeButton onClick={handleFinalize}>Comprar</FinalizeButton>
           <CancelButton onClick={handleCancel}>Cancelar </CancelButton>
