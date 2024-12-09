@@ -120,8 +120,8 @@ export const InputSt = styled.input`
   border-color: ${({ error }) => (error ? "var(--error)" : "var(--white)")};
   border-radius: 5px;
   padding: 10px;
-  background: transparent;
-  color: white;
+  background: white;
+  color: black;
   outline: none;
 `;
 

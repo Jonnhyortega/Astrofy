@@ -9,9 +9,6 @@ export const Form = styled(FormStyled)`
   margin: 0 auto;
   min-width: auto;
   color: white;
-  * {
-    border: 1px solid gold;
-  }
   position: relative;
 
   .showpw {
@@ -37,16 +34,17 @@ export const FormBox = styled.div`
 `;
 
 export const FormBoxInputs = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  min-width: 900px;
-  align-items:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 300px;
 `;
 
 export const FormTitle = styled.h2`
   text-align: center;
   font-size: 2rem;
-  margin: 0 0 1em 0;
+  margin: 2em 0 0 0;
   color: white;
 `;
 
@@ -74,21 +72,6 @@ export const ButtonSubmitStyled = styled.button`
   }
 `;
 
-export const TextArea = styled.textarea`
-  border: 1px solid;
-  border-color: ${({ error }) => (error ? "var(--error)" : "var(--white)")};
-  border-radius: 5px;
-  flex-wrap: wxrap;
-  width: 100%;
-  height: 150px;
-  resize: none;
-  background: transparent;
-  color: white;
-  outline: none;
-  font-weight: bold;
-  font-size: 1.4em;
-`;
-
 export const ErrorStyled = styled.span`
   padding-left: 5px;
   color: var(--error);
@@ -104,28 +87,13 @@ export const InputLabelStyled = styled.label`
   display: flex;
 `;
 
-// ------------------------------------------
-// INPUT STYLES
-
-export const BoxInputSt = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 150px;
-`;
-
-export const LabelSt = styled.label`
-  font-size: 1rem;
-  display: flex;
-`;
-
 export const InputSt = styled.input`
   border: 1px solid;
   border-color: ${({ error }) => (error ? "var(--error)" : "var(--white)")};
   border-radius: 5px;
   padding: 10px;
-  background: transparent;
-  color: white;
+  background: white;
+  color: black;
   outline: none;
 `;
 

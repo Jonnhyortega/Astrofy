@@ -63,11 +63,12 @@ const FormRegister = () => {
                 isError={touched.email && errors.email}
               />
               <Input
-                name="cellphone"
-                label="Telefono"
-                type="number"
-                isError={touched.cellphone && errors.cellphone}
+                name="password"
+                label="Password"
+                type="password"
+                isError={touched.email && errors.email}
               />
+              
             </FormBoxInputs>
             <Submit text={"Crear cuenta"} />
           </Form>
