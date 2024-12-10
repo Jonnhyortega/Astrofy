@@ -1,0 +1,6 @@
+export const URL_API_BASE = "http://localhost:8080/api"
+export const ALL_PRODUCTS = "/products"
+export const ELECTRONIC = "/products-electronic"
+export const MENS = "/products-clothes-mens"
+export const WOMENS = "/products-clothes-womens"
+export const JEWELRY = "/products-jewelry"

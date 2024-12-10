@@ -6,7 +6,6 @@ import {
   Info,
   MapContainer,
 } from "./InfoContactStyles";
-import { Title } from "../ContainerProducts/ContainerProductsStyles";
 const InfoContact = () => {
   return (
     <Container>

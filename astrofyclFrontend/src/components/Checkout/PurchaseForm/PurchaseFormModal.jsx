@@ -12,7 +12,6 @@ import {
 } from "./PurchaseFormModalStyles";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../../redux/cart/cartSlice";
-import { savePurchaseFormData } from "../../../redux/purchaseFormSlice/purchaseFormSlice";
 import { useNavigate } from "react-router-dom";
 
 const PurchaseFormModal = ({ onClose }) => {
@@ -45,7 +44,6 @@ const PurchaseFormModal = ({ onClose }) => {
       ...formData,
       products: cartItems.map((i) => i.name),
     };
-    dispatch(savePurchaseFormData(updatedFormData));
     dispatch(clearCart());
     navigate("/purchase");
     onClose();

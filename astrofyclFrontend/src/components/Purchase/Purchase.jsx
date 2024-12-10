@@ -5,16 +5,15 @@ import {
   Message,
   Notification,
 } from "./PurchaseStyles";
-import {Title} from "../ContainerProducts/ContainerProductsStyles"
 export const Purchase = () => {
   const purchaseFormData = useSelector((state) => state.purchaseForm);
 
   return (
     <Container>
-      <Title>
+      <h2>
         Muchas gracias {purchaseFormData.name}{" "}
         por su compra
-      </Title>
+      </h2>
 
       <Notification>
         Le hemos enviado un correo electrónico a {purchaseFormData.email} para

@@ -7,7 +7,7 @@ export const searchErrors = (
   next: NextFunction
 ): void => {
   const errors: Result<ValidationError> = validationResult(req);
-
+  
   if(!errors.isEmpty()){
     res.status(400).json(errors)
   } else {

@@ -39,7 +39,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     // Log the error for debugging purposes
     console.error("Error durante el proceso de registro:", error);
-
     // Respond with a 500 status and a generic error message
     res.status(500).json({ error: "Error al registrar el usuario" });
   }

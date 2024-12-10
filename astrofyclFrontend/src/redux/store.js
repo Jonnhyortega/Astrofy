@@ -1,13 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import mensClothingReducer from "./mensClothing/mensClothingSlice";
-import jewelryReducer from "./jewelry/jewelrySlice";
-import womensClothingReducer from "./womensClothing/womensClothingSlice";
-import electronicsReducer from "./electronics/electronicsSlice";
-import allProductsReducer from "./allproducts/allProductsSlice";
 import cartReducer from "./cart/cartSlice";
-import purchaseFormReducer from "./purchaseFormSlice/purchaseFormSlice"; 
 
 const persistConfig = {
   key: "root",
@@ -15,13 +9,7 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  mensClothings: mensClothingReducer,
-  womensClothings: womensClothingReducer,
-  jewelry: jewelryReducer,
-  electronics: electronicsReducer,
-  products: allProductsReducer,
-  cart: cartReducer,
-  purchaseForm: purchaseFormReducer, 
+  cart: cartReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
