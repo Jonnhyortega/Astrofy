@@ -6,11 +6,10 @@ import {
   Info,
   MapContainer,
 } from "./InfoContactStyles";
+import TitleSections from "../TitleSections/TitleSections";
 const InfoContact = () => {
   return (
     <Container>
-      <Title>Contacto</Title>
-      
       <InfoSection>
         <Label>Teléfono</Label>
         <Info>(+54) 123 456 789</Info>

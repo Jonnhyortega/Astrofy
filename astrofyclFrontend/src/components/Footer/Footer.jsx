@@ -1,22 +1,22 @@
-import React from 'react';
-import { 
-  FooterContainer, 
-  FooterSection, 
-  FooterTitle, 
-  FooterLink, 
-  SocialIcons, 
-  SocialIcon, 
-  PaymentMethodsContainer, 
-  PaymentCard, 
-  FooterBottom 
-} from './FooterStyles';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import React from "react";
+import {
+  FooterContainer,
+  FooterSection,
+  FooterTitle,
+  FooterLink,
+  SocialIcons,
+  SocialIcon,
+  PaymentMethodsContainer,
+  PaymentCard,
+  FooterBottom,
+} from "./FooterStyles";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
-import Visa from '../../imgs/payments/visa.jpg';
-import MasterCard from '../../imgs/payments/mastercard.jpg';
-import Amex from '../../imgs/payments/amex.jpg';
-import PayPal from '../../imgs/payments/paypal.jpg';
-import MercadoPago from '../../imgs/payments/mercadopago.png';
+import Visa from "../../imgs/payments/visa.jpg";
+import MasterCard from "../../imgs/payments/mastercard.jpg";
+import Amex from "../../imgs/payments/amex.jpg";
+import PayPal from "../../imgs/payments/paypal.jpg";
+import MercadoPago from "../../imgs/payments/mercadopago.png";
 const Footer = () => {
   return (
     <FooterContainer>
@@ -37,10 +37,24 @@ const Footer = () => {
       <FooterSection>
         <FooterTitle>Seguinos</FooterTitle>
         <SocialIcons>
-          <SocialIcon href="#" target='blank'><FaFacebook /></SocialIcon>
-          <SocialIcon href="#" target='blank'><FaTwitter /></SocialIcon>
-          <SocialIcon href="#" target='blank'><FaInstagram /></SocialIcon>
-          <SocialIcon href="#" target='blank'><FaLinkedin /></SocialIcon>
+          <SocialIcon href="https://www.jonnhyortegadev.com" target="blank">
+            <FaFacebook />
+          </SocialIcon>
+          <SocialIcon href="https://www.jonnhyortegadev.com">
+            <FaTwitter />
+          </SocialIcon>
+          <SocialIcon
+            href="https://www.linkedin.com/in/jonathan-ortega-a00970191/"
+            target="blank"
+          >
+            <FaInstagram />
+          </SocialIcon>
+          <SocialIcon
+            href="https://www.linkedin.com/in/jonathan-ortega-a00970191/"
+            target="blank"
+          >
+            <FaLinkedin />
+          </SocialIcon>
         </SocialIcons>
       </FooterSection>
 
@@ -56,7 +70,8 @@ const Footer = () => {
       </FooterSection>
 
       <FooterBottom>
-        &copy; {new Date().getFullYear()} ASTROFY. Todos los derechos reservados.
+        &copy; {new Date().getFullYear()} ASTROFY. Todos los derechos
+        reservados.
       </FooterBottom>
     </FooterContainer>
   );

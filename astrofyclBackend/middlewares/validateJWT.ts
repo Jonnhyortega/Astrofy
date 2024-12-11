@@ -12,9 +12,9 @@ const validarJWT = async (req: Request, res:Response, next: NextFunction): Promi
 		});
         return;
 	}
-
+	
 	try {
-        const claveSecreta = process.env.CLAVESECRETA as string;
+        const claveSecreta = process.env.CLAVE_SECRETA as string;
         const payload = jwt.verify(token, claveSecreta) as JwtPayload; 
 				      
         const {id} = payload;

@@ -8,6 +8,8 @@ export const GlobalStyles = createGlobalStyle`
     --gray-bg: #2b2b2c;
     --btn-gradient: linear-gradient(83deg, #ffa100, #fb103d);
     --btn-gradient-secondary: linear-gradient(140deg, #3B3022, #3B2329);
+    --funnel: "Funnel Display", sans-serif;
+    --ubuntu: "Ubuntu", sans-serif;
   }
 
   /* Scrollbar styles */

@@ -5,9 +5,10 @@ export const PurchaseContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  width: 200px;
+  width: 100%;
   margin: 20px auto;
   background-color:transparent;
+  
   }
 `;
 

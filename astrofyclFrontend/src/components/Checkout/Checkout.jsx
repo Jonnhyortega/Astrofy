@@ -8,7 +8,7 @@ export default function Checkout() {
   const { cartItems } = useSelector((state) => state.cart);
   return (
     <CheckoutContainer>
-      <h2>Productos</h2>
+      <h3>Productos</h3>
       <ContainerItems>
         {cartItems.length > 0 &&
           cartItems.map((item) => (

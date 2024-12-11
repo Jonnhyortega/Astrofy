@@ -7,8 +7,6 @@ import { check } from "express-validator";
 
 const router = Router();
 
-router.get("/get-orders", [validarJWT, searchErrors], getOrders);
-
 router.post(
   "/create-order",
   [
@@ -25,5 +23,8 @@ router.post(
   ],
   createOrder
 );
+
+router.get("/all-orders", validarJWT, getOrders);
+
 
 export default router

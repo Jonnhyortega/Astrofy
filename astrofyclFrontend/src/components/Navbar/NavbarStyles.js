@@ -62,7 +62,7 @@ export const NavLink = styled(Link)`
   transition: color 0.3s ease;
   text-decoration: none;
   font-weight: 900;
-
+  font-family: var(--funnel);
   &:hover {
     color: #ff9900;
   }

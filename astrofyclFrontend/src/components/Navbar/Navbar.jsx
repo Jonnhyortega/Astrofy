@@ -42,7 +42,7 @@ const Navbar = () => {
         <Small>imports</Small>
         <ContainerLinks>
           <NavLink to="/">Inicio</NavLink>
-          <NavLink to="/products">Shop</NavLink>
+          <NavLink to="/shop">Shop</NavLink>
           <NavLink to="/about-us">Acerca de nosotros</NavLink>
           <NavLink to="/contact">Contacto</NavLink>
         </ContainerLinks>

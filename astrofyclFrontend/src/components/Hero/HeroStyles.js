@@ -14,23 +14,19 @@ export const HeroContainer = styled.section`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   height: 100vh;
   color: #ff9900;
   text-align: center;
   overflow: hidden;
+  margin-top: 70px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    53deg,
+    rgba(0, 0, 0, 1) 81%,
+    rgba(38, 38, 38, 1) 100%
+  );
 `;
-
-export const VideoBackground = styled.video`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-`;
-
 export const Content = styled.div`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   animation: ${({ $isVisible }) => ($isVisible ? fadeIn : "none")} 2s
@@ -85,7 +81,7 @@ export const HeroButton = styled(NavLink)`
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   text-decoration: none;
-  
+
   &:hover {
     background-color: #fff;
     color: #000;

@@ -15,17 +15,16 @@ export const Container = styled.div`
   background-color: transparent;
   animation: ${fadeIn} 1s ease-in-out;
   padding: 0 2em;
-  display:flex;
+  display: flex;
   flex-direction: column;
+  margin-top: 50px;
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
-  // *{border:1px solid gold;}
 `;
 
 export const InfoSection = styled.div`
   animation: ${fadeIn} 0.6s ease-in-out;
-  // border:1px solid gold;
 `;
 
 export const Label = styled.h3`

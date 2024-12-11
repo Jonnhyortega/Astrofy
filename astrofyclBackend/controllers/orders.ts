@@ -1,36 +1,41 @@
 import { Response, Request } from "express";
-import Order, {IOrder} from "../models/order";
+import Order, { IOrder } from "../models/order";
 import { ObjectId } from "mongoose";
 
-export const getOrders = async (req:Request, res: Response): Promise<void>=>{
-    const usuarioId: ObjectId = req.body.usuarioConfirmado._id;
-    
-    const consulta = {user:usuarioId}
-    
-    const  orders = await Order.find({consulta})
+export const getOrders = async (req: Request, res: Response): Promise<void> => {
+  const usuarioId = req.body.usuarioConfirmado._id;
+  console.log(usuarioId);
 
-    res.json({
-        data:[...orders]
-    })
-}
+  const consulta = { user: usuarioId };
+  console.log(consulta);
 
-export const createOrder = async(req: Request, res:Response): Promise<void>=>{
-    const usuario: ObjectId = req.body.usuarioConfirmado._id;
+  const orders = await Order.find({ consulta });
+  console.error(orders)
+  res.json({
+    orders
+  });
+};
 
-    const orderData: IOrder = req.body;
+export const createOrder = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const usuario: ObjectId = req.body.usuarioConfirmado._id;
 
-    const data = {
-        ...orderData,
-        user: usuario,
-        createdDate: new Date(),
-        status: "pending"
-    }
+  const orderData: IOrder = req.body;
 
-    const order = new Order(data)
+  const data = {
+    ...orderData,
+    user: usuario,
+    createdDate: new Date(),
+    status: "pending",
+  };
 
-    order.save()
+  const order = new Order(data);
 
-    res.status(201).json({
-        order
-    })
-}
+  order.save();
+
+  res.status(201).json({
+    order,
+  });
+};
