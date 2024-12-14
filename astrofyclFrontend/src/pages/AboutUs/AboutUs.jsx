@@ -1,10 +1,14 @@
 import React from "react";
-import { AboutUsFirst } from "../../components/ContainerAboutUs/AboutUs";
-const AboutUs = () => {
+import { OurStory } from "../../components/OurStory/OurStory";
+import { Mission } from "../../components/Mission/Mission";
+import { AboutUsWrapper } from "./AboutUsStyles";
+
+export const AboutUs = () => {
   return (
-    <>
-      <AboutUsFirst />
-    </>
+    <AboutUsWrapper>
+      <OurStory />
+      <Mission />
+    </AboutUsWrapper>
   );
 };
 

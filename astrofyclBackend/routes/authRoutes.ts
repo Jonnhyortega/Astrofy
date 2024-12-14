@@ -15,8 +15,8 @@ router.post(
     check("email", "Formato incorrecto").isEmail(),
     check(
       "password",
-      "El password debe contener al menos 8 caracteres"
-    ).isLength({ min: 6, max: 8 }),
+      "El password debe contener 8 caracteres"
+    ).isLength({ min: 8, max: 8 }),
     check("email").custom(emailExists),
     searchErrors,
   ],
@@ -27,7 +27,6 @@ router.post(
 	"/login",
 	[
 		check("email", "El email es obligatorio").isEmail(),
-		check("password", "El password debe ser de 6 caracteres").isLength({ min: 6, max: 8 }),
 		searchErrors,
 	],
 	login

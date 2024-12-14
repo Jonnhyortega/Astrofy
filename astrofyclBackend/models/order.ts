@@ -29,10 +29,6 @@ const OrderSchema = new Schema<IOrder>({
     ref: "Usuario",
     required: true,
   },
-  price: {
-    type: Number,
-    required: true,
-  },
   shippingCost: {
     type: Number,
     required: true,
@@ -43,10 +39,6 @@ const OrderSchema = new Schema<IOrder>({
         type: Schema.Types.ObjectId,
         ref: "Product",
         required: true,
-      },
-      price: {
-        type: Number,
-        require: true
       },
       quantity: {
         type: Number,

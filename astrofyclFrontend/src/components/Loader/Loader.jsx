@@ -1,55 +1,47 @@
-import React from 'react';
+import React from "react";
+import styled, { keyframes } from "styled-components";
 
-import styled, { keyframes } from 'styled-components';
-
-const spin = keyframes`
-  0% {
-    transform: rotate(0deg);
+const bounce = keyframes`
+  0%, 80%, 100% {
+    transform: scale(0);
   }
-  100% {
-    transform: rotate(360deg);
+  40% {
+    transform: scale(1);
   }
 `;
 
-export const LoaderContainer = styled.div`
-margin-top: 30px;
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
+const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 5px;
 `;
 
-export const Ring = styled.div`
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid #fff;
+const Dot = styled.div`
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
   border-radius: 50%;
-  animation: ${spin} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff #ff9900;
-  
+  animation: ${bounce} 1.4s infinite ease-in-out;
+
   &:nth-child(1) {
-    animation-delay: -0.45s;
+    animation-delay: -0.32s;
   }
   &:nth-child(2) {
-    animation-delay: -0.3s;
+    animation-delay: -0.16s;
   }
   &:nth-child(3) {
-    animation-delay: -0.15s;
+    animation-delay: 0s;
   }
 `;
-
 
 const Loader = () => {
   return (
     <LoaderContainer>
-      <Ring />
-      <Ring />
-      <Ring />
-      <Ring />
+      <Dot />
+      <Dot />
+      <Dot />
     </LoaderContainer>
   );
 };

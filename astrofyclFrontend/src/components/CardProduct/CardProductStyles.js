@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import img from "../../imgs/BackgroundShop/shop-bckg.webp";
 
 export const CardWrapper = styled.div`
   display: flex;
@@ -10,14 +11,21 @@ export const CardWrapper = styled.div`
   text-align: center;
   border-radius: 5px;
   padding: 1.5em;
-  border: 1px solid black;
-  box-shadow: 1px 1px 5px black;
+  box-shadow: 1px 1px 10px black;
   position: relative;
-  background: white;
+  background: url(${img}) center center / cover fixed no-repeat;
+  @media(max-width: 568px) {
+    width: 100px;
+
+    button{
+    font-size: .7em;
+    }
+  }
 
   h3 {
-    color: black;
+    color: white;
     font-family: var(--funnel);
+    font-weight: bold;
     text-align: center;
     width: 100%;
     position: absolute;
@@ -27,6 +35,7 @@ export const CardWrapper = styled.div`
     width: 100px;
     height: 100px;
     margin-top: 20px;
+    border-radius: 2px;
   }
   span {
     font-size: 1.5em;
@@ -50,11 +59,12 @@ export const CardWrapper = styled.div`
     background: transparent;
     border: none;
     border-radius: 2px;
-    padding: 5px;
+    padding: 10px;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 15px;
+    color: var(--orange);
     &:hover {
-      background: var(--orange);
+      color: black;
     }
   }
 `;

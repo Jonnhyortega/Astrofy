@@ -14,17 +14,21 @@ export const verifyUser = async (
       res.status(400).json({
         msg: "No se encontro el usuario en la base de datos",
       });
+      console.log(picocolors.redBright(`❌❌El usuario ${email} no se encuentra en la base de datos❌❌`))
+
       return;
     }
     if (user.verified) {
       res.status(400).json({
-        msg: "Usuario verificado",
+        msg: "El usuario ya ha verificado",
       });
+      console.log(picocolors.bgWhiteBright(`❗El usuario ${email} ya se encuentra verificado❗`))
+
       return;
     }
     if (user.code !== code) {
       res.status(400).json({
-        msg: "Codigo incorrecto",
+        msg: "Código incorrecto",
       });
       return;
     }
@@ -35,7 +39,7 @@ export const verifyUser = async (
     res.status(200).json({
       msg: "Usuario verificado con exito",
     });
-    console.log(picocolors.bgGreen("Usuario verificado con exito, agunante el backend che 😎👌 "))
+    console.log(picocolors.bgBlue(`🟡🟡El usuario ${email} ha sido verificado🟡🟡`))
   } catch (error) {
     console.log(error);
     console.log(picocolors.bgRed("Error en el servidor"));

@@ -10,15 +10,7 @@ import {
   CheckoutBox,
   CartSubTotal,
   CartTotal,
-  EmptyButton,
 } from "./CartComponentStyles";
-import {
-  ModalBackground,
-  ModalContainer,
-  ModalContent,
-  ModalActions,
-  Button,
-} from "./CardItemsStyles";
 import { CardItem } from "./CardItem";
 import { useNavigate } from "react-router-dom";
 
@@ -67,7 +59,7 @@ const Cart = () => {
     setIsModal(false);
   };
 
-  const handleCancel = () => {
+  const handleCancel = () =>   {
     setIsModal(false);
     dispatch(toggleHiddenCart());
   };
@@ -134,7 +126,7 @@ const Cart = () => {
                 <small>
                   O{" "}
                   <strong>
-                    $
+                    
                     {Math.ceil(
                       cartTotal - (cartTotal * 15) / 100
                     ).toLocaleString("es-Ar", {
@@ -155,25 +147,6 @@ const Cart = () => {
         
       </CartContainer>
 
-      {isModal && (
-        <ModalBackground>
-          <ModalContainer>
-            <ModalContent>
-              <h2>Confirmar Eliminación</h2>
-              <p>¿Estás seguro que deseas vaciar el carrito?</p>
-            </ModalContent>
-            <ModalActions>
-              <Button
-                onClick={handleClearCart}
-                style={{ backgroundColor: "red" }}
-              >
-                Eliminar
-              </Button>
-              <Button onClick={handleCancel}>Cancelar</Button>
-            </ModalActions>
-          </ModalContainer>
-        </ModalBackground>
-      )}
     </>
   );
 };

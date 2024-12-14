@@ -20,8 +20,6 @@ export const Card = styled.div`
       font-size: 1.5em;
     }
   }
-
-
 `;
 
 export const Thumbnail = styled.img`
@@ -84,7 +82,7 @@ export const QuantityControls = styled.div`
 export const Quantity = styled.p`
   font-size: 1.1em;
   color: white;
-  font-family: Roboto;
+  font-family: var(--funnel);
   align-self: center;
   @media (max-width: 768px) {
     font-size: 1em;
@@ -114,23 +112,22 @@ export const ModalBackground = styled.div`
   width: 100vw;
   height: 100vh;
   backdrop-filter: blur(25px) saturate(200%);
-  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(15px) saturate(200%);
   background-color: rgba(255, 255, 255, 0);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-`;
 
-export const ModalContainer = styled.div`
-  width: 400px;
-  background: black;
-  border-radius: 8px;
-  border: 2px solid #ff9900;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  & > div {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -143,39 +140,42 @@ export const ModalContent = styled.div`
   }
 
   p {
-    font-size: 16px;
+    font-size: 1.4em;
+    font-weight: bold;
+    font-family: var(--funnel);
     color: white;
   }
 `;
 
 export const ModalActions = styled.div`
   display: flex;
-  justify-content: flex-end;
-
-  Button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
+  gap: 10px;
+  button {
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 1s ease;
+    padding: 0.8em;
+    background: transparent;
+    font-family: var(--funnel);
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+  }
+  .button1 {
+    border: 2px solid red;
+    cursor: pointer;
 
-    &:first-child {
-      background-color: #ff4d4d;
+    &:hover {
+      background: red;
       color: white;
     }
+  }
 
-    &:first-child:hover {
-      background-color: #cc0000;
-    }
+  .button2 {
+    border: 2px solid green;
+    background: transparent;
 
-    &:last-child {
-      background-color: green;
-    }
-
-    &:last-child:hover {
-      background-color: orange;
+    &:hover {
+      background: green;
+      color: white;
     }
   }
 `;

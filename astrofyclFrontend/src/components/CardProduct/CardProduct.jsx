@@ -19,7 +19,7 @@ export const CardProduct = ({ product }) => {
       <img src={product.image} alt={`Imagen de ${product.title}`} />
       <span>${product.price}</span>
       <button onClick={handleAddToCart}>
-        <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+        <FontAwesomeIcon icon={faShoppingCart} />
       </button>
     </CardWrapper>
   );

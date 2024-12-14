@@ -22,8 +22,8 @@ const Footer = () => {
     <FooterContainer>
       <FooterSection>
         <FooterTitle>Sobre Nosotros</FooterTitle>
-        <FooterLink to="/about-us/our-story">Nuestra Historia</FooterLink>
-        <FooterLink to="/about-us/mission-vision">Misión & Visión</FooterLink>
+        <FooterLink to="/about-us">Nuestra Historia</FooterLink>
+        <FooterLink to="/about-us">Misión & Visión</FooterLink>
       </FooterSection>
 
       <FooterSection>

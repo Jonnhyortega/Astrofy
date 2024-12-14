@@ -7,7 +7,7 @@ const Hero = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 1000);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -18,7 +18,7 @@ const Hero = () => {
       <Content $isVisible={isVisible}>
         <HeroTitle>ASTROFY</HeroTitle>
         <HeroSubtitle>Explora tu estilo exterior</HeroSubtitle>
-        <HeroButton to={"/products"}>Ver productos</HeroButton>
+        <HeroButton to={"/shop"}>Ver productos</HeroButton>
       </Content>
     </HeroContainer>
   );

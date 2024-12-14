@@ -15,17 +15,20 @@ export const HeroContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: start;
-  height: 100vh;
+  height: 120vh;
   color: #ff9900;
   text-align: center;
   overflow: hidden;
-  margin-top: 70px;
   background: rgb(0, 0, 0);
   background: linear-gradient(
     53deg,
     rgba(0, 0, 0, 1) 81%,
     rgba(38, 38, 38, 1) 100%
   );
+
+  // * {
+  //   border: 1px solid var(--orange);
+  // }
 `;
 export const Content = styled.div`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
@@ -33,6 +36,24 @@ export const Content = styled.div`
     ease-in-out;
   transition: opacity 0.5s ease;
   z-index: 2;
+  position: relative;
+
+
+  @media (max-width: 480px) {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-cotent: space-around;
+     h1{
+     margin-top: 60px;
+     }
+
+     h2{
+     margin:0;
+     }
+
+  }
 `;
 
 export const HeroTitle = styled.h1`
@@ -42,13 +63,16 @@ export const HeroTitle = styled.h1`
   margin-bottom: 20px;
   text-transform: uppercase;
   filter: drop-shadow(2px 2px 5px #ff9900);
-
+  padding-top: 50px;
   @media (max-width: 768px) {
     font-size: 4rem;
   }
 
   @media (max-width: 480px) {
     font-size: 4rem;
+  }
+  @media (max-width: 380px) {
+    font-size: 2.5rem;
   }
 `;
 
@@ -71,7 +95,7 @@ export const HeroSubtitle = styled.h2`
 `;
 
 export const HeroButton = styled(NavLink)`
-  padding: 5px 20px;
+  padding: 15px 30px;
   font-size: 1rem;
   font-weight: 900;
   color: #000;
@@ -95,6 +119,7 @@ export const HeroButton = styled(NavLink)`
 
   @media (max-width: 480px) {
     padding: 10px 20px;
-    font-size: 0.8rem;
+    font-size: 0.8rem;  
+    margin-top: 100px;
   }
 `;

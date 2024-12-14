@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --orange-bg: #2f2618;
+    --orange-dark:rgb(136, 84, 0);
     --orange: #ff9d01;
     --magenta: #FF005C;
     --gray-bg: #2b2b2c;

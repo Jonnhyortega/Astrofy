@@ -7,9 +7,11 @@ export const Register = () => {
     <Wrapper>
       <FormRegister />
       <div>
-        <span>¿Tiene cuenta?</span>
+        <span>¿Ya tenés cuenta?</span>
         <a href="/login">Iniciar sesión</a>
       </div>
+
+  
     </Wrapper>
   );
 };

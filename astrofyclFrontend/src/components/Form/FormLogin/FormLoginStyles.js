@@ -1,132 +1,121 @@
 import styled from "styled-components";
-import { Form as FormStyled } from "formik";
 
-export const Form = styled(FormStyled)`
+export const LoginForm = styled.form`
+  background: transparent;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
-  margin: 0 auto;
-  min-width: auto;
-  color: white;
+  padding: 1em;
+  justify-content: center;
+  font-family: var(--funnel);
+  h3 {
+    top: 100px;
+    left: 42%;
+    color: var(--orange);
+    font-weight: bold;
+    font-size: 2em;
+    width: 100%;
+  }
 
-  position: relative;
-
-  .showpw {
-    background: transparent;
-    border: none;
-    font-size: 1em;
-    position: absolute;
-    right: 5px;
-    top: 35px;
+  .label-password {
+    display: flex;
+    gap: 20px;
+    align-items: center;
     cursor: pointer;
-    transition: 0.3s;
-    &:hover {
-      filter: drop-shadow(1px 1px 10px var(--orange));
+    position: relative;
+
+    p {
+      position: absolute;
+      right: 0;
     }
   }
-`;
 
-export const FormBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-`;
+  input,
+  button {
+    background: transparent;
+    border: 1px solid var(--orange-dark);
+    padding: 0.6em;
+    font-family: var(--ubuntu);
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
 
-export const FormBoxInputs = styled.div`
-  display: flex;
-  gap: 10px;
-`;
+    &::placeholder {
+      color: white;
+      font-weight: 100;
+    }
 
-export const FormTitle = styled.h2`
-  text-align: center;
-  font-size: 2rem;
-  margin: 0 0 1em 0;
-  color: white;
-`;
-
-export const FormSubtitle = styled.p`
-  font-size: 1.2rem;
-  align-self: flex-start;
-`;
-
-export const ButtonSubmitStyled = styled.button`
-  background: #ff9900;
-  margin: 0 auto;
-  padding: 0.8rem 1rem;
-  min-width: 300px;
-  border: none;
-  border-radius: 8px;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  margin: 0 auto;
-
-  &:hover {
-    background: white;
-    transition: all 0.3s ease-in-out;
+    &::select {
+      border: 1px solid var(--orange);
+    }
   }
-`;
 
-export const TextArea = styled.textarea`
-  border: 1px solid;
-  border-color: ${({ error }) => (error ? "var(--error)" : "var(--white)")};
-  border-radius: 5px;
-  flex-wrap: wxrap;
-  width: 100%;
-  height: 150px;
-  resize: none;
-  background: transparent;
-  color: white;
-  outline: none;
-  font-weight: bold;
-  font-size: 1.4em;
-`;
+  button {
+    background: var(--orange);
+    border: transparent;
+    cursor: pointer;
 
-export const ErrorStyled = styled.span`
-  padding-left: 5px;
-  color: var(--error);
-`;
+    &:hover {
+      background: var(--orange-dark);
+    }
+  }
+  .checkbox {
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-export const InputBoxStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`;
-export const InputLabelStyled = styled.label`
-  font-size: 1rem;
-  display: flex;
-`;
+    .label-check {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 10px;
+    }
 
-// ------------------------------------------
-// INPUT STYLES
+    input[type="checkbox"] {
+      display: none; /* Oculta el checkbox nativo */
+    }
 
-export const BoxInputSt = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 150px;
-`;
+    .custom-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--orange-dark);
+      border-radius: 50%; /* Bordes redondeados */
+      background: transparent;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
 
-export const LabelSt = styled.label`
-  font-size: 1rem;
-  display: flex;
-`;
+      &:hover {
+        box-shadow: 0 0 10px var(--orange);
+      }
+    }
 
-export const InputSt = styled.input`
-  border: 1px solid;
-  border-color: ${({ error }) => (error ? "var(--error)" : "var(--white)")};
-  border-radius: 5px;
-  padding: 10px;
-  background: white;
-  color: black;
-  outline: none;
-`;
+    input[type="checkbox"]:checked + .custom-checkbox {
+      background: var(--orange);
+      border-color: var(--orange-dark);
+      transform: scale(1.1); /* Pequeño zoom al activarse */
+    }
 
-export const ErrorSt = styled.span`
-  padding-left: 5px;
-  color: red;
-  font-size: 10px;
+    input[type="checkbox"]:checked + .custom-checkbox::after {
+      content: "✔";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      animation: checkmark 0.3s ease;
+    }
+
+    @keyframes checkmark {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
 `;

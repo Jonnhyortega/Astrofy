@@ -14,13 +14,13 @@ import {
   Controls,
   QuantityControls,
   Quantity,
-  Button,
   ModalBackground,
-  ModalContainer,
+  Button,
   ModalContent,
   ModalActions,
 } from "./CardItemsStyles";
 import { CiCirclePlus, CiCircleMinus, CiTrash } from "react-icons/ci";
+import { cutThirdSpace } from "../../utils/cutTitle";
 
 export const CardItem = ({ cartItem }) => {
   const dispatch = useDispatch();
@@ -55,10 +55,9 @@ export const CardItem = ({ cartItem }) => {
         <Thumbnail src={cartItem.image} alt={cartItem.title} />
 
         <Info>
-          <Name>{cartItem.title.substring(0, 10)}</Name>
+          <Name>{cutThirdSpace(cartItem.title)}</Name>
           <Price>${cartItem.price.toLocaleString()}</Price>
         </Info>
-
 
         <Controls>
           <QuantityControls>
@@ -78,21 +77,19 @@ export const CardItem = ({ cartItem }) => {
 
       {isModalOpen && (
         <ModalBackground>
-          <ModalContainer>
+          <div>
             <ModalContent>
-              <h2>Confirmar Eliminación</h2>
               <p>¿Estás seguro que deseas eliminar este artículo?</p>
             </ModalContent>
             <ModalActions>
-              <Button
-                onClick={handleDeleteItem}
-                style={{ backgroundColor: "red" }}
-              >
+              <button className="button1" onClick={handleDeleteItem}>
                 Eliminar
-              </Button>
-              <Button onClick={handleCancel}>Cancelar</Button>
+              </button>
+              <button className="button2" onClick={handleCancel}>
+                Cancelar
+              </button>
             </ModalActions>
-          </ModalContainer>
+          </div>
         </ModalBackground>
       )}
     </>

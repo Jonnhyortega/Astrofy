@@ -1,9 +1,26 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
+const slideIn = keyframes`
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+const slideOut = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
 export const CartContainer = styled.div`
   position: fixed;
-  top: 68px;
-  right: 0;
+  top: 80px;
+  right: 20px;
   height: 70vh;
   width: 400px;
   padding: 3em 1em;
@@ -11,24 +28,33 @@ export const CartContainer = styled.div`
   overflow-y: scroll;
   z-index: 1000;
   box-shadow: 1px 1px 5px black;
-  animation: slideIn 0.3s ease-out;
-  background: rgb(75, 75, 75);
+  animation: ${(props) =>
+    props.hidden ? "slideOut 0.3s ease-out" : "slideIn 0.3s ease-out"};
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  &.open {
+    animation: ${slideIn} 0.5s forwards;
+    opacity: 1;
+  }
+
+  &.closed {
+    animation: ${slideOut} 0.5s forwards;
+  }
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color:  #ff9900;
+    background-color: #ff9900;
     border-radius: 4px;
     transition: background-color 0.3s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color:  #ff9900;
+    background-color: #ff9900;
   }
 
   ::-webkit-scrollbar-track {
-    background-color:  #ff9900;
+    background-color: #ff9900;
     border-radius: 4px;
   }
 
@@ -38,11 +64,22 @@ export const CartContainer = styled.div`
   @keyframes slideIn {
     from {
       opacity: 0;
-      transform: translateX(100%);
+      transform: translateY(100%);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
     }
   }
 
@@ -129,8 +166,8 @@ export const CartTotal = styled.div`
   }
 
   small {
-    color: #007bff;
-    font-weight: 100;
+    color: var(--orange);
+    font-weight: 400;
   }
 
   a {
@@ -159,7 +196,7 @@ export const CheckoutButton = styled.button`
   text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
   &:hover {
-    background-color:  #ff9900;
+    background-color: #ff9900;
   }
 
   &:active {
@@ -175,35 +212,11 @@ export const CheckoutButton = styled.button`
     transition: opacity 0.8s ease-in-out;
   }
 `;
-export const EmptyButton = styled.button`
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  font-size: 1em;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 100px;
-
-  &:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
-
-  @media (max-width: 768px) {
-  }
-`;
 
 export const CloseButton = styled.button`
   position: fixed;
-  top: 11%;
-  right: 1%;
+  top: 13%;
+  right: 6%;
   background: none;
   border: none;
   font-size: 2em;
@@ -219,5 +232,55 @@ export const CloseButton = styled.button`
     font-size: 2em;
     top: -5px;
     right: 0px;
+  }
+`;
+
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+export const ModalContainer = styled.div`
+  width: 400px;
+  background: black;
+  border-radius: 8px;
+  border: 2px solid #ff9900;
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
+export const ModalContent = styled.div`
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  p {
+    font-size: 16px;
+    color: white;
+  }
+`;
+
+export const ModalActions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    background: gold;
   }
 `;

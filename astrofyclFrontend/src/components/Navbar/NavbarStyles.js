@@ -7,8 +7,16 @@ export const NavbarContainer = styled.nav`
   color: #fff;
   z-index: 10;
   position: fixed;
-  width: 100%;
+  width: 90%;
+  top: 7%;
+  left: 50%;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
   padding: 0 10px;
+  border: 1px solid var(--orange);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0);
   @media (max-width: 768px) {
     justify-content: space-between;
   }
@@ -32,17 +40,17 @@ export const Logo = styled.h1`
 `;
 
 export const Small = styled.small`
-position: absolute;
+  position: absolute;
   color: red;
-  bottom:13px;
-  left:35px;
+  bottom: 13px;
+  left: 35px;
   letter-spacing: 5px;
-  font-size: .6em;
-  font-weight:900;
+  font-size: 0.6em;
+  font-weight: 900;
 
-   background: linear-gradient(135deg, #007bff, #00d084);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #007bff, #00d084);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const ContainerLinks = styled.ul`
@@ -70,20 +78,19 @@ export const NavLink = styled(Link)`
 
 export const CartIcon = styled.div`
   position: absolute;
-  right: 50px;
+  right: 20px;
   cursor: pointer;
   transition: 0.6s ease;
   &:hover {
-    transition:  0.6s ease;
-    transform: scale(1.4);
-
+    transition: 0.6s ease;
+    transform: scale(1.1);
   }
 `;
 
 export const CartCount = styled.span`
   position: absolute;
-  top: -12px;
-  right: -10px;
+  top: -15px;
+  right: -12px;
   background-color: transparent;
   color: #ff9900;
   border-radius: 50%;
@@ -94,16 +101,14 @@ export const CartCount = styled.span`
 `;
 
 export const ProfileIcon = styled.span`
-position: absolute;
-  right: 90px;
+  position: absolute;
+  right: 50px;
   cursor: pointer;
   transition: 0.6s ease;
   &:hover {
-    transition:  0.6s ease;
-    transform: scale(1.4);
-
+    transform: scale(1.1);
   }
-`
+`;
 
 export const MobileMenuButton = styled.div`
   display: none;

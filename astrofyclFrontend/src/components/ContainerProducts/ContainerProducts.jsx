@@ -45,7 +45,8 @@ export const ContainerProducts = () => {
 
   return (
     <ContainerWrapper>
-      <TitleSections text={"Tienda"} />
+      <div className="banner">
+      <h4>Tienda</h4>
       <select value={category} onChange={handleChange}>
         <option value="all">Todos</option>
         <option value="electronics">Electronica</option>
@@ -53,9 +54,12 @@ export const ContainerProducts = () => {
         <option value="men's clothing">Ropa hombre</option>
         <option value="jewelery">Joyería</option>
       </select>
+      </div>
+      <div className="container-products">
       {filteredProducts.map((product) => (
         <CardProduct key={product.id} product={product} />
       ))}
+      </div>
     </ContainerWrapper>
   );
 };
