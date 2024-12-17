@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { ContainerWrapper } from "./ContainerProductsStyles";
 import { fetchProducts } from "../../axios/axios";
 import CardProduct from "../CardProduct/CardProduct";
-import TitleSections from "../TitleSections/TitleSections";
-import Loader from "../Loader/Loader";
 import LoaderAstro from "../Loader/LoaderAstro";
 
 export const ContainerProducts = () => {

@@ -75,6 +75,7 @@ export const MissionWrapper = styled.section`
     position: relative;
     overflow: hidden;
 
+  
     &:hover {
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     }
@@ -84,11 +85,6 @@ export const MissionWrapper = styled.section`
       margin-bottom: 0.5rem;
       color: var(--orange);
       position: relative;
-
-      /* Glow effect */
-      &:hover {
-        // text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
-      }
     }
 
     p {
@@ -98,7 +94,6 @@ export const MissionWrapper = styled.section`
       transition: color 0.6s ease-in-out;
     }
 
-    /* Decorative background animation */
     &::before {
       content: "";
       position: absolute;
@@ -116,7 +111,6 @@ export const MissionWrapper = styled.section`
     }
   }
 
-  /* Keyframe animation for fade-in effect */
   @keyframes fadeIn {
     from {
       opacity: 0;

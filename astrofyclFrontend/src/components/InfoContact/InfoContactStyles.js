@@ -1,65 +1,88 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+export const ContactWrapper = styled.div`
+  background-color: #222;
+  color: #fff;
+  padding: 3rem 2rem;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1.2s ease-out;
+
+  h3 {
+    font-weight: bold;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ff6600, #ff9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+
+    @media (max-width: 368px) {
+      font-size: 1.8rem;
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .info-section {
+    margin-bottom: 1.5rem;
+
+    h4 {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ddd;
+      line-height: 1.6;
+    }
   }
-`;
 
-export const Container = styled.div`
-  background-color: transparent;
-  animation: ${fadeIn} 1s ease-in-out;
-  padding: 0 2em;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
-`;
-
-export const InfoSection = styled.div`
-  animation: ${fadeIn} 0.6s ease-in-out;
-`;
-
-export const Label = styled.h3`
-  width: 100%;
-  color: #333;
-  filter: drop-shadow(1px 1px 1px grey);
-  font-size: 1.5rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #ff9900, #ff6600);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-
-export const Info = styled.p`
-  font-size: 1.125rem;
-  color: white;
-  line-height: 1.6;
-`;
-
-export const MapContainer = styled.div`
-  margin-top: 2rem;
-  animation: ${fadeIn} 1.2s ease-in-out;
-
-  iframe {
-    border: none;
+  .map-container {
+    margin-top: 1rem;
     border-radius: 12px;
-    width: 100%;
-    height: 350px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    iframe {
+      border: none;
+      width: 80%;
+      height: 350px;
+      transition: all 0.3s ease;
+    }
+
+    &:hover iframe {
+      transform: scale(1.05);
+    }
   }
 
-  @media (max-width: 768px) {
-    iframe {
-      height: 250px;
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    a {
+      color: #fff;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ff6600;
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 `;

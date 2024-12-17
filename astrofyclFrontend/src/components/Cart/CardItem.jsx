@@ -62,7 +62,7 @@ export const CardItem = ({ cartItem }) => {
         <Controls>
           <QuantityControls>
             <Button onClick={handleDecrease}>
-              <CiCircleMinus />
+              {cartItem.quantity == 1 ? <CiTrash /> : <CiCircleMinus />}
             </Button>
             <Quantity>{cartItem.quantity}</Quantity>
             <Button onClick={handleIncrease}>

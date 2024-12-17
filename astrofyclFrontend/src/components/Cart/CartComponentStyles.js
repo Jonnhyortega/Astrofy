@@ -1,91 +1,52 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+import { motion } from "framer-motion";
 
-const slideIn = keyframes`
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+export const ModalOverlayStyled = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
 `;
 
-const slideOut = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-`;
-export const CartContainer = styled.div`
+export const CartContainer = styled(motion.div)`
   position: fixed;
-  top: 80px;
-  right: 20px;
-  height: 70vh;
+  top: 90px;
+  right: 0;
   width: 400px;
+  height: 35vw;
   padding: 3em 1em;
-  background-color: grey;
   overflow-y: scroll;
   z-index: 1000;
   box-shadow: 1px 1px 5px black;
-  animation: ${(props) =>
-    props.hidden ? "slideOut 0.3s ease-out" : "slideIn 0.3s ease-out"};
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-  &.open {
-    animation: ${slideIn} 0.5s forwards;
-    opacity: 1;
-  }
-
-  &.closed {
-    animation: ${slideOut} 0.5s forwards;
-  }
+  background-color: black;
+  border: 1px solid var(--orange);
+  border-radius: 5px;
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #ff9900;
+    background-color: var(--orange);
     border-radius: 4px;
     transition: background-color 0.3s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #ff9900;
+    background-color: var(--orange);
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #ff9900;
+    background-color: var(--orange);
     border-radius: 4px;
   }
 
   scrollbar-width: thin;
-  scrollbar-color: #007bff #f0f0f0;
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideOut {
-    from {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-  }
+  scrollbar-color: var(--orange);
 
   @media (max-width: 768px) {
     padding: 0 0 50px 0;
-    top: 0;
     width: 100%;
     height: 100vh;
     border-radius: 0;
@@ -95,11 +56,11 @@ export const CartContainer = styled.div`
 
 export const Title = styled.div`
   text-align: left;
-  font-size: 0.9rem;
-  font-weight: 100;
-  color: white;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--orange);
   position: absolute;
-  top: 10px;
+  top: 5px;
   left: 10px;
 `;
 
@@ -210,28 +171,6 @@ export const CheckoutButton = styled.button`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: opacity 0.8s ease-in-out;
-  }
-`;
-
-export const CloseButton = styled.button`
-  position: fixed;
-  top: 13%;
-  right: 6%;
-  background: none;
-  border: none;
-  font-size: 2em;
-  color: #333;
-  cursor: pointer;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #ff0000;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2em;
-    top: -5px;
-    right: 0px;
   }
 `;
 

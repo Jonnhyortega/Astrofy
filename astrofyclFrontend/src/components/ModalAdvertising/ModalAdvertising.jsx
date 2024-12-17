@@ -4,10 +4,15 @@ import { LogoHome } from "../Loader/LogoHome";
 export default function ModalAdvertising({ text, work }) {
   return (
     <Modal>
-      <LogoHome />
-      <div className="content">
-        <p>{text}</p>
-        <button onClick={work}>Ok</button>
+      <div>
+        <article>
+          <span>ASTROFY</span>
+          <small>imports</small>
+        </article>
+        <div className="content">
+          <p>{text}</p>
+          <button onClick={work}>Ok</button>
+        </div>
       </div>
     </Modal>
   );

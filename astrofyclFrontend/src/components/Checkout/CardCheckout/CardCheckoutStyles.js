@@ -9,6 +9,14 @@ export const ItemCard = styled.div`
   margin: 0 auto 10px auto;
   border-radius: 8px;
   width: 400px;
+  color: white;
+  border: 1px solid var(--orange);
+
+  img {
+    width: 50px;
+    height: 60px;
+    border-radius: 5px;
+  }
   span {
     font-size: 1em;
     font-weight: bold;
@@ -34,4 +42,5 @@ export const ItemTitle = styled.h4`
   font-size: 1rem;
   font-weight: bold;
   margin: 0;
+  font-family: var(--funnel);
 `;

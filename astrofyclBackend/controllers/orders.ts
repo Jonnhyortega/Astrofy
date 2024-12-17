@@ -23,10 +23,7 @@ export const createOrder = async (
   res: Response
 ): Promise<void> => {
   try {
-    // Usuario autenticado
     const usuario: Types.ObjectId = req.body.usuarioConfirmado._id;
-
-    // Datos de la orden enviados desde el cliente
     const { items, shippingDetails, shippingCost } = req.body;
 
     if (!items || items.length === 0) {

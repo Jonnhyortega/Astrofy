@@ -7,6 +7,7 @@ import { LoginForm } from "./FormLoginStyles";
 import Loader from "../../Loader/Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
@@ -21,6 +22,7 @@ export default function FormLogin() {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleToken = (e) => setTokenSesion(e.target.checked);
   const handleShowPw = () => setShowPw(!showPw);
+  const navigate = useNavigate()
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -35,11 +37,15 @@ export default function FormLogin() {
     try {
       const response = await fetchLogin({ email, password });
       console.log("Inicio de sesión exitoso", response);
-      dispatch(login({ token: response.data.token, tokenSesion, email }));
-      setEmail("");
-      setPassword("");
-      setTokenSesion(false);
-      setError(null);
+      dispatch(
+        login({
+          token: response.data.token,
+          usuario: response.data.usuario,
+          tokenSesion,
+        })
+      );
+      navigate("/")
+
     } catch (error) {
       console.error("Error al iniciar sesión", error);
       setError(error.response ? error.response.data.msg : "Error desconocido");

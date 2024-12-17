@@ -1,110 +1,138 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleHiddenCart } from "../../redux/cart/cartSlice";
 import {
   NavbarContainer,
-  Logo,
-  Small,
   ContainerLinks,
   CartIcon,
   CartCount,
   NavLink,
   MobileMenuButton,
-  MobileMenu,
-  MobileNavLink,
   ProfileIcon,
 } from "./NavbarStyles";
+import { MobileMenu } from "./MobileMenu/MobileMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence } from "framer-motion";
+import Cart from "../Cart/CartComponent";
+import { toggleHiddenCart } from "../../redux/cart/cartSlice";
+import { getUserNameFromStorage } from "../../utils/userName";
+import ModalUser from "../ModalUser/ModalUser";
+import LogoNavbar from "../LogoNav/LogoNavbar";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [modalProfile, setModalProfile] = useState(false);
+  const hiddenCart = useSelector((state) => state.cart.hidden);
   const dispatch = useDispatch();
-  const redirectTo = useNavigate();
   const searcherPath = useLocation();
-  const { pathname: path } = searcherPath; // Corregido
 
+  const handleModalProfile = () => {
+    if (hiddenCart) {
+      dispatch(toggleHiddenCart);
+    }
+    if (!hiddenCart && !modalProfile) {
+      dispatch(toggleHiddenCart());
+    }
+    setIsMenuOpen(false);
+    setModalProfile(!modalProfile);
+  };
+
+  const toggleMenuMobile = () => {
+    setModalProfile(false);
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const userNameToRender = getUserNameFromStorage();
   const cartItemsCount = useSelector((state) =>
     state.cart.cartItems.reduce((count, item) => count + item.quantity, 0)
   );
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleCartClick = () => {
-    dispatch(toggleHiddenCart());
-  };
-
   return (
-    <>
-      <NavbarContainer>
-        <Logo>
-          <Link to="/">ASTROFY</Link>
-        </Logo>
-        <Small>imports</Small>
-        <ContainerLinks>
-          <NavLink
-            style={{ borderBottom: path === "/" ? "1px solid var(--orange)" : "none" }}
-            to="/"
-          >
-            Inicio
-          </NavLink>
-          <NavLink
-            style={{ borderBottom: path === "/shop" ? "1px solid var(--orange)" : "none" }}
-            to="/shop"
-          >
-            Tienda
-          </NavLink>
-          <NavLink
-            style={{
-              borderBottom: path === "/about-us" ? "1px solid var(--orange)" : "none"
-            }}
-            to="/about-us"
-          >
-            Nosotros
-          </NavLink>
-          <NavLink
-            style={{
-              borderBottom: path === "/contact" ? "1px solid var(--orange)" : "none",
-            }}
-            to="/contact"
-          >
-            Contacto
-          </NavLink>
-        </ContainerLinks>
-        <CartIcon onClick={handleCartClick}>
+    <NavbarContainer>
+      <Cart />
+
+      <AnimatePresence>
+        {modalProfile && (
+          <ModalUser
+            closeModal={handleModalProfile}
+            nameUser={userNameToRender}
+          />
+        )}
+      </AnimatePresence>
+
+      <LogoNavbar />
+
+      <ContainerLinks>
+        <NavLink
+          style={{
+            borderBottom:
+              searcherPath.pathname == "/" ? "1px solid var(--orange)" : "none",
+          }}
+          to="/"
+        >
+          Inicio
+        </NavLink>
+        <NavLink
+          style={{
+            borderBottom:
+              searcherPath.pathname == "/shop"
+                ? "1px solid var(--orange)"
+                : "none",
+          }}
+          to="/shop"
+        >
+          Tienda
+        </NavLink>
+        <NavLink
+          style={{
+            borderBottom:
+              searcherPath.pathname == "/about-us"
+                ? "1px solid var(--orange)"
+                : "none",
+          }}
+          to="/about-us"
+        >
+          Nosotros
+        </NavLink>
+        <NavLink
+          style={{
+            borderBottom:
+              searcherPath.pathname == "/contact"
+                ? "1px solid var(--orange)"
+                : "none",
+          }}
+          to="/contact"
+        >
+          Contacto
+        </NavLink>
+      </ContainerLinks>
+
+      <div className="container-icons">
+        <ProfileIcon onClick={handleModalProfile}>
+          <FontAwesomeIcon icon={faUser} />
+        </ProfileIcon>
+        <CartIcon
+          onClick={() => {
+            setIsMenuOpen(false);
+            setModalProfile(false);
+            dispatch(toggleHiddenCart());
+          }}
+        >
           <FontAwesomeIcon icon={faCartShopping} />
           <CartCount>{cartItemsCount}</CartCount>
         </CartIcon>
-        <ProfileIcon
-          onClick={() => {
-            redirectTo("/login");
-          }}
-        >
-          <FontAwesomeIcon icon={faUser} />
-        </ProfileIcon>
-        <MobileMenuButton onClick={toggleMenu}>
-          {isMenuOpen ? "✖" : "☰"}
-        </MobileMenuButton>
-      </NavbarContainer>
+      </div>
 
-      <MobileMenu $isOpen={isMenuOpen}>
-        <MobileNavLink to="/" onClick={toggleMenu}>
-          Home
-        </MobileNavLink>
-        <MobileNavLink to="/products" onClick={toggleMenu}>
-          Shop
-        </MobileNavLink>
-        <MobileNavLink to="/about-us" onClick={toggleMenu}>
-          About us
-        </MobileNavLink>
-        <MobileNavLink to="/contact" onClick={toggleMenu}>
-          Contact
-        </MobileNavLink>
-      </MobileMenu>
-    </>
+      <MobileMenuButton onClick={toggleMenuMobile}>
+        {isMenuOpen ? "✖" : "☰"}
+      </MobileMenuButton>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <MobileMenu closeModal={toggleMenuMobile} key="menu-mobile" />
+        )}
+      </AnimatePresence>
+    </NavbarContainer>
   );
 };
 

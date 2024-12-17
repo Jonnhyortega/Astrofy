@@ -17,30 +17,35 @@ export const ModalWrapper = styled.div`
     font-size: 1.2em;
     padding: 1em;
     color: white;
-    width: 400px;
-    font-family: var(--ubuntu);
+    font-family: var(--funnel);
   }
 
   .inputs {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 30px;
 
     input {
+      color: white;
       border: 2px solid var(--orange);
       border-radius: 5px;
+      padding: 7px;
       font-weight: bold;
       font-size: 1em;
       text-align: center;
+      background: transparent;
+      font-family: var(--funnel);
     }
   }
 
   button {
+    font-family: var(--funnel);
     border: 2px solid var(--orange-dark);
     border-radius: 15px;
     width: 100px;
     background: transparent;
-    color: white;
+    color: var(--orange-dark);
     font-weight: bold;
     padding: 0.6em;
     cursor: pointer;
@@ -48,7 +53,7 @@ export const ModalWrapper = styled.div`
     &:hover {
       background: var(--orange);
       border: 2px solid transparent;
-      color: black;
+      color: var(--orange);
     }
   }
 `;

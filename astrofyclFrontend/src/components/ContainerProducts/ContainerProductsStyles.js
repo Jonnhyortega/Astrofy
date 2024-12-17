@@ -1,45 +1,35 @@
 import styled from "styled-components";
-import img from "../../imgs/BackgroundShop/shop-bckg.webp";
 export const ContainerWrapper = styled.section`
-  margin-top: 100px;
+  margin-top: 80px;
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   position: relative;
-
+  background: black;
   @media (max-width: 568px) {
-    .banner {
-      flex-direction: column;
-      gap: 10;
-      position: relative;
-      &::after {
-        content: "hola";
-        color: transparent;
-        height: 200px;
-      }
-      select {
-        position: absolute;
-        top: 50%;
-      }
-      h4 {
-        position: absolute;
-        top: -40px;
-      }
-    }
+    margin: 0;
   }
 
   .banner {
-    width: 100%;
+    height: 100px;
+    min-width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20%;
-    background: url(${img}) center center / cover fixed no-repeat;
+    gap: 15px;  
+
+    @media (max-width: 568px) {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0;
+    }
   }
+
   h4 {
     font-size: 3em;
     font-weight: bold;
@@ -47,25 +37,24 @@ export const ContainerWrapper = styled.section`
     font-style: italic;
     color: var(--orange);
     font-family: var(--funnel);
-    -webkit-text-stroke: 1px rgb(255, 128, 37);
-    filter: drop-shadow(1px 1px 10px var(--orange));
   }
 
   select {
-    text-align:right;
-    padding: 1em;
+    margin: 0;
+    text-align: center;
+    padding: .6em;
     border-radius: 4px;
-    border: 2px solid white;
-    background: transparent;
-    font-weight: bold;
+    border: 1px solid var(--orange);
+    background: black;
+    font-weight: 400;
     color: white;
     font-family: var(--funnel);
     font-size: 1em;
 
-     option {
-      color: black;
+    option {
+      color: white;
       background: transparent;
-      text-align:right;
+      text-align: right;
     }
   }
 
@@ -75,6 +64,6 @@ export const ContainerWrapper = styled.section`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
   }
 `;

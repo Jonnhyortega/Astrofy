@@ -1,28 +1,50 @@
 import styled from "styled-components";
 
 export const Modal = styled.div`
-  padding: 2em;
-  z-index: 2000;
-  display: flex;
-  width: 90%;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: fixed;
+  top: 0;
   left: 0;
-  border-radius: 10px;
-  border: 2px solid var(--orange);
-  &::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255);
-    backdrop-filter: blur(8px);
-    z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(15px) saturate(200%);
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  div {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+
+    article {
+      display: flex;
+      flex-direction: column;
+      span {
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        cursor: pointer;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #ff9900, #ff6600);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      small {
+        color: red;
+        letter-spacing: 10px;
+        font-size: 1em;
+        font-weight: 900;
+        background: linear-gradient(135deg, #007bff, #00d084);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
   }
 
   .content {
@@ -36,7 +58,6 @@ export const Modal = styled.div`
     font-weight: bold;
     text-align: left;
     font-size: 1.5em;
-    width: 400px;
     z-index: 2000;
   }
 
@@ -50,7 +71,7 @@ export const Modal = styled.div`
     cursor: pointer;
     width: 100px;
     font-familiy: var(--funnel);
-    
+
     &:hover {
       background: white;
       color: black;

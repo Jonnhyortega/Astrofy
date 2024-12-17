@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.footer`
+  border-top: 1px solid var(--orange);
   padding: 40px;
   background-color: black;
   color: #fff;
@@ -55,7 +56,7 @@ export const PaymentMethodsContainer = styled.div`
 export const PaymentCard = styled.img`
   width: 30px;
   height: 20px;
-  background-color:white;
+  background-color: white;
   padding: 10px;
   border-radius: 5px;
 `;

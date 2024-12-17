@@ -20,7 +20,7 @@ export const verifyUser = async (
     }
     if (user.verified) {
       res.status(400).json({
-        msg: "El usuario ya ha verificado",
+        msg: "El usuario ya ha sido verificado",
       });
       console.log(picocolors.bgWhiteBright(`❗El usuario ${email} ya se encuentra verificado❗`))
 
@@ -38,6 +38,7 @@ export const verifyUser = async (
     );
     res.status(200).json({
       msg: "Usuario verificado con exito",
+      userUpdated
     });
     console.log(picocolors.bgBlue(`🟡🟡El usuario ${email} ha sido verificado🟡🟡`))
   } catch (error) {

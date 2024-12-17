@@ -42,8 +42,6 @@ export const getProducts = async (
 ): Promise<void> => {
   try {
     const products = await Product.find();    
-    console.log(picocolors.bgGreen("Respuesta satisfactoria para productos"))
-
     res.status(200).json(products);
   } catch (error) {
     console.error("Error al obtener productos:", error);

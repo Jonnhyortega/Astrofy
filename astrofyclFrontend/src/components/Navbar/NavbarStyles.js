@@ -3,54 +3,25 @@ import { Link } from "react-router-dom";
 export const NavbarContainer = styled.nav`
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   background-color: #000;
   color: #fff;
   z-index: 10;
   position: fixed;
-  width: 90%;
-  top: 7%;
-  left: 50%;
-  border-radius: 5px;
-  transform: translate(-50%, -50%);
-  padding: 0 10px;
-  border: 1px solid var(--orange);
+  width: 100%;
+  top: 0;
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   background-color: rgba(255, 255, 255, 0);
+
+  .container-icons {
+    display: flex;
+    gap: 5px;
+  }
+
   @media (max-width: 768px) {
     justify-content: space-between;
   }
-`;
-
-export const Logo = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: 3px;
-  cursor: pointer;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #ff9900, #ff6600);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  &:hover {
-    background: linear-gradient(135deg, #007bff, #00d084);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-`;
-
-export const Small = styled.small`
-  position: absolute;
-  color: red;
-  bottom: 13px;
-  left: 35px;
-  letter-spacing: 5px;
-  font-size: 0.6em;
-  font-weight: 900;
-
-  background: linear-gradient(135deg, #007bff, #00d084);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 `;
 
 export const ContainerLinks = styled.ul`
@@ -77,20 +48,19 @@ export const NavLink = styled(Link)`
 `;
 
 export const CartIcon = styled.div`
-  position: absolute;
-  right: 20px;
   cursor: pointer;
   transition: 0.6s ease;
+  position: relative;
   &:hover {
+    color: var(--orange);
     transition: 0.6s ease;
-    transform: scale(1.1);
   }
 `;
 
 export const CartCount = styled.span`
   position: absolute;
   top: -15px;
-  right: -12px;
+  right: -15px;
   background-color: transparent;
   color: #ff9900;
   border-radius: 50%;
@@ -101,53 +71,27 @@ export const CartCount = styled.span`
 `;
 
 export const ProfileIcon = styled.span`
-  position: absolute;
-  right: 50px;
+  position: relative;
+  display: flex;
+  gap: 5px;
+  align-items: center;
   cursor: pointer;
   transition: 0.6s ease;
+
   &:hover {
-    transform: scale(1.1);
+    color: var(--orange);
   }
 `;
 
 export const MobileMenuButton = styled.div`
   display: none;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 20px;
   padding: 10px;
   color: #ff9900;
 
   @media (max-width: 768px) {
     display: block;
-    margin: 0 43% 0 5%;
   }
 `;
 
-export const MobileMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  right: 0;
-  width: 250px;
-  height: 100%;
-  background-color: black;
-  padding-top: 100px;
-  transform: ${({ $isOpen }) =>
-    $isOpen ? "translateX(0)" : "translateX(100%)"};
-  transition: transform 0.3s ease-in-out;
-  z-index: 9;
-`;
-
-export const MobileNavLink = styled(Link)`
-  padding: 15px 20px;
-  font-size: 1.2rem;
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease, filter 0.3s ease;
-  font-weight: bold;
-
-  &:hover {
-    color: #ff9900;
-    filter: drop-shadow(2px 1px 5px #ff9900);
-  }
-`;

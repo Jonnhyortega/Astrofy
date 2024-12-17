@@ -126,7 +126,12 @@ export const ModalBackground = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    border: 1px solid var(--orange);
+    background: black;
+
+    @media (max-width: 568px) {
+      border-radius: 0;
+    }
   }
 `;
 
@@ -150,6 +155,7 @@ export const ModalContent = styled.div`
 export const ModalActions = styled.div`
   display: flex;
   gap: 10px;
+
   button {
     cursor: pointer;
     padding: 0.8em;

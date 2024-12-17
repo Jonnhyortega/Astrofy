@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  user: null,
   token: null,
   tokenSesion: false,
-  email: "",
 };
 
 const authSlice = createSlice({
@@ -11,25 +11,36 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, action) {
-      const { token, tokenSesion, email } = action.payload;
+      const { token, usuario, tokenSesion } = action.payload;
+
+      // Guardar los datos en el estado global
       state.token = token;
       state.tokenSesion = tokenSesion;
-      state.email = email;
+      state.user = usuario;
+
+      const userString = JSON.stringify(usuario);
+
       if (tokenSesion) {
         localStorage.setItem("tokenAuth", token);
-        localStorage.setItem("user", email);
-        console.log(`${email} y ${token} en local storage`)
+        localStorage.setItem("user", userString);
+        console.log(`${usuario.email} y token guardados en localStorage`);
       } else {
         sessionStorage.setItem("tokenAuth", token);
-        console.log(`${email} y ${token} en sesion storage`)
-        sessionStorage.setItem("user", email);
+        sessionStorage.setItem("user", userString);
+        console.log(`${usuario.email} y token guardados en sessionStorage`);
       }
     },
     logout(state) {
       state.token = null;
       state.tokenSesion = false;
+      state.user = null;
+
       localStorage.removeItem("tokenAuth");
+      localStorage.removeItem("user");
       sessionStorage.removeItem("tokenAuth");
+      sessionStorage.removeItem("user");
+
+      console.log("Sesión cerrada y datos eliminados.");
     },
   },
 });
