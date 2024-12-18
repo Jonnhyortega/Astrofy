@@ -3,7 +3,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalBody,
   CloseButton,
   Form,
   Input,
@@ -20,7 +19,7 @@ const PurchaseFormModal = ({ onClose }) => {
   const { cartItems } = useSelector((state) => state.cart);
   const [formData, setFormData] = useState({
     name: "",
-    lastName: "",
+    cellphone: "",
     address: "",
     dni: "",
     cardNumber: "",
@@ -44,19 +43,20 @@ const PurchaseFormModal = ({ onClose }) => {
       ...formData,
       products: cartItems.map((i) => i.name),
     };
+
     dispatch(clearCart());
     navigate("/purchase");
     onClose();
   };
 
   return (
-    <ModalOverlay>
+    <ModalOverlay >
       <ModalContent>
-        <ModalHeader>
-          <h2>Datos de Compra</h2>
           <CloseButton onClick={onClose}>✖</CloseButton>
+        <ModalHeader>
+          <h2>Datos de facturación</h2>
         </ModalHeader>
-        <ModalBody>
+
           <Form onSubmit={handleSubmit}>
             <Input
               type="text"
@@ -67,10 +67,11 @@ const PurchaseFormModal = ({ onClose }) => {
               required
             />
             <Input
-              type="text"
-              name="lastName"
+              type="number"
+              maxLength={10}
+              name="cellphone"
               placeholder="Apellido"
-              value={formData.lastName}
+              value={formData.cellphone}
               onChange={handleChange}
               required
             />
@@ -104,6 +105,8 @@ const PurchaseFormModal = ({ onClose }) => {
               placeholder="Número de tarjeta de crédito"
               value={formData.cardNumber}
               onChange={handleChange}
+              pattern="\d{19}"
+              maxlength="19"
               required
             />
             <Input
@@ -115,24 +118,27 @@ const PurchaseFormModal = ({ onClose }) => {
               required
             />
             <Input
+            style={{width: "50px"}}
               type="text"
               name="cardCode"
-              placeholder="Código detrás de la tarjeta"
+              placeholder="Código"
+              maxLength={3}
               value={formData.cardCode}
               onChange={handleChange}
               required
             />
-            <Checkbox
-              type="checkbox"
-              name="termsAccepted"
-              checked={formData.termsAccepted}
-              onChange={handleChange}
-              required
-            />
-            Acepto los términos y condiciones
+            <label style={{ color: "white" }}>
+              <Checkbox
+                type="checkbox"
+                name="termsAccepted"
+                checked={formData.termsAccepted}
+                onChange={handleChange}
+                required
+              />
+              Acepto los términos y condiciones
+            </label>
             <SubmitButton type="submit">Pagar</SubmitButton>
           </Form>
-        </ModalBody>
       </ModalContent>
     </ModalOverlay>
   );

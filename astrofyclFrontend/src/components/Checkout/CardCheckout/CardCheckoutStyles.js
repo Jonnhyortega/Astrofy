@@ -7,10 +7,9 @@ export const ItemCard = styled.div`
   justify-content: space-between;
   padding: 15px;
   margin: 0 auto 10px auto;
-  border-radius: 8px;
   width: 400px;
   color: white;
-  border: 1px solid var(--orange);
+  border-bottom: 1px solid grey;
 
   img {
     width: 50px;

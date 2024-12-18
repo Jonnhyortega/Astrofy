@@ -5,6 +5,7 @@ import {
   LOGIN,
   REGISTER,
   VERIFY,
+  CREATE_ORDER,
 } from "../utils/api";
 
 export const fetchProducts = async () => {
@@ -33,10 +34,6 @@ export const fetchLogin = async (credentials) => {
     throw error;
   }
 };
-// Acceder al token para futuras solicitudes
-// const authToken = localStorage.getItem('authToken');
-
-// axios.js
 
 export const registerUser = async (userData) => {
   try {
@@ -51,10 +48,20 @@ export const registerUser = async (userData) => {
 export const verifyUser = async (userData) => {
   try {
     const response = await axios.patch(URL_API_BASE + VERIFY, userData);
-    console.log(response)
+    console.log(response);
     return response;
   } catch (error) {
     console.log(error);
-    throw error
+    throw error;
+  }
+};
+
+export const createOrder = async (data) => {
+  try {
+    const response = await axios.post(URL_API_BASE+CREATE_ORDER)
+    console.log(response)
+    return response
+  } catch (error) {
+    return error;
   }
 };

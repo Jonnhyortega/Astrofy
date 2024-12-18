@@ -24,9 +24,6 @@ const TotalPurchase = () => {
     cartItems.reduce((total, item) => total + item.quantity * item.price, 0)
   );
 
-  const handleCancel = () => {
-    setShowCancelModal(true);
-  };
 
   const handleFinalize = () => {
     setShowPurchaseModal(true);
@@ -48,17 +45,14 @@ const TotalPurchase = () => {
   return (
     <>
       <PurchaseContainer>
-        <TotalText>TOTAL</TotalText>
+        <TotalText>Total a abonar</TotalText>
         <TotalAmount>
           {cartTotal.toLocaleString("es-Ar", {
             style: "currency",
             currency: "ARS",
           })}
         </TotalAmount>
-        <ButtonGroup>
           <FinalizeButton onClick={handleFinalize}>Comprar</FinalizeButton>
-          <CancelButton onClick={handleCancel}>Cancelar </CancelButton>
-        </ButtonGroup>
       </PurchaseContainer>
 
       {showPurchaseModal && (

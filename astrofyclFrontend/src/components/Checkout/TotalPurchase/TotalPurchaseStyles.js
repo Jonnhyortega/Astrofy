@@ -4,7 +4,7 @@ export const PurchaseContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 25px;
   width: 100%;
   margin: 20px auto;
   background-color:transparent;
@@ -33,16 +33,19 @@ export const ButtonGroup = styled.div`
 `;
 
 export const FinalizeButton = styled.button`
-  background-color: #28a745;
-  color: white;
+  background-color: white;
+  color: black;
+  font-family: var(--funnel);
+  width: 150px;
   border: none;
   padding: 15px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.2rem;
+  font-weight: bold;
 
   &:hover {
-    background-color: #218838;
+    background-color: var(--orange);
   }
 `;
 

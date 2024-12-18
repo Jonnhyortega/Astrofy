@@ -10,6 +10,7 @@ export const CardProduct = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
+    console.log(product)
     dispatch(addToCart(product)); 
   };
 

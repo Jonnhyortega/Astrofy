@@ -13,7 +13,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 export const CardCheckout = ({ cartItem }) => {
   return (
     <ItemCard>
-      <FontAwesomeIcon icon={faCheck} />
+      <FontAwesomeIcon style={{color: "var(--orange)"}} icon={faCheck} />
       <img src={cartItem.image} alt={cartItem.title} />
       <ItemTitle>{cutThirdSpace(cartItem.title)}</ItemTitle>
       <span>{cartItem.quantity}</span>

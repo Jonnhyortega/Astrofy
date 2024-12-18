@@ -6,16 +6,20 @@ export const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.22);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  // *{border:1px solid gold;}
 `;
 
 export const ModalContent = styled.div`
-  background: white;
-  padding: 20px;
+  background: black;
+  border: 1px solid var(--orange);
+  padding: 10px;
   border-radius: 8px;
   width: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -25,42 +29,55 @@ export const ModalContent = styled.div`
   align-items: center;
 `;
 
-export const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const ModalBody = styled.div`
-  margin-top: 10px;
-`;
-
 export const CloseButton = styled.button`
   background: transparent;
   border: none;
   font-size: 20px;
   cursor: pointer;
+  color: red;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  &:hover {
+    color: white;
+  }
+`;
+
+export const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  h2 {
+    color: var(--orange);
+    font-family: var(--funnel);
+  }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 5px;
 `;
 
 export const Input = styled.input`
-  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background: transparent;
+  color: white;
 `;
 
 export const Checkbox = styled.input`
-  
+  color: white;
 `;
 
 export const SubmitButton = styled.button`
-  background-color: #28a745;
-  color: white;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-family: var(--funnel);
   border: none;
   padding: 10px;
   border-radius: 5px;
