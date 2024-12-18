@@ -4,8 +4,11 @@ import { IProduct } from "./product";
 interface IShippingDetails {
   name: string;
   cellphone: string;
-  location: string;
   address: string;
+  dni:number;
+  cardNumber: number;
+  cardName: string;
+  cardCode: number;
 }
 
 export interface IOrder {
@@ -55,13 +58,25 @@ const OrderSchema = new Schema<IOrder>({
       type: String,
       required: true,
     },
-    location: {
-      type: String,
-      required: true,
-    },
     address: {
       type: String,
       required: true,
+    },
+    dni: {
+      type: String,
+      required: true,
+    },
+    cardNumber:{
+      type: Number,
+      required: true,
+    },
+    cardName: {
+      type: String,
+      required: true
+    },
+    cardCode:{
+      type: Number,
+      required: true
     },
   },    
   status: {

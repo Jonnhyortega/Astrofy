@@ -33,7 +33,6 @@ export const createOrder = async (
       return;
     }
 
-    // Calculamos el precio total de los productos
     let totalProductPrice = 0;
     for (const item of items) {
       const product = await Product.findById(item.product);
