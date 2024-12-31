@@ -10,11 +10,12 @@ export const RegisterCode = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showButton, setShowButton]=useState(false)
   const redirect = useNavigate();
 
   const handleError = () => {
     setError(null);
-    setLoading(false)
+    setLoading(false);
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -32,26 +33,43 @@ export const RegisterCode = () => {
 
     try {
       const userVerify = await verifyUser({ email: email, code: code });
-      alert(userVerify.data.msg);
-      redirect("/perfil-data");
+      setError(userVerify.data.msg);
+      if (userVerify.data.msg === "Usuario verificado con éxito") {
+        setTimeout(() => {
+          redirect("/login");
+        }, 2000); 
+      }
     } catch (error) {
-      setLoading(!loading)
+      setLoading(!loading);
       setError(error.response.data.msg);
       console.error(error.response.data.msg);
     } finally {
       setLoading(!loading);
     }
   };
-  
+
   return (
     <ModalWrapper>
-      <p>Ingrese el codigo que le enviamos al email</p>
+      <p>Verificar cuenta</p>
       <div className="inputs">
-        <input onChange={handleEmail} type="email" />
-        <input onChange={handleCode} minLength="6" maxLength="6" type="text" />
+        <label htmlFor="email">
+          Ingrese el correo
+          <input name="email" onChange={handleEmail} type="email" />
+        </label>
+        <label htmlFor="code">
+          Ingrese el codigo
+          <input
+            onChange={handleCode}
+            minLength="6"
+            maxLength="6"
+            type="text"
+          />
+        </label>
       </div>
-      <button onClick={handleVerify}>{loading ? <Loader /> : "Verificar"}</button>
-      {error && <ModalAdvertising text={error} work={handleError} />}
+      <button className="button-verify" onClick={handleVerify}>
+        {loading ? <Loader /> : "Verificar"}
+      </button>
+      {error && <ModalAdvertising text={error} work={handleError} boolean={showButton} />}
     </ModalWrapper>
   );
 };

@@ -16,13 +16,15 @@ export default function FormLogin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showPw, setShowPw] = useState(false);
+  const [showButton, setShowButton] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleToken = (e) => setTokenSesion(e.target.checked);
   const handleShowPw = () => setShowPw(!showPw);
-  const navigate = useNavigate()
+
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -36,7 +38,6 @@ export default function FormLogin() {
     setLoading(true);
     try {
       const response = await fetchLogin({ email, password });
-      console.log("Inicio de sesión exitoso", response);
       dispatch(
         login({
           token: response.data.token,
@@ -44,11 +45,20 @@ export default function FormLogin() {
           tokenSesion,
         })
       );
-      navigate("/")
-
+      navigate("/");
     } catch (error) {
       console.error("Error al iniciar sesión", error);
-      setError(error.response ? error.response.data.msg : "Error desconocido");
+      if (error.response && error.response.status === 403) {
+        setShowButton(!showButton);
+        setError(error.response.data.msg);
+        setTimeout(() => {
+          navigate("/register-code-user");
+        }, 4000);
+      } else {
+        setError(
+          error.response ? error.response.data.msg : "Error desconocido"
+        );
+      }
     } finally {
       setLoading(false);
     }
@@ -59,7 +69,7 @@ export default function FormLogin() {
       <h3>Iniciar sesión</h3>
       <input
         onChange={handleEmail}
-        type="text"
+        type="email"
         placeholder="Ingrese correo"
         value={email}
         aria-label="Correo electrónico"
@@ -103,7 +113,15 @@ export default function FormLogin() {
         </label>
       </div>
 
-      {error && <ModalAdvertising text={error} work={() => setError(null)} />}
+      {error && (
+        <ModalAdvertising
+          text={error}
+          boolean={showButton}
+          work={() => {
+            setError(null);
+          }}
+        />
+      )}
     </LoginForm>
   );
 }

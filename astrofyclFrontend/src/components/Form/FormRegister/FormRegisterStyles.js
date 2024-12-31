@@ -33,12 +33,17 @@ export const RegisterForm = styled.form`
   input,
   button {
     background: transparent;
-    border: 1px solid var(--orange-dark);
+    border: 1px solid  white;
     padding: 0.6em;
     font-family: var(--ubuntu);
     border-radius: 5px;
     color: white;
     font-weight: 500;
+
+    &:focus {
+      border-color: var(--orange);
+      outline: none;
+    }
 
     &::placeholder {
       color: white;

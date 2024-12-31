@@ -1,23 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import {
-  Container,
-  Message,
-  Notification,
-} from "./PurchaseStyles";
-export const Purchase = () => {
-  const purchaseFormData = useSelector((state) => state.purchaseForm);
+import { Container, Notification } from "./PurchaseStyles";
+import { getUserDataFromStorage } from "../../utils/userName";
 
+export const Purchase = () => {
+  const userNameToRender = getUserDataFromStorage("name");
+  const userEmail = getUserDataFromStorage("email");
   return (
     <Container>
-      <h2>
-        Muchas gracias {purchaseFormData.name}{" "}
-        por su compra
-      </h2>
+      <h2>Muchas gracias por su compra</h2>
 
       <Notification>
-        Le hemos enviado un correo electrónico a {purchaseFormData.email} para
-        que pueda seguir el estado de su operación.
+        En breve nos pondremos en contacto a su correo: {userEmail} para
+        coordinar la entrega y ultimar detalles.
       </Notification>
     </Container>
   );

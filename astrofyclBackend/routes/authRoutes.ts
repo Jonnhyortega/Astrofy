@@ -5,6 +5,9 @@ import { register } from "../controllers/auth";
 import { searchErrors } from "../middlewares/searchErrors";
 import { verifyUser } from "../controllers/verifyUser";
 import { login } from "../controllers/login";
+import validarJWT from "../middlewares/validateJWT";
+import { changePw } from "../controllers/changePassword";
+import { changeName } from "../controllers/changeName";
 
 const router = Router();
 
@@ -41,5 +44,13 @@ router.patch(
 	],
 	verifyUser
 )
+
+router.get("/verify-token", validarJWT, (req, res) => {
+  res.status(200).json({ msg: "Token válido y usuario autenticado" });
+});
+
+router.patch("/change-password", validarJWT, changePw);
+router.patch("/change-name", validarJWT, changeName);
+
 
 export default router;

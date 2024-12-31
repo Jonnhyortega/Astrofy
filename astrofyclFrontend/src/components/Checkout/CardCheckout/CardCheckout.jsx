@@ -17,6 +17,7 @@ export const CardCheckout = ({ cartItem }) => {
       <img src={cartItem.image} alt={cartItem.title} />
       <ItemTitle>{cutThirdSpace(cartItem.title)}</ItemTitle>
       <span>{cartItem.quantity}</span>
+      <span>${cartItem.price} c/u</span>
     </ItemCard>
   );
 };

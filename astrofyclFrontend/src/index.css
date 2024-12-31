@@ -7,4 +7,5 @@ body {@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  /* background-color: rgba(255, 211, 140, 0.152); */
 }

@@ -13,7 +13,6 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  // *{border:1px solid gold;}
 `;
 
 export const ModalContent = styled.div`

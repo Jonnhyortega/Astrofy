@@ -13,7 +13,6 @@ const authSlice = createSlice({
     login(state, action) {
       const { token, usuario, tokenSesion } = action.payload;
 
-      // Guardar los datos en el estado global
       state.token = token;
       state.tokenSesion = tokenSesion;
       state.user = usuario;

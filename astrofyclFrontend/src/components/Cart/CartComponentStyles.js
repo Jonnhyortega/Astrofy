@@ -15,7 +15,7 @@ export const CartContainer = styled(motion.div)`
   top: 90px;
   right: 0;
   width: 400px;
-  height: 35vw;
+  height: 29vw;
   padding: 3em 1em;
   overflow-y: scroll;
   z-index: 1000;
@@ -56,8 +56,9 @@ export const CartContainer = styled(motion.div)`
 
 export const Title = styled.div`
   text-align: left;
-  font-size: 1.4rem;
+  font-size: 35px;
   font-weight: 500;
+  font-family:var(--funnel);
   color: var(--orange);
   position: absolute;
   top: 5px;
@@ -70,6 +71,7 @@ export const CartItemsContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   width: 100%;
+  padding: 1em 0;
 `;
 
 export const CheckoutBox = styled.div`

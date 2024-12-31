@@ -12,7 +12,6 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     const usuario = await User.findOne({ email });
 
     if (usuario) {
-      // COMPARE PASSWORD USER WITH PASSWORD ENCRIPTED
       const passwordValidate = bcrypt.compareSync(password, usuario.password);
       if (!passwordValidate) {
         res.status(400).json({
@@ -21,10 +20,9 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         return;
       }
 
-      if (!Boolean(usuario.verified)) {
-        await sendEmail(email, usuario.code as string);
-        res.status(400).json({
-          msg: `Por favor verifique la cuenta para poder ingresar le hemos enviado nuevamente el codigo a ${email}`,
+      if (!usuario.verified) {
+        res.status(403).json({
+          msg: `Por favor verifique la cuenta para poder ingresar. Le hemos enviado nuevamente el código a ${email}`,
         });
         return;
       }
@@ -35,16 +33,14 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         token,
         msg: "Las contraseñas coincidieron",
       });
-      console.log(picocolors.bgRed("Credenciales correctas 😎"));
       return;
     }
 
     res.status(400).json({
-      msg: "No se encontro el email en la base de datos ¿Lo escribiste bien?",
+      msg: "No se encontró el email en la base de datos. ¿Lo escribiste bien?",
     });
-    return;
   } catch (error) {
-    console.log(error);
-    console.log(picocolors.bgRed("Error al identificar al usuario"));
+    console.error("Error al identificar al usuario", error);
+    res.status(500).json({ msg: "Error interno del servidor" });
   }
 };

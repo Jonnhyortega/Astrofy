@@ -16,11 +16,12 @@ export interface IOrder {
   user: Types.ObjectId;
   price: number;
   shippingCost: number;
-  items: IProduct[];
+  items: { product: Types.ObjectId; quantity: number }[]; 
   shippingDetails: IShippingDetails;
   status: string;
   total: number;
 }
+
 
 const OrderSchema = new Schema<IOrder>({
   createdAt: {

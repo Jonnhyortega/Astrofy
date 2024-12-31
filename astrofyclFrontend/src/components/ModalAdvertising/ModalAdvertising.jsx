@@ -1,7 +1,9 @@
 import React from "react";
 import { Modal } from "./ModalAdvertisingStyles";
-import { LogoHome } from "../Loader/LogoHome";
-export default function ModalAdvertising({ text, work }) {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+
+export default function ModalAdvertising({ text, work, boolean }) {
   return (
     <Modal>
       <div>
@@ -10,8 +12,12 @@ export default function ModalAdvertising({ text, work }) {
           <small>imports</small>
         </article>
         <div className="content">
-          <p>{text}</p>
-          <button onClick={work}>Ok</button>
+          <p style={{ color: "black" }}>{text}</p>
+          {boolean == false && (
+            <button className="button-modal" onClick={work}>
+              <FontAwesomeIcon icon={faCheck} />
+            </button>
+          )}
         </div>
       </div>
     </Modal>

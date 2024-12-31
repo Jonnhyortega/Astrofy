@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RegisterForm } from "./FormRegisterStyles";
-import { registerUser, verifyUser } from "../../../axios/axios";
+import { registerUser } from "../../../axios/axios";
 import ModalAdvertising from "../../ModalAdvertising/ModalAdvertising";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -16,41 +16,33 @@ export const FormRegister = () => {
   const [loading, setLoading] = useState(false);
   const [showPw, setShowPw] = useState(false);
   const navigate = useNavigate();
-
+  const [showButton, setShowButton] = useState(false);
+  const [succes, setSucces] = useState(null);
+  const [userRegistered, setUserRegistered] = useState(null);
   const handleShowPw = () => setShowPw(!showPw);
-  const handleName = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePassword1 = (event) => {
-    setPassword1(event.target.value);
-  };
-
-  const handlePassword2 = (event) => {
-    setPassword2(event.target.value);
-  };
-
-  const handleAuthModal = () => {
-    navigate("/register-code-user");
-  };
+  const handleName = (event) => setName(event.target.value);
+  const handleEmail = (event) => setEmail(event.target.value);
+  const handlePassword1 = (event) => setPassword1(event.target.value);
+  const handlePassword2 = (event) => setPassword2(event.target.value);
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     if (password1 !== password2) {
-      setError("Las contraseñas no coincidieron papito");
+      setError("Las contraseñas no coincidieron.");
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
+      console.log(showButton);
       setError("Por favor, ingrese un correo válido.");
+
       return;
     }
-    if (name == "" || email == "" || password1 == "" || password2 == "") {
-      setError("Por favor complete todos los campos");
+    if (name === "" || email === "" || password1 === "" || password2 === "") {
+      setError("Por favor complete todos los campos.");
+      setShowButton(true);
+
+      return;
     }
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8}$/;
     if (!passwordRegex.test(password2)) {
@@ -66,13 +58,30 @@ export const FormRegister = () => {
         email,
         password: password1,
       });
-      console.log(response);
-      handleAuthModal();
+
+      setSucces(response.msg);
+      setShowButton(false);
+      setError(null);
     } catch (error) {
-      setError(error.response.data.errors[0].msg);
-      console.error("Error al registrar usuario:", error);
-    } finally{
-      setLoading(false)
+      console.log(error);
+      if (error.response) {
+        if (error.response.status === 403) {
+          setUserRegistered(error.response.data.msg);
+          setShowButton(false);
+        } else if (error.response.data && error.response.data.errors) {
+          setError(error.response.data.errors.map((err) => err.msg).join(", "));
+        } else {
+          setError(
+            error.response.data.msg || "Error desconocido al registrar usuario."
+          );
+        }
+      } else if (error.request) {
+        setError("No se pudo conectar con el servidor. Intente más tarde.");
+      } else {
+        setError("Error desconocido al registrar usuario.");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -89,11 +98,7 @@ export const FormRegister = () => {
         placeholder="Correo electrónico"
         onChange={handleEmail}
       />
-      <label
-        className="label-password"
-        htmlFor="password1"
-        style={{ color: showPw ? "var(--orange-dark)" : "var(--orange)" }}
-      >
+      <label className="label-password" htmlFor="password1">
         <input
           name="password1"
           type={showPw ? "text" : "password"}
@@ -101,7 +106,10 @@ export const FormRegister = () => {
           onChange={handlePassword1}
           style={{ width: "70%" }}
         />
-        <p onClick={handleShowPw}>
+        <p
+          style={{ color: showPw ? "var(--orange-dark)" : "var(--orange)" }}
+          onClick={handleShowPw}
+        >
           {showPw ? (
             <FontAwesomeIcon icon={faEyeSlash} />
           ) : (
@@ -109,19 +117,18 @@ export const FormRegister = () => {
           )}
         </p>
       </label>
-      <label
-        className="label-password"
-        htmlFor="password2"
-        style={{ color: showPw ? "var(--orange-dark)" : "var(--orange)" }}
-      >
+      <label className="label-password" htmlFor="password2">
         <input
           name="password2"
           type={showPw ? "text" : "password"}
-          placeholder="Contraseña"
+          placeholder="Reingrese la contraseña"
           onChange={handlePassword2}
           style={{ width: "70%" }}
         />
-        <p onClick={handleShowPw}>
+        <p
+          style={{ color: showPw ? "var(--orange-dark)" : "var(--orange)" }}
+          onClick={handleShowPw}
+        >
           {showPw ? (
             <FontAwesomeIcon icon={faEyeSlash} />
           ) : (
@@ -130,20 +137,39 @@ export const FormRegister = () => {
         </p>
       </label>
       <button onClick={handleRegister}>
-        {loading ? <Loader /> : "Iniciar"}
+        {loading ? <Loader /> : "Crear cuenta"}
       </button>
 
       {error && (
         <ModalAdvertising
           work={() => {
+            setShowButton(false);
             setError(null);
           }}
           text={error}
+          boolean={showButton}
         />
       )}
-      {/* {authModal && (
-        <RedirectoToRegisterCode text={authMsgCode} work={handleAuthModal} />
-      )} */}
+
+      {succes && (
+        <ModalAdvertising
+          work={() => {
+            navigate("/register-code-user");
+          }}
+          text={succes}
+          boolean={showButton}
+        />
+      )}
+
+      {userRegistered && (
+        <ModalAdvertising
+          work={() => {
+            navigate("/register-code-user");
+          }}
+          text={userRegistered}
+          boolean={showButton}
+        />
+      )}
     </RegisterForm>
   );
 };

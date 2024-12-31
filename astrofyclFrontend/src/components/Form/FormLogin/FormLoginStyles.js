@@ -33,8 +33,8 @@ export const LoginForm = styled.form`
   input,
   button {
     background: transparent;
-    border: 1px solid var(--orange-dark);
-    padding: 0.6em;
+    border: 1px solid white;
+    padding: 10px;
     font-family: var(--ubuntu);
     border-radius: 5px;
     color: white;
@@ -43,6 +43,12 @@ export const LoginForm = styled.form`
     &::placeholder {
       color: white;
       font-weight: 100;
+    }
+
+    &:focus {
+      border-color: var(--orange);
+      color: var(--orange);
+      outline: none;
     }
 
     &::select {
@@ -54,7 +60,7 @@ export const LoginForm = styled.form`
     background: var(--orange);
     border: transparent;
     cursor: pointer;
-
+    padding: 10px;
     &:hover {
       background: var(--orange-dark);
     }
@@ -94,7 +100,7 @@ export const LoginForm = styled.form`
     input[type="checkbox"]:checked + .custom-checkbox {
       background: var(--orange);
       border-color: var(--orange-dark);
-      transform: scale(1.1); /* Pequeño zoom al activarse */
+      transform: scale(1.1);
     }
 
     input[type="checkbox"]:checked + .custom-checkbox::after {

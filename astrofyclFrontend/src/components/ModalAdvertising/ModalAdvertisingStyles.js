@@ -6,21 +6,21 @@ export const Modal = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  backdrop-filter: blur(25px) saturate(200%);
-  -webkit-backdrop-filter: blur(15px) saturate(200%);
-  background-color: rgba(255, 255, 255, 0);
+  background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 3000;
+  font-family: var(--funnel);
+
   div {
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
-
+    width: fix-content;
     article {
       display: flex;
       flex-direction: column;
@@ -56,25 +56,27 @@ export const Modal = styled.div`
   p {
     color: black;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
     font-size: 1.5em;
     z-index: 2000;
   }
 
-  button {
-    background: var(--orange);
-    width: auto;
-    padding: 0.5em 1em;
-    border-radius: 5px;
+  .button-modal {
+    background: #008633;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     border: none;
     color: white;
     cursor: pointer;
-    width: 100px;
     font-familiy: var(--funnel);
+    font-weight: bold;
+    font-size: 20px;
+    z-index: 3000;
 
+    font-weight: bold;
     &:hover {
-      background: white;
-      color: black;
+      background: #2e7348;
     }
   }
 `;

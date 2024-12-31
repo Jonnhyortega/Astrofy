@@ -9,8 +9,12 @@ export const ModalUserWrapper = styled(motion.div)`
   right: -2px;
   background-color: black;
   border: 1px solid var(--orange);
-  border-radius: 5px;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  
+  // * {
+  //   border: 1px solid red;
+  // }
 
   @media (max-width: 568px) {
     width: 100%;
@@ -24,30 +28,55 @@ export const ModalUserWrapper = styled(motion.div)`
     top: 0;
     font-size: 25px;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 1000;
+
+    &:hover{
+    color:red;
+    }
   }
   ul {
     height: 100%;
-  }
-  li {
-    list-style: none;
-    font-family: var(--funnel);
-    
-    a {
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: 100;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    .profile-name {
+      position: absolute;
+    }
 
-      &:hover {
-        color: var(--orange);
+    li {
+      list-style: none;
+      font-family: var(--funnel);
+
+      a {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: 100;
+
+        &:hover {
+          color: var(--orange);
+        }
       }
     }
   }
 `;
 
-export const NameUserTitle = styled.p`
-  font-size: 1.5em;
-  color: var(--orange);
-  text-decoration: underline;
+export const NameUserTitle = styled.div`
+  position: absolute;
+  top: -80px;
+  left:0;
+  font-size: 15px;
+  color: green;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  
+  
+  p {
+    margin: 0;
+    color: var(--orange);
+    font-size: 20px;
+  }
 `;

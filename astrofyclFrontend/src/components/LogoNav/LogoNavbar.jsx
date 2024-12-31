@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Logo = styled.h1`
+const Logo = styled.a`
   display: flex;
   flex-direction: column;
+  justify-content: end;
   align-items: center;
-  a {
-    ont-size: 1.5rem;
+  text-decoration:none;
+  padding: 10px;
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
     font-weight: 900;
     letter-spacing: 3px;
     cursor: pointer;
@@ -14,7 +18,7 @@ const Logo = styled.h1`
     background: linear-gradient(135deg, #ff9900, #ff6600);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-left: 10px;
+    // margin-left: 10px;
 
     &:hover {
       background: linear-gradient(135deg, #007bff, #00d084);
@@ -24,6 +28,7 @@ const Logo = styled.h1`
   }
 
   small {
+    margin: 0;
     color: red;
     bottom: 13px;
     left: 35px;
@@ -50,8 +55,8 @@ export const Small = styled.small``;
 
 function LogoNavbar() {
   return (
-    <Logo>
-      <a href="/">ASTROFY</a>
+    <Logo href="/">
+      <h1>ASTROFY</h1>
       <small>imports</small>
     </Logo>
   );

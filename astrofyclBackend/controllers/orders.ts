@@ -1,21 +1,28 @@
 import { Response, Request } from "express";
 import Order, { IOrder } from "../models/order";
-import { ObjectId, Types } from "mongoose";
-import Product, { IProduct } from "../models/product";
+import { Types } from "mongoose";
+import Product from "../models/product";
 
 export const getOrders = async (req: Request, res: Response): Promise<void> => {
-  const usuarioId = req.body.usuarioConfirmado._id;
-  console.log(usuarioId);
+  const usuarioId = req.query.userId as string;
+  if (!usuarioId) {
+    res.status(400).json({ msg: "El userId es requerido" });
+    return;
+  }
 
-  const consulta = { user: usuarioId };
-  console.log(consulta);
+  try {
+    const consulta = { user: usuarioId };
 
-  const orders = await Order.find(consulta);
-  console.error(orders);
+    const orders = await Order.find(consulta).populate(
+      "items.product",
+      "title image price"
+    );
 
-  res.json({
-    orders,
-  });
+    res.json({ orders });
+  } catch (error) {
+    console.error("Error al obtener órdenes:", error);
+    res.status(500).json({ msg: "Error al obtener órdenes" });
+  }
 };
 
 export const createOrder = async (
@@ -34,6 +41,8 @@ export const createOrder = async (
     }
 
     let totalProductPrice = 0;
+    const updatedItems = [];
+
     for (const item of items) {
       const product = await Product.findById(item.product);
       if (!product) {
@@ -42,19 +51,23 @@ export const createOrder = async (
           .json({ message: `Producto con ID ${item.product} no encontrado.` });
         return;
       }
+
       totalProductPrice += product.price * item.quantity;
+
+      updatedItems.push({
+        product: product._id,
+        quantity: item.quantity,
+      });
     }
 
-    // Calculamos el precio total de la orden incluyendo el costo de envío
     const total = totalProductPrice + shippingCost;
 
-    // Creamos la orden
     const orderData: IOrder = {
       createdAt: new Date(),
       user: usuario,
       price: totalProductPrice,
       shippingCost,
-      items,
+      items: updatedItems,
       shippingDetails,
       status: "pending",
       total,

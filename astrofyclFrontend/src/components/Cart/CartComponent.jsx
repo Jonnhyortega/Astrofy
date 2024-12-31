@@ -14,13 +14,14 @@ import {
 } from "./CartComponentStyles";
 import { CardItem } from "./CardItem";
 import { useNavigate } from "react-router-dom";
+import { getUserDataFromStorage } from "../../utils/userName";
 
 const Cart = () => {
   const navigate = useNavigate();
   const { cartItems, shippingCost } = useSelector((state) => state.cart);
   const hiddenCart = useSelector((state) => state.cart.hidden);
   const dispatch = useDispatch();
-
+  const user = getUserDataFromStorage("verified");
   const cartTotal = Math.ceil(
     cartItems.reduce((total, item) => total + item.quantity * item.price, 0) +
       shippingCost
@@ -43,16 +44,15 @@ const Cart = () => {
             transition={{ type: "spring", damping: 27 }}
             key="cart-modal"
           >
-
             <CartItemsContainer>
-              <Title>{cartItems.length ? "Productos" : null}</Title>
+              <Title>Productos</Title>
               {cartItems.length ? (
                 cartItems.map((item) => (
                   <CardItem key={item.id} cartItem={item} />
                 ))
               ) : (
-                <span style={{position: "absolute"}}>Carrito está vacío</span>
-)}
+                <span style={{ position: "absolute", left: "25px", top:"65px" }}>Carrito vacío</span>
+              )}
             </CartItemsContainer>
 
             {cartItems.length > 0 && (
@@ -95,9 +95,17 @@ const Cart = () => {
                     </a>
                   </div>
                 </CartTotal>
-                <CheckoutButton onClick={() => 
-                {dispatch(toggleHiddenCart())
-                  navigate("/checkout")}}>
+                <CheckoutButton
+                  onClick={() => {
+                    dispatch(toggleHiddenCart());
+                    if (user) {
+                      navigate("/checkout");
+                    } else {
+                      navigate("/login");
+                    }
+                    return;
+                  }}
+                >
                   Iniciar compra
                 </CheckoutButton>
               </CheckoutBox>

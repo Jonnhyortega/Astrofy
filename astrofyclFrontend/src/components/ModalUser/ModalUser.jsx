@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/authSlice";
 import { motion, AnimatePresence } from "framer-motion";
 import { capitalizeFirstLetter } from "../../utils/UpperFirstLetter";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export function ModalUser({ nameUser, closeModal }) {
   const redirectTo = useNavigate();
@@ -15,8 +17,8 @@ export function ModalUser({ nameUser, closeModal }) {
   const handleClose = () => {
     setIsVisible(false);
     setTimeout(() => {
-      closeModal(); 
-    }, 500); 
+      closeModal();
+    }, 500);
   };
 
   const handleLogout = () => {
@@ -41,31 +43,34 @@ export function ModalUser({ nameUser, closeModal }) {
               left: 0,
               width: "100vw",
               height: "100vh",
-              backgroundColor: "rgba(0, 0, 0, 0.7)",
+              backgroundColor: "rgba(0, 0, 0, 0.7)"
+              
             }}
           />
 
           <ModalUserWrapper
             initial={{ translateX: 1000 }}
             animate={{ translateX: 0 }}
-            exit={{ translateX: 1000 }} // Salida suave hacia la derecha
+            exit={{ translateX: 1000 }}
             transition={{ type: "spring", damping: 27, duration: 0.5 }}
           >
-            <span onClick={handleClose}>&times;</span>
+            {/* <span onClick={handleClose}>&times;</span> */}
             <ul>
+              <div className="profile-name">
+                {nameUser ? (
+                  <NameUserTitle>
+                    <FontAwesomeIcon icon={faUser} />
+                    <p>{nameUser}</p>
+                  </NameUserTitle>
+                ) : null}
+              </div>
+              <li>{!nameUser && <a href="/login">Iniciar sesion</a>}</li>
+              <li>{!nameUser && <a href="/register">Crear cuenta</a>}</li>
+              <li>{nameUser ? <a href="/orders">Ver compras</a> : null}</li>
               <li>
                 {nameUser ? (
-                  <NameUserTitle>{`Bienvenido ${capitalizeFirstLetter(
-                    nameUser
-                  )}`}</NameUserTitle>
-                ) : (
-                  <a href="/login">Iniciar sesión</a>
-                )}
-              </li>
-              <li>{!nameUser && <a href="/register">Crear cuenta</a>}</li>
-              <li>{nameUser ? <a>Ver compras</a> : null}</li>
-              <li>
-                {nameUser ? <a href="/change-password">Cambiar contraseña</a> : null}
+                  <a href="/change-password">Cambiar contraseña</a>
+                ) : null}
               </li>
               <li>
                 {nameUser ? <a onClick={handleLogout}>Cerrar sesión</a> : null}

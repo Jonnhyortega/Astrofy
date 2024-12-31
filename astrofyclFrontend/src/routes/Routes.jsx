@@ -8,6 +8,10 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import { AboutUs } from "../pages/AboutUs/AboutUs";
 import { RegisterCode } from "../pages/RegisterCode/RegisterCode";
+import { Orders } from "../pages/Orders/Orders";
+import { ChangePasswordPage } from "../pages/ChangePasswordPage/ChangePasswordPage";
+import MenuAccountPage from "../pages/MenuAccountPage/MenuAccountPage";
+
 const Routes = () => {
   return (
     <ReactDomRoutes>
@@ -20,6 +24,9 @@ const Routes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/purchase" element={<Purchase />} />
       <Route path="/register-code-user" element={<RegisterCode />} />
+      <Route path="/change-password" element={<ChangePasswordPage />} />
+      <Route path="/orders" element={<Orders />} />
+      <Route path="/account" element={<MenuAccountPage />} />
     </ReactDomRoutes>
   );
 };
