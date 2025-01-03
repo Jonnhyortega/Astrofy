@@ -15,9 +15,12 @@ export const MobileMenuWrapper = styled(motion.div)`
   height: 80vh;
   background-color: black;
   z-index: 1001;
-  border: 1px solid var(--orange);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+
+  p {
+    position: absolute;
+    color: red;
+    right: 20px;
+  }
 `;
 
 export const MobileNavLink = styled(Link)`
@@ -46,10 +49,7 @@ export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  // border: 1px solid gold;
-  // * {
-  //   border: 1px solid gold;
-  // }
+
   a:nth-child(1) {
     color: white;
     text-decoration: none;

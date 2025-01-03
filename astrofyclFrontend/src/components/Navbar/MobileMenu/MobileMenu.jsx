@@ -20,9 +20,6 @@ export const MobileMenu = ({ closeModal }) => {
   return (
     <>
       <motion.div
-        onClick={() => {
-          closeModal();
-        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -33,15 +30,16 @@ export const MobileMenu = ({ closeModal }) => {
           left: 0,
           width: "100vw",
           height: "100vh",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backgroundColor: "rgba(0, 0, 0, 1)",
         }}
       />
       <MobileMenuWrapper
         initial={{ translateX: 300 }}
         animate={{ translateX: 0 }}
         exit={{ translateX: 300 }}
-        transition={{ type: "tween", duration: 1 }}
+        transition={{ type: "tween", duration: .5 }}
       >
+        {/* <p>x</p> */}
         <MobileNavLink
           onClick={() => {
             closeModal();

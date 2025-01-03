@@ -36,10 +36,11 @@ export const newProduct = async (
 };
 
 export const getProducts = async (
+  req: Request,
   res: Response
 ): Promise<void> => {
   try {
-    const products = await Product.find();    
+    const products = await Product.find();
     res.status(200).json(products);
   } catch (error) {
     console.error("Error al obtener productos:", error);

@@ -7,7 +7,7 @@ export const NavbarContainer = styled.nav`
   justify-content: space-between;
   background-color: #000;
   color: #fff;
-  z-index: 10;
+  // z-index: 10;
   position: fixed;
   width: 100%;
   top: 0;
@@ -137,11 +137,8 @@ export const MobileMenuButton = styled.div`
   cursor: pointer;
   font-size: 20px;
   padding: 10px;
-  color: white;
-
-  &:hover {
-    color: #ff9900;
-  }
+  color: var(--orange);
+  z-index: 2000;
 
   @media (max-width: 768px) {
     display: block;

@@ -69,7 +69,7 @@ export default function FormChangePassword() {
       setTimeout(() => {
         navigate("/");
         setShowButton(!showButton)
-      }, 3000);
+      }, 2000);
     } catch (error) {
       const errorMessage =
         error.response && error.response.data && error.response.data.msg
@@ -95,7 +95,7 @@ export default function FormChangePassword() {
         <ModalAdvertising
           text={successMessage}
           work={() => setSuccessMessage("")}
-          boolean={showButton}
+          boolean={!showButton}
         />
       )}
       {error && (

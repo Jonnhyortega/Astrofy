@@ -65,6 +65,7 @@ export const Controls = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
   margin: 0 1em 0 0;
 `;

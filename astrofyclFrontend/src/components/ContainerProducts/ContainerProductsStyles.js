@@ -75,7 +75,7 @@ export const ContainerWrapper = styled.section`
     gap: 5px;
 
     @media (max-width: 568px) {
-      gap: 0;
+      gap: 3px;
     }
   }
 `;

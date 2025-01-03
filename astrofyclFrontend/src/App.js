@@ -10,6 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { validateToken } from "./axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setToken } from "./redux/auth/authSlice";
+import Cart from "./components/Cart/CartComponent";
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -46,6 +47,7 @@ function App() {
   return (
     <Layout>
       <GlobalStyles />
+      <Cart />
       <Navbar />
       <Routes isLoggedIn={!!token} />
       <Footer />

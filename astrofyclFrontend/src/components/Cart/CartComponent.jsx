@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleHiddenCart, clearCart } from "../../redux/cart/cartSlice";
@@ -15,6 +15,8 @@ import {
 import { CardItem } from "./CardItem";
 import { useNavigate } from "react-router-dom";
 import { getUserDataFromStorage } from "../../utils/userName";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Cart = ({ scrolling }) => {
   const navigate = useNavigate();
@@ -27,11 +29,31 @@ const Cart = ({ scrolling }) => {
       shippingCost
   );
 
+  const useViewportWidth = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+
+    return width;
+  };
+
+  const viewportWidth = useViewportWidth();
+
   return (
     <>
       {!hiddenCart && (
         <ModalOverlayStyled
-          style={{ top: scrolling ? "40px" : "0" }}
+          // style={{ top: scrolling && viewportWidth > 768 ? "40px" : "0" }}
           onClick={() => dispatch(toggleHiddenCart())}
           isHidden={hiddenCart}
         />
@@ -47,6 +69,12 @@ const Cart = ({ scrolling }) => {
           >
             <CartItemsContainer>
               <Title>Productos</Title>
+              <span
+                onClick={() => dispatch(toggleHiddenCart())}
+                isHidden={hiddenCart}
+              >
+                <FontAwesomeIcon icon={faXmark} />
+              </span>
               {cartItems.length ? (
                 cartItems.map((item) => (
                   <CardItem key={item.id} cartItem={item} />

@@ -88,12 +88,11 @@ export const CardWrapper = styled.div`
     border: none;
     border-radius: 2px;
     padding: 10px;
-    border-radius: 25px;
-    width: 90%;
+    width: 100%;
     font-weight: 700;
     font-size: 15px;
     color: black;
-    background: var(--orange-dark);
+    background: rgb(155, 155, 155);
    
     &:hover {
       background: var(--orange);

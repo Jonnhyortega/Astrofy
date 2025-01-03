@@ -41,7 +41,7 @@
     /* Experimental Options */
     "useDefineForClassFields": true                    /* Adopt ES-standard class field emit behavior. */
   },
-  "include": ["src"],                                   /* Include the source directory for compilation. */
+  "include": ["src", "app.ts", "controllers", "database", "helpers", "mailer", "middlewares", "models", "routes"],                                   /* Include the source directory for compilation. */
   "exclude": ["node_modules", "dist"],                 /* Exclude unnecessary directories. */
   "ts-node": {
     /* Additional Settings for ts-node */

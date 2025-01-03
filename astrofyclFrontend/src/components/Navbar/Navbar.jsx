@@ -33,7 +33,7 @@ export const Navbar = () => {
   const userNameToRender = getUserDataFromStorage("name");
 
   useEffect(() => {
-    let lastScrollY = window.scrollY; // Guardar el scroll inicial
+    let lastScrollY = window.scrollY; 
   
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -95,7 +95,7 @@ export const Navbar = () => {
         style={{ position: "fixed", width: "100%", zIndex: 1000 }}
       >
         <NavbarContainer>
-          <Cart scrolling={scrolling} />
+          {/* <Cart scrolling={scrolling} /> */}
           <ProfileContainer onClick={handleModalProfile}>
             {userNameToRender ? (
               <a href="/account">

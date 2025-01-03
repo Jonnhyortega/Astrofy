@@ -2,22 +2,24 @@ import styled, { keyframes, css } from "styled-components";
 import { motion } from "framer-motion";
 
 export const ModalOverlayStyled = styled(motion.div)`
-  position: absolute;
+  position: fixed;
   left: 0;
+  top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(66, 66, 66, 0.7);
+  z-index: 1999;
 `;
 
 export const CartContainer = styled(motion.div)`
   position: fixed;
-  top: 90px;
+  top: 0;
   right: 0;
   width: 400px;
-  height: 29vw;
+  height: 100vh;
   padding: 3em 1em;
   overflow-y: scroll;
-  z-index: 1000;
+  z-index: 2000;
   box-shadow: 1px 1px 5px black;
   background-color: black;
   border: 1px solid var(--orange);
@@ -47,8 +49,8 @@ export const CartContainer = styled(motion.div)`
   @media (max-width: 768px) {
     padding: 0 0 50px 0;
     width: 100%;
-    height: 90vh;
     border-radius: 0;
+    border:none;
     box-shadow: none;
   }
 `;
@@ -57,7 +59,7 @@ export const Title = styled.div`
   text-align: left;
   font-size: 35px;
   font-weight: 500;
-  font-family:var(--funnel);
+  font-family: var(--funnel);
   color: var(--orange);
   position: absolute;
   top: 5px;
@@ -71,6 +73,18 @@ export const CartItemsContainer = styled.div`
   gap: 10px;
   width: 100%;
   padding: 1em 0;
+
+  span {
+    color: red;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    transition: .2s;
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
 `;
 
 export const CheckoutBox = styled.div`
@@ -173,32 +187,6 @@ export const CheckoutButton = styled.button`
     -webkit-text-fill-color: transparent;
     transition: opacity 0.8s ease-in-out;
   }
-`;
-
-export const ModalBackground = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(25px) saturate(200%);
-  -webkit-backdrop-filter: blur(25px) saturate(200%);
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-export const ModalContainer = styled.div`
-  width: 400px;
-  background: black;
-  border-radius: 8px;
-  border: 2px solid #ff9900;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
 `;
 
 export const ModalContent = styled.div`
