@@ -1,4 +1,5 @@
-export const URL_API_BASE = "http://localhost:8080" || "https://astrofy-nine.vercel.app";
+export const URL_API_BASE =  "https://astrofybackend-2.onrender.com/";
+// "http://localhost:8080" ||
 export const ALL_PRODUCTS = "/api/products";
 export const LOGIN = "/auth/login";
 export const REGISTER = "/auth/register";
