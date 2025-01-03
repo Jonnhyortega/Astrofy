@@ -6,6 +6,7 @@ export const OurStoryWrapper = styled.section`
   align-items: center;
   padding: 2rem;
   overflow: hidden;
+  font-family: var(--funnel);
 
   .story-content {
     text-align: center;

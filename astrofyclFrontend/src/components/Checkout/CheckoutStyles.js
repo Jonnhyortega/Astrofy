@@ -7,9 +7,7 @@ export const CheckoutContainer = styled.div`
   background: black;
   padding: 0 0 3em 0;
 
-  // * {
-  //   border: 1px solid gold;
-  // }
+
 
   h3 {
     width: 100%;

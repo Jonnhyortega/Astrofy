@@ -19,14 +19,13 @@ export const Container = styled.div`
   padding: 2em;
   animation: ${fadeIn} 0.6s ease-out;
   font-family: var(--funnel);
-  h2{
-  color:white;
+  h2 {
+    color: white;
   }
   @media (max-width: 768px) {
     margin: 7em auto;
     box-shadow: 0;
     border-radius: 0;
-    background: white;
   }
 `;
 

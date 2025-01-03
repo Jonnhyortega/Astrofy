@@ -7,6 +7,7 @@ export const AboutUsWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: grey;
   @media (min-width: 768px) {
     gap: 3rem;
   }

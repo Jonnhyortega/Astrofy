@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Product, { IProduct } from "../models/product";
-import picocolors from "picocolors";
 
 export const newProduct = async (
   req: Request,
@@ -37,7 +36,6 @@ export const newProduct = async (
 };
 
 export const getProducts = async (
-  req: Request,
   res: Response
 ): Promise<void> => {
   try {

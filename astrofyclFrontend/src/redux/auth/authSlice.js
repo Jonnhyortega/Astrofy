@@ -4,6 +4,7 @@ const initialState = {
   user: null,
   token: null,
   tokenSesion: false,
+  authorized: false,
 };
 
 const authSlice = createSlice({
@@ -16,33 +17,47 @@ const authSlice = createSlice({
       state.token = token;
       state.tokenSesion = tokenSesion;
       state.user = usuario;
+      state.authorized = true;
 
       const userString = JSON.stringify(usuario);
 
       if (tokenSesion) {
         localStorage.setItem("tokenAuth", token);
         localStorage.setItem("user", userString);
-        console.log(`${usuario.email} y token guardados en localStorage`);
       } else {
         sessionStorage.setItem("tokenAuth", token);
         sessionStorage.setItem("user", userString);
-        console.log(`${usuario.email} y token guardados en sessionStorage`);
       }
     },
     logout(state) {
       state.token = null;
       state.tokenSesion = false;
       state.user = null;
+      state.authorized = false;
 
       localStorage.removeItem("tokenAuth");
       localStorage.removeItem("user");
       sessionStorage.removeItem("tokenAuth");
       sessionStorage.removeItem("user");
+    },
+    setToken(state, action) {
+      const { token } = action.payload;
+      
+      // Actualiza el estado del token
+      state.token = token;
 
-      console.log("Sesión cerrada y datos eliminados.");
+      // Guarda el nuevo token en el almacenamiento correspondiente
+      if (state.tokenSesion) {
+        localStorage.setItem("tokenAuth", token);
+      } else {
+        sessionStorage.setItem("tokenAuth", token);
+      }
+    },
+    clearToken(state) {
+      state.token = null; // Limpia el estado del token
     },
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, setToken, clearToken } = authSlice.actions;
 export default authSlice.reducer;

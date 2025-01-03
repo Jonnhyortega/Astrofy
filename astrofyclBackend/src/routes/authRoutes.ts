@@ -47,6 +47,8 @@ router.patch(
 
 router.get("/verify-token", validarJWT, (req, res) => {
   res.status(200).json({ msg: "Token válido y usuario autenticado" });
+  const codigoParaCompilar = req.body
+  return codigoParaCompilar
 });
 
 router.patch("/change-password", validarJWT, changePw);

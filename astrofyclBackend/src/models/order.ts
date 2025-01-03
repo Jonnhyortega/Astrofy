@@ -1,5 +1,4 @@
 import { Model, Schema, model, Types } from "mongoose";
-import { IProduct } from "./product";
 
 interface IShippingDetails {
   name: string;

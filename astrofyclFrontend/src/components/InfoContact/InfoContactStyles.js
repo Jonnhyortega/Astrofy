@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 export const ContactWrapper = styled.div`
-  background-color: #222;
   color: #fff;
   padding: 3rem 2rem;
-  font-family: "Roboto", sans-serif;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: var(--funnel);
+  background: grey;
   text-align: center;
   animation: fadeIn 1.2s ease-out;
 
   h3 {
+    font-family: var(--funnel);
+
     font-weight: bold;
     font-size: 2.8rem;
     text-transform: uppercase;
@@ -29,12 +30,14 @@ export const ContactWrapper = styled.div`
     h4 {
       font-size: 1.6rem;
       font-weight: bold;
+      font-family: var(--funnel);
     }
 
     p {
       font-size: 1.2rem;
       color: #ddd;
       line-height: 1.6;
+      font-family: var(--funnel);
     }
   }
 

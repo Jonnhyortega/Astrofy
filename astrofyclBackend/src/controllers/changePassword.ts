@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import User, { IUser } from "../models/usuario";
+import User from "../models/usuario";
 import bcrypt from "bcryptjs";
 
 export const changePw = async (req: Request, res: Response): Promise<void> => {

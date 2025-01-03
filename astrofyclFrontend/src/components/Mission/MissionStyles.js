@@ -6,7 +6,7 @@ export const MissionWrapper = styled.section`
   align-items: center;
   padding: 2rem;
   overflow: hidden;
-
+  font-family: var(--funnel);
   .story-content {
     text-align: center;
     color: #333;
@@ -75,7 +75,6 @@ export const MissionWrapper = styled.section`
     position: relative;
     overflow: hidden;
 
-  
     &:hover {
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     }

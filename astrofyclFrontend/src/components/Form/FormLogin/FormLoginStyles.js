@@ -76,6 +76,7 @@ export const LoginForm = styled.form`
       align-items: center;
       cursor: pointer;
       gap: 10px;
+      color: white;
     }
 
     input[type="checkbox"] {

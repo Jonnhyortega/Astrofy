@@ -29,14 +29,14 @@ export const MenuWrapper = styled.div`
   }
 
   .options {
-    margin: auto;
+    margin: 0 auto;
     font-family: var(--funnel);
 
-    > article {
+    article {
       margin-top: 40px;
-      width: 80%;
+      width: 100%;
       cursor: pointer;
-      text-align: left;
+      text-align: center;
       transition: background-color 0.3s ease;
 
       &:hover {
@@ -53,17 +53,20 @@ export const MenuWrapper = styled.div`
     }
 
     .edit-name {
-      margin-top: 20px;
+      margin: 10px auto;
+      display: flex;
+      flex-direction: column; 
+      gap:5px;
     }
 
     label {
       display: block;
-      margin: 0 0 15px 35px;
+      margin: 0 auto;
       color: var(--orange);
     }
 
     input {
-      margin: 0 0 15px 35px;
+      margin: 0 auto;
       padding: 0.5em;
       background: transparent;
       border: 1px solid grey;
@@ -76,7 +79,7 @@ export const MenuWrapper = styled.div`
     button {
       padding: 0.5em;
       background-color: var(--orange);
-      margin-left: 10px;
+      margin: 0 auto;
       font-family: var(--funnel);
       color: black;
       border: none;

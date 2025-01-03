@@ -6,7 +6,6 @@ export const FormChangePasswordWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  transition: background 0.5s ease;
   width: 100%;
   height: 100%;
 

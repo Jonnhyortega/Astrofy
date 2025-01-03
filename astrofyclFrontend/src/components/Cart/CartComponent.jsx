@@ -16,7 +16,7 @@ import { CardItem } from "./CardItem";
 import { useNavigate } from "react-router-dom";
 import { getUserDataFromStorage } from "../../utils/userName";
 
-const Cart = () => {
+const Cart = ({ scrolling }) => {
   const navigate = useNavigate();
   const { cartItems, shippingCost } = useSelector((state) => state.cart);
   const hiddenCart = useSelector((state) => state.cart.hidden);
@@ -31,6 +31,7 @@ const Cart = () => {
     <>
       {!hiddenCart && (
         <ModalOverlayStyled
+          style={{ top: scrolling ? "40px" : "0" }}
           onClick={() => dispatch(toggleHiddenCart())}
           isHidden={hiddenCart}
         />
@@ -51,7 +52,11 @@ const Cart = () => {
                   <CardItem key={item.id} cartItem={item} />
                 ))
               ) : (
-                <span style={{ position: "absolute", left: "25px", top:"65px" }}>Carrito vacío</span>
+                <span
+                  style={{ position: "absolute", left: "25px", top: "65px" }}
+                >
+                  Carrito vacío
+                </span>
               )}
             </CartItemsContainer>
 

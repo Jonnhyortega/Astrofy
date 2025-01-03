@@ -1,31 +1,40 @@
 import styled from "styled-components";
 export const ContainerWrapper = styled.section`
-  margin-top: 80px;
   width: 100%;
   min-height: 100vh;
   display: flex;
+  gap: 2px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   position: relative;
-  background: black;
+  background: white;
+
+  .error-message {
+    color: red;
+    width: 90vw;
+    font-family: var(--funnel);
+    font-size: 25px;
+  }
+
   @media (max-width: 568px) {
     margin: 0;
   }
 
   .banner {
+    margin-top: 100px;
     height: 100px;
     min-width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;  
+    gap: 15px;
 
     @media (max-width: 568px) {
       width: 100%;
       height: auto;
       flex-direction: column;
-      justify-content: flex-start;
+      // justify-content: flex-start;
       gap: 0;
     }
   }
@@ -42,28 +51,31 @@ export const ContainerWrapper = styled.section`
   select {
     margin: 0;
     text-align: center;
-    padding: .6em;
+    padding: 0.6em;
     border-radius: 4px;
     border: 1px solid var(--orange);
-    background: black;
     font-weight: 400;
-    color: white;
+    color: black;
     font-family: var(--funnel);
     font-size: 1em;
 
     option {
-      color: white;
+      color: black;
       background: transparent;
-      text-align: right;
+      text-align: center;
     }
   }
 
   .container-products {
-    margin: 40px 0;
+    margin: 0 0 20px 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 5px;
+
+    @media (max-width: 568px) {
+      gap: 0;
+    }
   }
 `;

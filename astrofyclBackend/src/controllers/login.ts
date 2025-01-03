@@ -2,8 +2,7 @@ import { Response, Request } from "express";
 import User, { IUser } from "../models/usuario";
 import bcrypt from "bcryptjs";
 import generateJWT from "../helpers/tokenGenerator";
-import picocolors from "picocolors";
-import { sendEmail } from "../mailer/mailer";
+
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   const { email, password }: IUser = req.body;

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 export const ModalOverlayStyled = styled(motion.div)`
   position: absolute;
-  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -48,7 +47,7 @@ export const CartContainer = styled(motion.div)`
   @media (max-width: 768px) {
     padding: 0 0 50px 0;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     border-radius: 0;
     box-shadow: none;
   }

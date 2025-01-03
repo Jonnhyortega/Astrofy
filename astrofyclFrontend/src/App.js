@@ -8,42 +8,46 @@ import ModalAdvertising from "./components/ModalAdvertising/ModalAdvertising";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { validateToken } from "./axios/axios";
-import { useDispatch } from "react-redux";
-import { logout } from "./redux/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, setToken } from "./redux/auth/authSlice";
 
 function App() {
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+
+  const token =
+    localStorage.getItem("tokenAuth") || sessionStorage.getItem("tokenAuth");
+
   const validarToken = async () => {
     try {
       const response = await validateToken();
-      console.log(response)
-      console.log("si arriba hay null es porque no hay token")
-      return response;
+      console.log("Token válido:", response);
+      dispatch(setToken({ token }));
     } catch (error) {
       setModal(true);
+      console.log("Error en la validación:", error.message);
 
       if (error.message === "Token expirado") {
         console.log("Token expirado, redirigiendo al login...");
-      } else {
-        console.log("Otro error: ", error);
+        dispatch(logout());
+        navigate("/login");
       }
-
-      return error;
     }
   };
 
   useEffect(() => {
-    validarToken();
+    if (token) {
+      validarToken();
+    }
   }, [pathname]);
 
   return (
     <Layout>
       <GlobalStyles />
       <Navbar />
-      <Routes />
+      <Routes isLoggedIn={!!token} />
       <Footer />
       <CallToAction />
       {modal && (
@@ -52,7 +56,7 @@ function App() {
           work={() => {
             dispatch(logout());
             navigate("/login");
-            setModal(!modal);
+            setModal(false);
           }}
           boolean={false}
         />

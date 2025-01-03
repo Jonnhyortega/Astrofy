@@ -95,7 +95,7 @@ export const Navbar = () => {
         style={{ position: "fixed", width: "100%", zIndex: 1000 }}
       >
         <NavbarContainer>
-          <Cart />
+          <Cart scrolling={scrolling} />
           <ProfileContainer onClick={handleModalProfile}>
             {userNameToRender ? (
               <a href="/account">

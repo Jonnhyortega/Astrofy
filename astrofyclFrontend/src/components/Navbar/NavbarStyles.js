@@ -56,13 +56,12 @@ export const ProfileContainer = styled.span`
     text-decoration: none;
   }
   a:nth-child(1) {
-    color: white;
     text-decoration: none;
+    color: var(--orange);
     cursor: pointer;
 
     &:hover {
-      color: white;
-      color: var(--orange);
+      color: red;
     }
   }
 
@@ -74,9 +73,9 @@ export const ProfileContainer = styled.span`
   a:nth-child(3) {
     cursor: pointer;
     text-decoration: none;
-    color: white;
+    color: var(--orange);
     &:hover {
-      color: var(--orange);
+      color: red;
     }
   }
 `;
@@ -94,13 +93,13 @@ export const ContainerLinks = styled.ul`
 export const NavLink = styled(Link)`
   cursor: pointer;
   font-size: 1rem;
-  color: white;
+  color: var(--orange);
   transition: color 0.3s ease;
   text-decoration: none;
   font-weight: 900;
   font-family: var(--funnel);
   &:hover {
-    color: #ff9900;
+    color: red;
   }
 `;
 
@@ -108,14 +107,14 @@ export const CartIcon = styled.div`
   cursor: pointer;
   transition: 0.6s ease;
   position: relative;
-  color: white;
+  color: var(--orange);
   margin: 20px 25px;
 
   @media (max-width: 768px) {
     margin: 20px 10px;
   }
   &:hover {
-    color: var(--orange);
+    color: red;
     transition: 0.6s ease;
   }
 `;

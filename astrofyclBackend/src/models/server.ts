@@ -1,10 +1,10 @@
 import express, { Express } from "express";
 import { dbConnection } from "../database/config";
-import { newProduct } from "../controllers/product";
 import cors from "cors";
 import authRoutes from "../routes/authRoutes";
 import orderRoutes from "../routes/orderRoutes";
 import productRoutes from "../routes/productRoutes";
+
 export class Server {
   app: Express;
   port: string | number | undefined;
