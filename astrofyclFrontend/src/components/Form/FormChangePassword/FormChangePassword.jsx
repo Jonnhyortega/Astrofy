@@ -17,6 +17,7 @@ export default function FormChangePassword() {
   const [showOldPw, setShowOldPw] = useState(false);
   const [showNewPw, setShowNewPw] = useState(false);
   const [error, setError] = useState(null);
+  const [loader, setShowLoader] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const token =
@@ -25,7 +26,11 @@ export default function FormChangePassword() {
     "";
 
   const navigate = useNavigate();
-
+  const reset = () => {
+    setShowModal(false);
+    setShowLoader(false);
+    setLoading(false);
+  };
   const handleChangePassword = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -36,17 +41,19 @@ export default function FormChangePassword() {
     const confirmNewPassword = e.target["new-pw2"].value;
 
     if (newPassword !== confirmNewPassword) {
-      setError("Las contraseñas nuevas no coinciden.");
-      setLoading(false);
+      setShowModal(true);
+      setShowButton(false);
+      setModalText("Las contraseñas nuevas no coinciden.");
       return;
     }
 
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8}$/;
     if (!passwordRegex.test(newPassword)) {
-      setError(
+      setShowModal(true);
+      setShowButton(false);
+      setModalText(
         "La nueva contraseña debe tener exactamente 8 caracteres, una letra mayúscula y un número."
       );
-      setLoading(false);
       return;
     }
 
@@ -64,11 +71,13 @@ export default function FormChangePassword() {
           },
         }
       );
-      setSuccessMessage("Contraseña cambiada con éxito.");
       setShowModal(true);
+      setModalText(response.data. msg);
+      setShowButton(true);
+      setShowLoader(true);
+
       setTimeout(() => {
         navigate("/");
-        setShowButton(!showButton)
       }, 2000);
     } catch (error) {
       const errorMessage =
@@ -87,24 +96,9 @@ export default function FormChangePassword() {
       {showModal && (
         <ModalAdvertising
           text={modalText}
-          work={() => setShowModal(false)}
+          work={reset}
           boolean={showButton}
-        />
-      )}
-      {successMessage && (
-        <ModalAdvertising
-          text={successMessage}
-          work={() => setSuccessMessage("")}
-          boolean={!showButton}
-        />
-      )}
-      {error && (
-        <ModalAdvertising
-          work={() => {
-            setError(null);
-          }}
-          text={error}
-          boolean={showButton}
+          loader={loader}
         />
       )}
       <motion.form

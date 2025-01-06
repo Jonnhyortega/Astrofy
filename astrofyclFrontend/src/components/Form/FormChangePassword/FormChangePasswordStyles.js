@@ -8,7 +8,11 @@ export const FormChangePasswordWrapper = styled.div`
   justify-content: start;
   width: 100%;
   height: 100%;
-
+  // border: 1px solid gold;
+  // * {
+  //   border: 1px solid gold;
+  // }
+  
   form {
     display: flex;
     flex-direction: column;
@@ -16,7 +20,9 @@ export const FormChangePasswordWrapper = styled.div`
     width: 500px;
     border-radius: 10px;
     gap: 15px;
-
+    @media (max-width: 568px) {
+      width: fit-content;
+    }
     h3 {
       text-align: center;
       color: var(--orange);
@@ -31,8 +37,6 @@ export const FormChangePasswordWrapper = styled.div`
     font-family: var(--funnel);
     display: flex;
     align-items: center;
-    // border: 1px solid gold;
-
 
     input {
       padding: 10px;
@@ -58,7 +62,7 @@ export const FormChangePasswordWrapper = styled.div`
     span {
       cursor: pointer;
       position: absolute;
-      right: -25px; 
+      right: -25px;
     }
   }
 

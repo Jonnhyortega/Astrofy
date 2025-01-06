@@ -10,7 +10,8 @@ export const RegisterCode = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [showButton, setShowButton]=useState(false)
+  const [showButton, setShowButton] = useState(false);
+  const [loader, setShowLoader] = useState(false);
   const redirect = useNavigate();
 
   const handleError = () => {
@@ -35,14 +36,17 @@ export const RegisterCode = () => {
       const userVerify = await verifyUser({ email: email, code: code });
       setError(userVerify.data.msg);
       if (userVerify.data.msg === "Usuario verificado con éxito") {
+        setShowButton(true);
+        setShowLoader(true);
         setTimeout(() => {
           redirect("/login");
-        }, 2000); 
+        }, 3000);
       }
     } catch (error) {
       setLoading(!loading);
       setError(error.response.data.msg);
-      console.error(error.response.data.msg);
+      setShowButton(false);
+      
     } finally {
       setLoading(!loading);
     }
@@ -69,7 +73,14 @@ export const RegisterCode = () => {
       <button className="button-verify" onClick={handleVerify}>
         {loading ? <Loader /> : "Verificar"}
       </button>
-      {error && <ModalAdvertising text={error} work={handleError} boolean={showButton} />}
+      {error && (
+        <ModalAdvertising
+          text={error}
+          work={handleError}
+          boolean={showButton}
+          loader={loader}
+        />
+      )}
     </ModalWrapper>
   );
 };

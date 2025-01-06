@@ -23,7 +23,10 @@ export const RegisterForm = styled.form`
     align-items: center;
     cursor: pointer;
     position: relative;
-
+    span {
+      position: absolute;
+      right: -5px;
+    }
     p {
       position: absolute;
       right: 0;
@@ -33,13 +36,15 @@ export const RegisterForm = styled.form`
   input,
   button {
     background: transparent;
-    border: 1px solid  white;
+    border: 1px solid white;
     padding: 0.6em;
     font-family: var(--ubuntu);
     border-radius: 5px;
     color: white;
     font-weight: 500;
-
+    display: flex;
+    align-items: center;
+    justify-content:center;
     &:focus {
       border-color: var(--orange);
       outline: none;

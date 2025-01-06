@@ -15,7 +15,8 @@ export const MobileMenuWrapper = styled(motion.div)`
   height: 80vh;
   background-color: black;
   z-index: 1001;
-
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   p {
     position: absolute;
     color: red;

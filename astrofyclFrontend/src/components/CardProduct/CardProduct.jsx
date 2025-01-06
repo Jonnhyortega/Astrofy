@@ -11,7 +11,6 @@ export const CardProduct = ({ product }) => {
   const [stars, setStars] = useState("");
 
   const handleAddToCart = () => {
-    console.log(product);
     dispatch(addToCart(product));
   };
 

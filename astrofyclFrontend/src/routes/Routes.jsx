@@ -22,6 +22,7 @@ const Routes = ({ isLoggedIn }) => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/shop" element={<Products />} />
       <Route path="*" element={<Home />} />
+        <Route path="/register-code-user" element={<RegisterCode />} />
       <Route element={<PublicRoute isLoggedIn={isLoggedIn} />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -29,7 +30,6 @@ const Routes = ({ isLoggedIn }) => {
       <Route element={<AuthRoute isLoggedIn={isLoggedIn} />}>
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/purchase" element={<Purchase />} />
-        <Route path="/register-code-user" element={<RegisterCode />} />
         <Route path="/change-password" element={<ChangePasswordPage />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/account" element={<MenuAccountPage />} />

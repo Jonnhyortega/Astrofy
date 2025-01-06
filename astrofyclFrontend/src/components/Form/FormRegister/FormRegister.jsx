@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { RegisterForm } from "./FormRegisterStyles";
 import { registerUser } from "../../../axios/axios";
 import ModalAdvertising from "../../ModalAdvertising/ModalAdvertising";
@@ -12,46 +12,60 @@ export const FormRegister = () => {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-  const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPw, setShowPw] = useState(false);
-  const navigate = useNavigate();
   const [showButton, setShowButton] = useState(false);
-  const [succes, setSucces] = useState(null);
-  const [userRegistered, setUserRegistered] = useState(null);
+  const [modalText, setModalText] = useState("");
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
+
   const handleShowPw = () => setShowPw(!showPw);
   const handleName = (event) => setName(event.target.value);
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword1 = (event) => setPassword1(event.target.value);
   const handlePassword2 = (event) => setPassword2(event.target.value);
+  const reset = () => {
+    setShowModal(false);
+    setModalText("");
+    setLoading(false);
+    setLoader(false);
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (password1 !== password2) {
-      setError("Las contraseñas no coincidieron.");
+      setShowModal(!showModal);
+      setModalText("Las contraseñas no coinciden.");
+      setShowButton(false);
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      console.log(showButton);
-      setError("Por favor, ingrese un correo válido.");
-
+      setShowModal(true);
+      setModalText("Por favor, ingrese un correo válido.");
+      setShowButton(false);
       return;
     }
-    if (name === "" || email === "" || password1 === "" || password2 === "") {
-      setError("Por favor complete todos los campos.");
-      setShowButton(true);
-
+    if (!name || !email || !password1 || !password2) {
+      setShowModal(true);
+      setModalText("Por favor complete todos los campos.");
+      setShowButton(false);
       return;
     }
+
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8}$/;
-    if (!passwordRegex.test(password2)) {
-      setError(
-        "La contraseña debe tener exactamente 8 caracteres, una letra mayúscula y un número."
+
+    if (!passwordRegex.test(password1)) {
+      setShowModal(true);
+      setModalText(
+        "La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número."
       );
+      setShowButton(false);
       return;
     }
-    setLoading(true);
+
     try {
       const response = await registerUser({
         name,
@@ -59,34 +73,49 @@ export const FormRegister = () => {
         password: password1,
       });
 
-      setSucces(response.msg);
-      setShowButton(false);
-      setError(null);
+      setShowModal(true);
+      setModalText(response.msg);
+      setShowButton(true);
+      setLoader(true);
+      
+      setTimeout(() => {
+        navigate("/register-code-user");
+      }, 4000);
     } catch (error) {
-      console.log(error);
-      if (error.response) {
-        if (error.response.status === 403) {
-          setUserRegistered(error.response.data.msg);
-          setShowButton(false);
-        } else if (error.response.data && error.response.data.errors) {
-          setError(error.response.data.errors.map((err) => err.msg).join(", "));
-        } else {
-          setError(
-            error.response.data.msg || "Error desconocido al registrar usuario."
-          );
-        }
-      } else if (error.request) {
-        setError("No se pudo conectar con el servidor. Intente más tarde.");
-      } else {
-        setError("Error desconocido al registrar usuario.");
+      setShowModal(true);
+      const msg = error.response.data.errors.map((err) => err.msg);
+
+      if (
+        msg.join("") ===
+        `El correo ${email} no ha sido verificado. Se ha enviado nuevamente el código.`
+      ) {
+        setLoader(true);
+        setShowButton(true);
+        setModalText(
+          msg.join("") + " Por favor verifique la cuenta a continuación"
+        );
+
+        setTimeout(() => {
+          navigate("/register-code-user");
+        }, 4000);
+      } else if (msg.join("") == `El correo ${email} ya está registrado.`) {
+        setShowButton(true);
+        setModalText(
+          msg.join("") + ". Será redirigido a la pagina de inicio de sesion."
+        );
+        setLoader(true);
+        setTimeout(() => {
+          navigate("/login");
+        }, 4000);
       }
+      setModalText(msg.join(""));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <RegisterForm id="form">
+    <RegisterForm>
       <h3>Crear Cuenta</h3>
       <input
         type="text"
@@ -98,76 +127,46 @@ export const FormRegister = () => {
         placeholder="Correo electrónico"
         onChange={handleEmail}
       />
-      <label className="label-password" htmlFor="password1">
+      <label className="label-password">
         <input
-          name="password1"
           type={showPw ? "text" : "password"}
           placeholder="Contraseña"
           onChange={handlePassword1}
-          style={{ width: "70%" }}
         />
-        <p
+        <span
           style={{ color: showPw ? "var(--orange-dark)" : "var(--orange)" }}
-          onClick={handleShowPw}
         >
-          {showPw ? (
-            <FontAwesomeIcon icon={faEyeSlash} />
-          ) : (
-            <FontAwesomeIcon icon={faEye} />
-          )}
-        </p>
+          <FontAwesomeIcon
+            icon={showPw ? faEyeSlash : faEye}
+            onClick={handleShowPw}
+          />
+        </span>
       </label>
-      <label className="label-password" htmlFor="password2">
+      <label className="label-password">
         <input
-          name="password2"
           type={showPw ? "text" : "password"}
           placeholder="Reingrese la contraseña"
           onChange={handlePassword2}
-          style={{ width: "70%" }}
         />
-        <p
+        <span
           style={{ color: showPw ? "var(--orange-dark)" : "var(--orange)" }}
-          onClick={handleShowPw}
         >
-          {showPw ? (
-            <FontAwesomeIcon icon={faEyeSlash} />
-          ) : (
-            <FontAwesomeIcon icon={faEye} />
-          )}
-        </p>
+          <FontAwesomeIcon
+            icon={showPw ? faEyeSlash : faEye}
+            onClick={handleShowPw}
+          />
+        </span>
       </label>
       <button onClick={handleRegister}>
         {loading ? <Loader /> : "Crear cuenta"}
       </button>
 
-      {error && (
+      {showModal && (
         <ModalAdvertising
-          work={() => {
-            setShowButton(false);
-            setError(null);
-          }}
-          text={error}
+          work={reset}
+          text={modalText}
           boolean={showButton}
-        />
-      )}
-
-      {succes && (
-        <ModalAdvertising
-          work={() => {
-            navigate("/register-code-user");
-          }}
-          text={succes}
-          boolean={showButton}
-        />
-      )}
-
-      {userRegistered && (
-        <ModalAdvertising
-          work={() => {
-            navigate("/register-code-user");
-          }}
-          text={userRegistered}
-          boolean={showButton}
+          loader={loader}
         />
       )}
     </RegisterForm>

@@ -39,7 +39,9 @@ export const LoginForm = styled.form`
     border-radius: 5px;
     color: white;
     font-weight: 500;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &::placeholder {
       color: white;
       font-weight: 100;

@@ -55,7 +55,7 @@ export const Modal = styled.div`
 
   p {
     color: black;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
     font-size: 1.5em;
     z-index: 2000;

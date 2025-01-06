@@ -44,7 +44,6 @@ export const registerUser = async (userData) => {
     const response = await axios.post(URL_API_BASE + REGISTER, userData);
     return response.data;
   } catch (error) {
-    console.error("Error al registrar el usuario:", error);
     throw error;
   }
 };
@@ -52,10 +51,8 @@ export const registerUser = async (userData) => {
 export const verifyUser = async (userData) => {
   try {
     const response = await axios.patch(URL_API_BASE + VERIFY, userData);
-    console.log(response);
     return response;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };
@@ -82,7 +79,6 @@ export const createOrder = async (shippingDetails, cartItems) => {
         "x-token": token,
       },
     });
-    console.log(response);
     return response;
   } catch (error) {
     return error;
@@ -118,15 +114,19 @@ export const validateToken = async () => {
         headers: { "x-token": token },
         params: { userId },
       });
-      return response.data; 
+      return response.data;
     } catch (error) {
       console.error("Error validating token:", error);
-      
-      if (error.response && error.response.status === 401 && error.response.data.msg === "Token expirado") {
+
+      if (
+        error.response &&
+        error.response.status === 401 &&
+        error.response.data.msg === "Token expirado"
+      ) {
         throw new Error("Token expirado");
       }
-      
-      throw error; 
+
+      throw error;
     }
   } else {
     return null;

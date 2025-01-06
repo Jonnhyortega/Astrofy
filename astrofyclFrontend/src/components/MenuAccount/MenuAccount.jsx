@@ -19,7 +19,8 @@ export default function MenuAccount() {
     const token =
       localStorage.getItem("tokenAuth") || sessionStorage.getItem("tokenAuth");
     const user =
-      JSON.parse(localStorage.getItem("user")) || JSON.parse(sessionStorage.getItem("user"));
+      JSON.parse(localStorage.getItem("user")) ||
+      JSON.parse(sessionStorage.getItem("user"));
 
     try {
       const response = await axios.patch(
@@ -34,15 +35,14 @@ export default function MenuAccount() {
           },
         }
       );
-      user.name = newName
-      localStorage.setItem("user", JSON.stringify(user))
-      sessionStorage.setItem("user", JSON.stringify(user))
-      console.log("Nombre modificado:", response.data);
-      console.log("Nombre modificado de STORAGE:", user);
+      user.name = newName;
+      localStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("user", JSON.stringify(user));
       setNewName("");
       setIsEditingName(false);
     } catch (error) {
       console.error("Error al modificar el nombre:", error);
+      return error;
     }
   };
 

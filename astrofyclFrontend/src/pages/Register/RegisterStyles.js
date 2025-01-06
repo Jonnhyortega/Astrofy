@@ -21,7 +21,7 @@ export const Wrapper = styled.section`
       color: var(--orange);
 
       &:hover {
-        color: var(--orange-bg);
+        color: white;
       }
     }
   }

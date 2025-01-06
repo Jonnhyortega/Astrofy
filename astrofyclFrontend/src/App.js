@@ -24,14 +24,11 @@ function App() {
   const validarToken = async () => {
     try {
       const response = await validateToken();
-      console.log("Token válido:", response);
       dispatch(setToken({ token }));
     } catch (error) {
       setModal(true);
-      console.log("Error en la validación:", error.message);
 
       if (error.message === "Token expirado") {
-        console.log("Token expirado, redirigiendo al login...");
         dispatch(logout());
         navigate("/login");
       }

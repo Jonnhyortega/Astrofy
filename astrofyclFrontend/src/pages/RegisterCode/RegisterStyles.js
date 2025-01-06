@@ -10,7 +10,6 @@ export const ModalWrapper = styled.div`
   gap: 10px;
   position: relative;
   left: 0;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
 
   p {
     font-weight: bold;

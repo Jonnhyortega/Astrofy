@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faGear } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-
 import { getUserDataFromStorage } from "../../../utils/userName";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../redux/auth/authSlice";
@@ -20,6 +19,9 @@ export const MobileMenu = ({ closeModal }) => {
   return (
     <>
       <motion.div
+        onClick={() => {
+          closeModal()
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -30,16 +32,15 @@ export const MobileMenu = ({ closeModal }) => {
           left: 0,
           width: "100vw",
           height: "100vh",
-          backgroundColor: "rgba(0, 0, 0, 1)",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
         }}
       />
       <MobileMenuWrapper
         initial={{ translateX: 300 }}
         animate={{ translateX: 0 }}
         exit={{ translateX: 300 }}
-        transition={{ type: "tween", duration: .5 }}
+        transition={{ type: "tween", duration: 0.5 }}
       >
-        {/* <p>x</p> */}
         <MobileNavLink
           onClick={() => {
             closeModal();
