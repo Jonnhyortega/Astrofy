@@ -11,7 +11,6 @@ const AboutUsHome = () => {
     <AboutUsHomeContainer>
       <ContentWrapper>
         <LogoHome />
-        {/* <HeroButton to={"/about-us"}>Conocenos</HeroButton> */}
       </ContentWrapper>
     </AboutUsHomeContainer>
   );

@@ -21,6 +21,8 @@ import {
 } from "./CardItemsStyles";
 import { CiCirclePlus, CiCircleMinus, CiTrash } from "react-icons/ci";
 import { cutThirdSpace } from "../../utils/cutTitle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export const CardItem = ({ cartItem }) => {
   const dispatch = useDispatch();
@@ -82,11 +84,11 @@ export const CardItem = ({ cartItem }) => {
               <p>¿Estás seguro que deseas eliminar este artículo?</p>
             </ModalContent>
             <ModalActions>
-              <button className="button1" onClick={handleDeleteItem}>
-                Eliminar
-              </button>
               <button className="button2" onClick={handleCancel}>
-                Cancelar
+                <FontAwesomeIcon icon={faCheck} />{" "}
+              </button>
+              <button className="button1" onClick={handleDeleteItem}>
+                <FontAwesomeIcon icon={faXmark} />
               </button>
             </ModalActions>
           </div>

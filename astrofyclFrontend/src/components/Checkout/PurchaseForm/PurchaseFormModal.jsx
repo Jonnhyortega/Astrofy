@@ -15,6 +15,8 @@ import { clearCart } from "../../../redux/cart/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { createOrder } from "../../../axios/axios";
 import ModalAdvertising from "../../ModalAdvertising/ModalAdvertising";
+import { helix } from "ldrs";
+helix.register();
 
 const PurchaseFormModal = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -56,7 +58,8 @@ const PurchaseFormModal = ({ onClose }) => {
     }
 
     if (shippingDetails.cardNumber.length !== 16) {
-      newErrors.cardNumber = "El número de tarjeta debe contener exactamente 16 dígitos.";
+      newErrors.cardNumber =
+        "El número de tarjeta debe contener exactamente 16 dígitos.";
     }
 
     return newErrors;
@@ -98,7 +101,7 @@ const PurchaseFormModal = ({ onClose }) => {
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         {loading ? (
-          <Loader />
+          <l-helix size="45" speed="2.5" color="black"></l-helix>
         ) : (
           <Form onSubmit={handleSubmit}>
             <Input
@@ -109,7 +112,9 @@ const PurchaseFormModal = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.name && <small style={{ color: "red" }}>{errors.name}</small>}
+            {errors.name && (
+              <small style={{ color: "red" }}>{errors.name}</small>
+            )}
 
             <Input
               type="tel"
@@ -119,7 +124,9 @@ const PurchaseFormModal = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.cellphone && <small style={{ color: "red" }}>{errors.cellphone}</small>}
+            {errors.cellphone && (
+              <small style={{ color: "red" }}>{errors.cellphone}</small>
+            )}
 
             <Input
               type="text"
@@ -129,7 +136,9 @@ const PurchaseFormModal = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.address && <small style={{ color: "red" }}>{errors.address}</small>}
+            {errors.address && (
+              <small style={{ color: "red" }}>{errors.address}</small>
+            )}
 
             <Input
               type="email"
@@ -139,7 +148,9 @@ const PurchaseFormModal = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.email && <small style={{ color: "red" }}>{errors.email}</small>}
+            {errors.email && (
+              <small style={{ color: "red" }}>{errors.email}</small>
+            )}
 
             <Input
               type="text"
@@ -161,7 +172,9 @@ const PurchaseFormModal = ({ onClose }) => {
               maxLength="16"
               required
             />
-            {errors.cardNumber && <small style={{ color: "red" }}>{errors.cardNumber}</small>}
+            {errors.cardNumber && (
+              <small style={{ color: "red" }}>{errors.cardNumber}</small>
+            )}
 
             <Input
               type="text"
@@ -171,7 +184,9 @@ const PurchaseFormModal = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.cardName && <small style={{ color: "red" }}>{errors.cardName}</small>}
+            {errors.cardName && (
+              <small style={{ color: "red" }}>{errors.cardName}</small>
+            )}
 
             <Input
               style={{ width: "50px" }}
@@ -183,9 +198,20 @@ const PurchaseFormModal = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            {errors.cardCode && <small style={{ color: "red" }}>{errors.cardCode}</small>}
+            {errors.cardCode && (
+              <small style={{ color: "red" }}>{errors.cardCode}</small>
+            )}
 
-            <label style={{ color: "white" }}>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: " 8px",
+                fontSize: "14px",
+                color: "#333",
+                cursor: "pointer",
+              }}
+            >
               <Checkbox
                 type="checkbox"
                 name="termsAccepted"
@@ -195,9 +221,13 @@ const PurchaseFormModal = ({ onClose }) => {
               />
               Acepto los términos y condiciones
             </label>
-            {errors.termsAccepted && <small style={{ color: "red" }}>{errors.termsAccepted}</small>}
+            {errors.termsAccepted && (
+              <small style={{ color: "red" }}>{errors.termsAccepted}</small>
+            )}
 
-            <SubmitButton type="submit">Pagar</SubmitButton>
+            <SubmitButton type="submit">
+              {loading ? <Loader /> : "Pagar"}
+            </SubmitButton>
           </Form>
         )}
       </ModalContent>

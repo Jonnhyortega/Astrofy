@@ -161,7 +161,7 @@ export const CartTotal = styled.div`
 `;
 
 export const CheckoutButton = styled.button`
-  margin-top: 10px;
+  margin: 10px 0;
   border: none;
   border-radius: 5px;
   cursor: pointer;

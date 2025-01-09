@@ -6,12 +6,9 @@ export const CardWrapper = styled.div`
   align-items: center;
   text-align: center;
   border-radius: 2px;
-  // border: 1px solid grey;
   position: relative;
-  // * {
-  //   border: 1px solid gold;
-  // }
-
+  border: 1px solid grey;
+  
   @media (max-width: 368px) {
   }
   @media (max-width: 268px) {

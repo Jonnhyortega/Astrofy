@@ -21,12 +21,50 @@ export class Server {
     await dbConnection();
   }
 
+  // MIDDLEWARE TO PRODUCTION
+  // middlewares(): void {
+  //   this.app.use(express.json());
+
+  //   this.app.use(
+  //     cors({
+  //       origin: "*",
+  //       methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  //       allowedHeaders: ["Content-Type", "Authorization", "x-token"],
+  //       credentials: true,
+  //     })
+  //   );
+  // }
+
+  //  MIDDLEWARE PARA LOCAL
   middlewares(): void {
     this.app.use(express.json());
-    this.app.use(cors());
+
+    this.app.use(
+      cors({
+        origin: "http://localhost:3000/",
+        methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+        allowedHeaders: ["Content-Type", "Authorization", "x-token"],
+      })
+    );
   }
 
   routes(): void {
+    this.app.get("/", (_, res) => {
+      res.send(` 
+        <html>
+          <head>
+            <title>Astrofy Backend</title>
+          </head>
+          <body>
+            <h1>Bienvenido a Astrofy Backend</h1>
+            <p>
+            Servicios de backend para la aplicación Astrofy de Jonathan Ortega.
+            <a href="https://www.jonnhyortegadev.com">Portfolio</a>
+            </p>
+          </body>
+        </html>
+      `);
+    });
     this.app.use("/auth", authRoutes);
     this.app.use("/api", productRoutes);
     this.app.use("/orders", orderRoutes);

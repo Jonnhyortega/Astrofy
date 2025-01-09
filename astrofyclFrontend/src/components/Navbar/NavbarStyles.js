@@ -105,7 +105,6 @@ export const NavLink = styled(Link)`
 
 export const CartIcon = styled.div`
   cursor: pointer;
-  transition: 0.6s ease;
   position: relative;
   color: var(--orange);
   margin: 20px 25px;
@@ -115,7 +114,6 @@ export const CartIcon = styled.div`
   }
   &:hover {
     color: red;
-    transition: 0.6s ease;
   }
 `;
 

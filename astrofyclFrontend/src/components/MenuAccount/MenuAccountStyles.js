@@ -29,16 +29,21 @@ export const MenuWrapper = styled.div`
   }
 
   .options {
-    margin: 0 auto;
+    margin-top: 15px;
     font-family: var(--funnel);
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     article {
-      margin-top: 40px;
-      width: 100%;
+      margin-top: 5px;
+      border-radius: 5px;
+      width: 200px;
       cursor: pointer;
-      text-align: center;
+      text-align: left;
       transition: background-color 0.3s ease;
-
+      padding: 8px;
+      font-weight: 100;
       &:hover {
         backdrop-filter: blur(12px) saturate(180%);
         background-color: var(--orange-dark);
@@ -55,8 +60,8 @@ export const MenuWrapper = styled.div`
     .edit-name {
       margin: 10px auto;
       display: flex;
-      flex-direction: column; 
-      gap:5px;
+      flex-direction: column;
+      gap: 5px;
     }
 
     label {

@@ -70,7 +70,6 @@ export const ContainerWrapper = styled.section`
     margin: 0 0 20px 0;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
     gap: 5px;
 

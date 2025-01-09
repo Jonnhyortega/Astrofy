@@ -80,11 +80,11 @@ const Cart = ({ scrolling }) => {
                   <CardItem key={item.id} cartItem={item} />
                 ))
               ) : (
-                <span
-                  style={{ position: "absolute", left: "25px", top: "65px" }}
+                <p
+                  style={{ position: "absolute", left: "25px", top: "65px", color: "var(--orange)" }}
                 >
-                  Carrito vacío
-                </span>
+                  No hay productos.
+                </p>
               )}
             </CartItemsContainer>
 

@@ -8,6 +8,14 @@ export const RegisterForm = styled.form`
   padding: 1em;
   justify-content: center;
   font-family: var(--funnel);
+
+  @media (max-width: 568px) {
+    padding: 0;
+  }
+  // border: 1px solid red;
+  // * {
+  //   border: 1px solid gold;
+  // }
   h3 {
     top: 100px;
     left: 42%;
@@ -23,6 +31,7 @@ export const RegisterForm = styled.form`
     align-items: center;
     cursor: pointer;
     position: relative;
+
     span {
       position: absolute;
       right: -5px;
@@ -44,7 +53,7 @@ export const RegisterForm = styled.form`
     font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     &:focus {
       border-color: var(--orange);
       outline: none;

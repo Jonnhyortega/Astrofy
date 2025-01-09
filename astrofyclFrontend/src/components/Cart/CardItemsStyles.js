@@ -131,7 +131,11 @@ export const ModalBackground = styled.div`
     background: black;
 
     @media (max-width: 568px) {
+      border:none;
+      background: transparent;
       border-radius: 0;
+      border:none;
+      background: transparent;
     }
   }
 `;
@@ -158,6 +162,7 @@ export const ModalActions = styled.div`
   gap: 10px;
 
   button {
+  width: 50px;
     cursor: pointer;
     padding: 0.8em;
     background: transparent;

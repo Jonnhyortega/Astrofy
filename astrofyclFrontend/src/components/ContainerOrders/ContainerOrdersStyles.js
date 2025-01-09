@@ -1,16 +1,25 @@
-// ContainerOrdersStyles.js
 import styled from "styled-components";
 
 export const ContainerOrdersWrapper = styled.div`
-  padding: 20px;
   font-family: var(--funnel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  ul {
+  // border: 1px solid gold;
+  // * {
+  //   border: 1px solid gold;
+  // }
+  div {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 15px;
 
     article {
+      margin: 0;
       color: white;
       border-radius: 10px 10px 0px 0px;
       border-bottom: 5px solid var(--orange);
@@ -18,6 +27,7 @@ export const ContainerOrdersWrapper = styled.div`
       border-left: 1px solid grey;
       border-right: 1px solid grey;
       padding: 15px;
+      width: 90%;
 
       &:hover {
         background-color: var(--orange-dark);
@@ -25,13 +35,13 @@ export const ContainerOrdersWrapper = styled.div`
     }
 
     li {
+      width: 100%;
       list-style: none;
-      margin: 10px 0;
-      padding: 15px;
       transition: background-color 0.3s;
       color: white;
       width: content;
       border-bottom: 1px solid grey;
+      padding: 25px 0;
     }
 
     strong {
@@ -41,15 +51,18 @@ export const ContainerOrdersWrapper = styled.div`
     .item-list {
       list-style-type: none;
       padding-left: 0;
-
+      margin: 0;
+      
       li {
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 5px;
 
         @media (max-width: 468px) {
           flex-direction: column;
+          gap: 5px;
         }
+
         p {
           margin: 0;
         }
@@ -66,6 +79,7 @@ export const ContainerOrdersWrapper = styled.div`
         img {
           width: 30px;
           height: 30px;
+          border-radius: 20%;
           margin-right: 10px;
         }
       }

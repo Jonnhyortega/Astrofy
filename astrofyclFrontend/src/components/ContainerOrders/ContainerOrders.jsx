@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   ContainerOrdersWrapper,
   ToggleDetailsButton,
-} from "./ContainerOrdersStyles"; 
+} from "./ContainerOrdersStyles";
 import { getOrders } from "../../axios/axios";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch } from "react-redux";
@@ -20,7 +20,7 @@ export const ContainerOrders = () => {
         const ordersResponse = await getOrders();
         if (Array.isArray(ordersResponse)) {
           setOrders(ordersResponse);
-        } 
+        }
       } catch (error) {
         console.error("Error al obtener órdenes:", error);
       } finally {
@@ -39,7 +39,7 @@ export const ContainerOrders = () => {
       {loading ? (
         <Loader />
       ) : (
-        <ul>
+        <div>
           {orders.length > 0 ? (
             orders.map((order) => (
               <motion.article
@@ -57,7 +57,9 @@ export const ContainerOrders = () => {
                 <ToggleDetailsButton
                   onClick={() => toggleOrderDetails(order._id)}
                 >
-                  {expandedOrderId === order._id ? "Ocultar items" : "Ver items"}
+                  {expandedOrderId === order._id
+                    ? "Ocultar items"
+                    : "Ver items"}
                 </ToggleDetailsButton>
                 <AnimatePresence>
                   {expandedOrderId === order._id && (
@@ -91,7 +93,7 @@ export const ContainerOrders = () => {
           ) : (
             <p style={{ color: "white" }}>No hay órdenes disponibles.</p>
           )}
-        </ul>
+        </div>
       )}
     </ContainerOrdersWrapper>
   );

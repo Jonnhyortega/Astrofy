@@ -10,7 +10,6 @@ import {
   VERIFYJWT,
 } from "../utils/api";
 import { getUserDataFromStorage } from "../utils/userName";
-import { useSelector } from "react-redux";
 
 export const fetchProducts = async () => {
   try {
