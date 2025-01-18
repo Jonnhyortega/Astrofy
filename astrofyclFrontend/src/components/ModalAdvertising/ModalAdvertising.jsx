@@ -3,7 +3,6 @@ import { Modal } from "./ModalAdvertisingStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { hourglass } from "ldrs";
-
 hourglass.register();
 
 export default function ModalAdvertising({ text, work, boolean, loader }) {

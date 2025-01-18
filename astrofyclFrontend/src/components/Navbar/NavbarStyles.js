@@ -7,18 +7,12 @@ export const NavbarContainer = styled.nav`
   justify-content: space-between;
   background-color: #000;
   color: #fff;
-  // z-index: 10;
   position: fixed;
   width: 100%;
   top: 0;
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   background-color: rgba(255, 255, 255, 0);
-
-  // border: 1px solid gold;
-  // * {
-  //   border: 1px solid gold;
-  // }
 
   .container-icons {
     display: flex;
@@ -44,7 +38,6 @@ export const ProfileContainer = styled.span`
   padding: 0 25px 0 0;
   font-size: 15px;
   font-family: var(--funnel);
-  // border: 1px solid gold;
   @media (max-width: 768px) {
     display: none;
   }
@@ -123,7 +116,6 @@ export const CartCount = styled.span`
   right: -12px;
   background-color: transparent;
   border-radius: 50%;
-  // border: 1px solid;
   padding: 2px 6px;
   font-size: 0.8em;
   text-align: center;

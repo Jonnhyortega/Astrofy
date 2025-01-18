@@ -12,7 +12,6 @@ export const GlobalStyles = createGlobalStyle`
     --ubuntu: "Ubuntu", sans-serif;
   }
 
-  /* Scrollbar styles */
   ::-webkit-scrollbar {
     width: 20px; 
   }

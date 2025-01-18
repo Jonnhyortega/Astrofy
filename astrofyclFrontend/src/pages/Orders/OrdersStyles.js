@@ -5,10 +5,6 @@ export const OrdersWrapper = styled.section`
   padding-top: 50px;
   width: 100%;
   background: black;
-  border: 1px solid green;
-  // * {
-  //   border: 1px solid red;
-  // }
   h2 {
     color: var(--orange);
     text-align: center;

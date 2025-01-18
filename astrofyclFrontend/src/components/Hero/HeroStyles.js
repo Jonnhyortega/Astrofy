@@ -25,11 +25,9 @@ export const HeroContainer = styled.section`
     rgba(0, 0, 0, 1) 81%,
     rgba(38, 38, 38, 1) 100%
   );
-
-  // * {
-  //   border: 1px solid var(--orange);
-  // }
 `;
+
+
 export const Content = styled.div`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   animation: ${({ $isVisible }) => ($isVisible ? fadeIn : "none")} 2s

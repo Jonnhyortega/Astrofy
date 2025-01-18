@@ -82,14 +82,14 @@ export const LoginForm = styled.form`
     }
 
     input[type="checkbox"] {
-      display: none; /* Oculta el checkbox nativo */
+      display: none; 
     }
 
     .custom-checkbox {
       width: 24px;
       height: 24px;
       border: 2px solid var(--orange-dark);
-      border-radius: 50%; /* Bordes redondeados */
+      border-radius: 50%;
       background: transparent;
       position: relative;
       cursor: pointer;

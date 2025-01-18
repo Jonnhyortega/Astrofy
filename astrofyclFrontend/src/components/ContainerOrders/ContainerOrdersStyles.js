@@ -6,10 +6,6 @@ export const ContainerOrdersWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  // border: 1px solid gold;
-  // * {
-  //   border: 1px solid gold;
-  // }
   div {
     width: 100%;
     display: flex;

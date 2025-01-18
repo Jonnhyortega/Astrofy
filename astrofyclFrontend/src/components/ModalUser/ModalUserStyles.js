@@ -12,10 +12,6 @@ export const ModalUserWrapper = styled(motion.div)`
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   
-  // * {
-  //   border: 1px solid red;
-  // }
-
   @media (max-width: 568px) {
     width: 100%;
     height: 100vw;

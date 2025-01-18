@@ -42,11 +42,8 @@ const authSlice = createSlice({
     },
     setToken(state, action) {
       const { token } = action.payload;
-      
-      // Actualiza el estado del token
       state.token = token;
 
-      // Guarda el nuevo token en el almacenamiento correspondiente
       if (state.tokenSesion) {
         localStorage.setItem("tokenAuth", token);
       } else {
@@ -54,7 +51,7 @@ const authSlice = createSlice({
       }
     },
     clearToken(state) {
-      state.token = null; // Limpia el estado del token
+      state.token = null;
     },
   },
 });

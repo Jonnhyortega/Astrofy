@@ -156,6 +156,8 @@ export const FormRegister = () => {
             onClick={handleShowPw}
           />
         </span>
+
+        <p></p>
       </label>
       <button onClick={handleRegister}>
         {loading ? <Loader /> : "Crear cuenta"}

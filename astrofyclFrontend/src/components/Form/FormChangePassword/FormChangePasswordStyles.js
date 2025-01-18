@@ -8,10 +8,6 @@ export const FormChangePasswordWrapper = styled.div`
   justify-content: start;
   width: 100%;
   height: 100%;
-  // border: 1px solid gold;
-  // * {
-  //   border: 1px solid gold;
-  // }
   
   form {
     display: flex;

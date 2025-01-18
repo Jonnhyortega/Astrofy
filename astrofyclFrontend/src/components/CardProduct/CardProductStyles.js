@@ -8,11 +8,7 @@ export const CardWrapper = styled.div`
   border-radius: 2px;
   position: relative;
   border: 1px solid grey;
-  
-  @media (max-width: 368px) {
-  }
-  @media (max-width: 268px) {
-  }
+
 
   .discount {
     color: red;
@@ -35,7 +31,6 @@ export const CardWrapper = styled.div`
     width: 200px;
     height: 200px;
     border-radius: 2px;
-    // border: 1px solid var(--orange-dark);
     margin-top: 25px;
     @media (max-width: 676px) {
       width: 180px;

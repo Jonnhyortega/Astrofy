@@ -87,10 +87,6 @@ export const OurStoryWrapper = styled.section`
       color: var(--orange);
       position: relative;
 
-      /* Glow effect */
-      &:hover {
-        // text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
-      }
     }
 
     p {
@@ -100,7 +96,6 @@ export const OurStoryWrapper = styled.section`
       transition: color 0.6s ease-in-out;
     }
 
-    /* Decorative background animation */
     &::before {
       content: "";
       position: absolute;
@@ -118,7 +113,6 @@ export const OurStoryWrapper = styled.section`
     }
   }
 
-  /* Keyframe animation for fade-in effect */
   @keyframes fadeIn {
     from {
       opacity: 0;
